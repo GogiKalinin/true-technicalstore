@@ -1,0 +1,43 @@
+.MyBannerSlider
+  // margin-left: 260px
+  // margin-right: 260px
+  // margin-top: 50px
+  // margin-bottom: 50px
+  height: 200px !important
+  width: 80%
+  margin: 50px auto
+  height: auto
+  display: flex
+  border: 1px solid blue
+  // background: url("../../Images/Banner/banner1.png")
+  justify-content: space-between
+  align-items: center
+
+@media screen and (min-width: 1500px)
+  .MyBannerSlider
+
+@media screen and (max-width: 1500px)
+  .MyBannerSlider
+    padding-left: 20px
+    padding-right: 20px
+
+@media screen and (max-width: 992px)
+  .MyBannerSlider
+
+@media screen and (max-width: 375px)
+  .MyBannerSlider
+
+.SliderButtonPrev,
+.SliderButtonNext
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 48px
+  width: 36px
+  background: #252931
+  opacity: 0.5
+  border-radius: 0px 30px 30px 0px
+  border: none
+
+.SliderButtonNext
+  transform: rotate(180deg)

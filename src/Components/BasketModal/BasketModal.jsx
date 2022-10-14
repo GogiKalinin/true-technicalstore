@@ -1,50 +1,15 @@
 import React from "react";
-// import { CancelButton } from "../../Images/BasketModal/BasketModal";
+import ClickAwayListener from "react-click-away-listener";
 import "./BasketModal.sass";
 
-const CancelButton = (
-  <svg
-    width="27"
-    height="27"
-    viewBox="0 0 27 27"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle
-      cx="13.4882"
-      cy="13.4883"
-      r="12.4882"
-      fill="white"
-      stroke="#CACDD8"
-      stroke-width="2"
-    />
-    <path
-      d="M9.44177 9.44183L18.2091 18.2092"
-      stroke="#A2A6B0"
-      stroke-width="2"
-      stroke-linecap="round"
-    />
-    <path
-      d="M18.2091 9.44183L9.44178 18.2092"
-      stroke="#A2A6B0"
-      stroke-width="2"
-      stroke-linecap="round"
-    />
-  </svg>
-);
-
 const BasketModal = (props) => {
-  // let basketArray = [];
-  // basketArray.push(props.basketData);
-  // console.log("basketArray", basketArray)
+  const handleClickAway = () => {
+    props.setShowBasketModal(false);
+    console.log("clicked");
+  };
 
   const searchaItemCount = (id) => {
-    // console.group("search item count");
-    // console.log("count items", props.countItems);
-    // console.log("clicked id", id);
-    // console.groupEnd();
     const needId = props.countItems.filter((idCheck) => idCheck.id === id);
-    // console.log("needId", needId);
     return needId[0].count;
   };
 
@@ -60,19 +25,23 @@ const BasketModal = (props) => {
   };
 
   return (
-    <div className="BasketModalContainer">
-      {props.basketData.map((prod) => {
-        return (
-          <div className="BasketProdContainer" key={prod.id}>
-            <img src={prod.image} alt="img"></img>
-            <span>{prod.title.slice(0, 15)}</span>
-            <div className="BasketProdContainerCounter">
-              {searchaItemCount(prod.id)}
-            </div>
-            <h1>{countPrice(prod.newPrice, prod.id)}</h1>
-          </div>
-        );
-      })}
+    <div className="BasketModalGeneral">
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <div className="BasketModalContainer">
+          {props.basketData.map((prod) => {
+            return (
+              <div className="BasketProdContainer" key={prod.id}>
+                <img src={prod.image} alt="img"></img>
+                <span>{prod.title.slice(0, 15)}</span>
+                <h1>{countPrice(prod.newPrice, prod.id)}</h1>
+                <div className="BasketProdContainerCounter">
+                  {searchaItemCount(prod.id)}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </ClickAwayListener>
     </div>
   );
 };

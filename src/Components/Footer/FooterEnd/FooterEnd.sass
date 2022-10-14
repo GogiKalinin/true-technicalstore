@@ -1,9 +1,35 @@
 .FooterEnd
-  height: 56px
+  min-height: 56px
   display: flex
   align-items: center
   justify-content: space-between
   border-top: 1px solid #ACACAC
+  padding-left: 260px
+  padding-right: 260px
+
+@media screen and (min-width: 1500px)
+  .FooterEnd
+    padding-left: 260px
+    padding-right: 260px
+
+@media screen and (min-width: 1150px) and (max-width: 1500px)
+  .FooterEnd
+    padding-left: 30px
+    padding-right: 30px
+
+@media screen and (max-width: 1150px)
+  .FooterEnd
+    padding-left: 66px
+    padding-right: 66px
+
+@media screen and (max-width: 544px)
+  .FooterEnd
+    flex-wrap: wrap
+    height: 130px
+    justify-content: center
+    border-top: none
+    padding-left: 20px
+    padding-right: 20px
 
 .FooterEndSocial,
 .FooterEndBankPay,
@@ -19,7 +45,6 @@
   padding-right: 13.5px
 
 .FooterEndBankPay
-  // justify-content: center
   align-self: center
 
 .FooterEndBankPay-item

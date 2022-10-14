@@ -5,11 +5,166 @@
   height: 92px
   background-color: #FFFFFF
   border-bottom: 1px solid #CACDD8
-  padding-left: 260px
-  padding-right: 260px
   font-size: 14px
   text-decoration: none
   color: black
+
+.NavbarUniversal
+  display: flex
+  align-items: center
+
+.InputModulIsActive
+  display: flex
+  border-radius: 20px
+
+.ModulInput
+  display: flex
+  width: auto
+  transition: 200ms linear
+  height: 60px
+  background-color: #F5F7FF
+  border-radius: 31px
+  border: none
+
+.ModulInput[text]
+  color: #000
+
+.ModulInput:hover
+  border: 1px solid #0156FF
+
+.ModulInput[placeholder]
+  font-family: 'Poppins'
+  font-style: normal
+  font-weight: 400
+  font-size: 14px
+  line-height: 21px
+  padding-left: 30px
+  color: #A2A6B0
+
+.InputModuleIsUnactive,
+.NavbarMenuUnActive
+  display: none
+
+.TabletNavbarIcons
+  display: flex
+@media screen and (min-width: 1500px)
+  .Navbar
+    padding-left: 260px
+    padding-right: 260px
+  .TabletNavbar
+    display: none
+  .ModulInput
+    min-width: 700px
+
+@media screen and (min-width: 1150px) and (max-width: 1500px)
+  .Navbar
+    padding-left: 30px
+    padding-right: 30px
+  .TabletNavbar
+    display: none
+  .ModulInput
+    min-width: 800px
+
+@media screen and (min-width: 992px) and (max-width: 1150px)
+  .Navbar
+    padding-left: 30px
+    padding-right: 30px
+  .TabletNavbar
+    display: none
+
+  .ModulInput
+    width: 700px
+
+@media screen and (max-width: 992px)
+  .Navbar
+    display: none
+  .TabletNavbarBasket
+    margin-left: 37px
+    margin-right: 17px
+
+  .TabletNavbarBurger
+    margin-right: 12px
+
+  .TabletNavbar
+    background-color: #0156FF
+    color: #FFFFFF
+    height: 64px
+    justify-content: space-between
+    display: flex
+    align-items: center
+    padding-left: 20px
+    padding-right: 20px
+
+.TabletNavbarInput
+  width: 518px
+  height: 38px
+  border-radius: 25px
+  border: none
+  background-image: url("/TabletImages/TabletHeader/inputBackground.png")
+  background-repeat: no-repeat
+  background-position: left
+  background-color: #fff
+
+.TabletNavbarInput[placeholder]
+  padding-left: 38px
+  font-family: 'Poppins'
+  font-size: 11px
+  color: #CACDD8
+
+@media screen and (max-width: 447px)
+  .TabletNavbarInput
+    max-width: 150px
+  .TabletNavbar
+    padding-left: 10px
+    padding-right: 10px
+    .TabletNavbarBasket
+      margin-left: 9px
+      margin-right: 9px
+
+@media screen and (max-width: 391.5px)
+  .TabletNavbar
+    padding-left: 20px
+    padding-right: 20px
+    .TabletNavbarInput
+      max-width: 150px
+
+@media screen and (max-width: 388px)
+  .TabletNavbarBurger
+    margin-right: 5px
+  .TabletNavbarBasket
+    margin-left: 5px
+    margin-right: 5px
+  .TabletNavbarInput
+    max-width: 200px
+
+@media screen and (max-width: 375px)
+  .TabletNavbarInput
+    max-width: 150px
+
+@media screen and (max-width: 347px)
+  .TabletNavbar
+    padding-left: 8px
+    padding-right: 8px
+    .TabletNavbarBasket
+      margin-left: 3px
+      margin-right: 3px
+// @media screen and (min-width: 1450px)
+//   .Navbar
+//     padding-left: 260px
+//     padding-right: 260px
+
+// @media screen and (max-width: 992px)
+//   .Navbar
+//     padding-left: 20px
+//     padding-right: 20px
+//     background-color: #0156FF
+//     color: #FFFFFF
+
+//   .Navbar__menu
+//     display: none
+
+//   .Navbar__logo
+//     display: none
 
 .Navbar__item a,
 .Navbar__button a
@@ -28,6 +183,7 @@
 .Navbar__logo
   display: flex
   align-items: start
+  margin-right: 54px
 
 .Navbar__item-MainIcon
   display: flex
@@ -47,6 +203,9 @@
   text-decoration: none
   color: black
 
+.UserMenuBasket
+  cursor: pointer
+
 .Navbar__button
   height: 37px
   width: 121px
@@ -59,6 +218,11 @@
   font-weight: 600
   margin-left: 25px
   cursor: pointer
+  font-family: 'Poppins'
+  font-style: normal
+  font-weight: 600
+  font-size: 14px
+  line-height: 21px
 
 .Navbar__button a
   color: #0156FF
@@ -82,7 +246,7 @@
   right: 0
 
   .MenuListItem
-    margin-left: 25px
+    padding-left: 25px
 
 .Navbar-active__item
   color: #0156FF

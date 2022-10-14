@@ -3,18 +3,27 @@ import "./Navbar.sass";
 import { Logo } from "./Logo.jsx";
 import { Basket } from "./Basket.jsx";
 import { Search } from "./Search.jsx";
+import { Cancel } from "./Cancel";
 import "./Userpic.png";
+import {
+  InputImage,
+  TabletBasket,
+  TabletBurger,
+  TabletUser,
+} from "../../TabletImages/TabletHeader/TabletNavbar";
+const Navbar = ({ showBasketModal, setShowBasketModal }) => {
+  const [showNavbarModul, setShowNavbarModul] = useState(false);
 
-const Navbar = (
-  { showBasketModal, setShowBasketModal },
-  { showSearchBar, setShowSearchBar }
-) => {
-  const toggleSearchBarView = () => {
-    setShowBasketModal(!showBasketModal);
+  const toggleShowNavbarModul = () => {
+    setShowNavbarModul(!showNavbarModul);
   };
+  console.log("modul", showNavbarModul);
+  console.log("toggleShowNavbarModul", toggleShowNavbarModul);
+
   const toggleBasketModalView = () => {
     setShowBasketModal(!showBasketModal);
   };
+
   const [navigationItems, setNavigationItems] = useState([
     {
       id: 0,
@@ -68,51 +77,88 @@ const Navbar = (
   };
 
   return (
-    <div className="Navbar">
-      <ul className="Navbar__menu">
-        <a className="Navbar__item-MainIcon" href="google.com">
+    <>
+      <div className="Navbar">
+        <div className="NavbarUniversal">
           <a className="Navbar__logo" href="#">
             <Logo />
           </a>
-        </a>
-        {navigationItems.map((item) => (
-          <li
-            className={
-              item.active ? "Navbar__item Navbar-active__item" : "Navbar__item"
-            }
-            key={item.id}
-            onClick={() => selectNavItem(item.name)}
-            name={item.name}
+
+          <div
+            className={showNavbarModul ? "NavbarMenuUnActive" : "Navbar__menu"}
           >
-            {item.name}
-          </li>
-        ))}
-
-        <a href="google.com">
-          <button className="Navbar__button">Our deals</button>
-        </a>
-      </ul>
-
-      <ul className="UserMenuList">
-        <li className="MenuListItem">
-          <a href="google.com">
-            <div className="UserMenuSearch" onClick={toggleSearchBarView}>
-              <Search />
-            </div>
-          </a>
-        </li>
-        <li className="MenuListItem">
-          <div className="UserMenuSearch" onClick={toggleSearchBarView}>
-            <Basket />
+            {navigationItems.map((item) => (
+              <div
+                className={
+                  item.active
+                    ? "Navbar__item Navbar-active__item"
+                    : "Navbar__item"
+                }
+                key={item.id}
+                onClick={() => selectNavItem(item.name)}
+                name={item.name}
+              >
+                {item.name}
+              </div>
+            ))}
+            <a href="google.com">
+              <button className="Navbar__button">Our deals</button>
+            </a>
           </div>
-        </li>
-        <li className="MenuListItem">
-          <a href="google.com">
-            <img src={require("./Userpic.png")} alt="userpic"></img>
+          <div
+            className={
+              showNavbarModul ? "InputModulIsActive" : "InputModuleIsUnactive"
+            }
+          >
+            <form>
+              <input
+                className="ModulInput"
+                type={"text"}
+                placeholder={"Search entiere store here..."}
+              ></input>
+            </form>
+          </div>
+        </div>
+
+        <ul className="UserMenuList">
+          <li className="MenuListItem">
+            <div className="UserMenuSearch" onClick={toggleShowNavbarModul}>
+              {showNavbarModul ? <Cancel /> : <Search />}
+            </div>
+          </li>
+          <li className="MenuListItem">
+            <div className="UserMenuBasket" onClick={toggleBasketModalView}>
+              <Basket />
+            </div>
+          </li>
+          <li className="MenuListItem">
+            <a href="google.com">
+              <img src={require("./Userpic.png")} alt="userpic"></img>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div className="TabletNavbar">
+        <a className="TabletNavbarBurger" href="google.com">
+          {TabletBurger}
+        </a>
+        <input
+          className="TabletNavbarInput"
+          placeholder={"Search here"}
+          type={"text"}
+        >
+          {/* {InputImage} */}
+        </input>
+        <div className="TabletNavbarIcons">
+          <div className="TabletNavbarBasket" onClick={toggleBasketModalView}>
+            {TabletBasket}
+          </div>
+          <a className="TabletNavbarUser" href="google.com">
+            {TabletUser}
           </a>
-        </li>
-      </ul>
-    </div>
+        </div>
+      </div>
+    </>
   );
 };
 export default Navbar;

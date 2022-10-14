@@ -15,9 +15,9 @@ const FooterSignUp = () => {
           className="FooterSignUpRight-input"
           placeholder="Your Email"
         ></input>
-        <a href="google.com">
-          <button className="FooterSignUpRight-button">Subscribe</button>
-        </a>
+        
+          <button className="FooterSignUpRight-button"><a href="google.com">Subscribe</a></button>
+        
       </div>
     </div>
   );

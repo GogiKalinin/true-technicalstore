@@ -8,6 +8,7 @@ import BannerSlider from "./Components/BannerSlider/BannerSlider";
 import BasketModal from "./Components/BasketModal/BasketModal";
 import NewProducts from "./Components/NewProducts/NewProducts";
 import Quote from "./Components/Quote/Quote";
+import MyBannerSlider from "./Components/MyBannerSlider/MyBannerSlider";
 
 const App = () => {
   // const array = [
@@ -19,8 +20,13 @@ const App = () => {
   // array.filter((element) => console.log("element", element));
 
   const [showBasketModal, setShowBasketModal] = useState(false);
+
+  const [showNavbarModul, setShowNavbarModul] = useState(false);
+
+  // console.log("app search", showNavbarModul);
+  // console.log("app search", setShowNavbarModul);
+  // console.log("app search", useState);
   const [basketData, setBasketData] = useState([]);
-  const [showSearchBar, setShowSearchBar] = useState(false);
   console.log("basketData", basketData);
   const [countItems, setCountItems] = useState([]);
   // {
@@ -80,11 +86,12 @@ const App = () => {
       <Header
         setShowBasketModal={setShowBasketModal}
         showBasketModal={showBasketModal}
-        setShowSearchBar={setShowSearchBar}
-        showSearchBar={showSearchBar}
+        setShowNavbarModul={setShowNavbarModul}
+        showNavbarModul={showNavbarModul}
       />
       <div className="Main">
-        <BannerSlider />
+        {/* <BannerSlider /> */}
+        <MyBannerSlider />
         <NewProducts />
         <Product basketData={basketData} setBasketData={addNewToBusket} />
         <Quote />
@@ -96,13 +103,26 @@ const App = () => {
           countItems={countItems}
           basketData={basketData}
           setBasketData={setBasketData}
+          setShowBasketModal={setShowBasketModal}
         />
-      ) : null}
+      ) : null}{" "}
     </div>
   );
 };
 
 export default App;
+
+// Добавить кнопку удаления для КАЖДОГО товара модального окна
+// Добавить логику удаления товара из корзины при нажатии на соответствующую кнопку
+// Добавить редактор количества товара (инпут + кнопки)
+// Добавить компонент кнопки "continue shopping", при клике закрыть модальное окно
+// Добавить кнопку "Clear Shopping Cart" при клике очистить массив корзины и закрывает модальное окно
+// Добавить кнопку "Purchase" при клике очищает массив и вместо выбранных товаров большим шрифтом
+// "Thanks for sale" на 3 секунды и закрывает модальное окно
+//
+// Если корзина товаров пуста крупным шрифтом "No products in cart" на 2 сек и закрывает модальное окно
+
+//
 
 // src={require("./Userpic.png")}
 // onClick={() => changeStarState(item.id)}
@@ -110,3 +130,13 @@ export default App;
 //.filter
 //.replace
 //.split
+
+// УНИВЕРСАЛЬНОЕ ПОСОБИЕ ПО ПУШУ НА ГИТ [ХАБ]
+
+// git add .
+// Замість "." ти можеш додати файли які змінив і хочеш додати у ГІТ (git add App.jsx App.sass) (git add ./src/Components/SomeFolder)
+
+// git commit -m "опис змін тих файлів які додаєш у ГІТ"
+
+// git push
+// "Пуш" на ГІТ

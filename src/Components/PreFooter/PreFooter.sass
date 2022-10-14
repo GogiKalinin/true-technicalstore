@@ -1,11 +1,10 @@
 .PreFooter
   display: flex
-  justify-content: space-around
+  justify-content: space-between
   align-items: center
   max-width: 100%
   padding-left: 200px
   padding-right: 200px
-  height: 273px
 
 .PreFooterItem
   display: flex
@@ -23,3 +22,34 @@
   line-height: 140%
   color: #000000
   opacity: 0.7
+
+@media screen and (min-width: 1740px)
+  .PreFooter
+    padding-left: 433px
+    padding-right: 433px
+
+@media screen and (min-width: 1250px) and (max-width: 1740px)
+  .PreFooter
+    padding-left: 230px
+    padding-right: 230px
+
+@media screen and (max-width: 1250px)
+  .PreFooter
+    padding-left: 140px
+    padding-right: 140px
+
+@media screen and (max-width: 1250px)
+  .PreFooter
+    padding-left: 110px
+    padding-right: 110px
+
+@media screen and (max-width: 992px)
+  .PreFooter
+    padding-left: 20px
+    padding-right: 20px
+
+@media screen and (max-width: 650px)
+  .PreFooter
+    padding-left: 55px
+    padding-right: 55px
+    flex-direction: column

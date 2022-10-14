@@ -1,19 +1,25 @@
+.FooterSignUpLeft
+  margin-right: 23px
 
-.FooterSignUpLeft-title
-  color: #fff
-  margin: 0 0 0 0
-  font-weight: 500
-  font-size: 38px
+  .FooterSignUpLeft-title
+    color: #fff
+    margin: 0 0 0 0
+    font-weight: 500
+    font-size: 38px
+    font-family: 'Poppins'
 
 .FooterSignUpLeft-text
   color: #fff
   font-weight: 300
   font-size: 16px
+  font-family: 'Poppins'
 
 .FooterSignUp
   display: flex
   align-items: center
   justify-content: space-between
+  padding-left: 260px
+  padding-right: 260px
 
 .FooterSignUpRight-input
   background-color: #000
@@ -41,3 +47,125 @@
   border: none
   margin-left: 23px
   cursor: pointer
+
+.FooterSignUpRight-button a
+  color: #fff
+  text-decoration: none
+  font-family: 'Poppins'
+  font-style: normal
+  font-weight: 600
+  font-size: 13px
+  line-height: 20px
+
+@media screen and (min-width: 1650px)
+  .FooterSignUpRight-button
+    max-width: 200px
+  .FooterSignUpRight-input
+    max-width: 260px
+  .FooterSignUpRight-button
+    width: 151px
+  .FooterSignUpRight-input
+    width: 391px
+  .FooterSignUp
+    margin-left: 260px
+    margin-right: 260px
+
+@media screen and (min-width: 1200px) and (max-width: 1650px)
+  .FooterSignUp
+    padding-left: 66px
+    padding-right: 66px
+    .FooterSignUpRight-input
+      max-width: 260px
+
+  .FooterSignUpRight-button
+    width: 151px
+  .FooterSignUpRight-input
+    width: 391px
+
+@media screen and (min-width: 1500px) and (max-width: 1650px)
+  .FooterSignUp
+    margin-left: 260px
+    margin-right: 260px
+  .FooterSignUpRight-input
+    max-width: 150px
+  .FooterSignUpLeft
+    max-width: 300px
+
+@media screen and (max-width: 1200px)
+  .FooterSignUp
+    padding-left: 66px
+    padding-right: 66px
+
+  .FooterSignUpRight-button
+    max-width: 180px
+  .FooterSignUpRight-input
+    max-width: 260px
+
+@media screen and (min-width: 1150px)
+  .FooterSignUp
+    padding-left: 20px
+    padding-right: 20px
+
+@media screen and (min-width: 1081px) and (max-width: 1200px)
+  .FooterSignUpRight-button
+    max-width: 130px
+  .FooterSignUpRight-input
+    max-width: 186px
+
+@media screen and (min-width: 880px) and (max-width: 1081px)
+  .FooterSignUpLeft-title
+    font-family: 'Poppins'
+    font-style: normal
+    font-weight: 500
+    font-size: 18px
+    line-height: 132.5%
+  .FooterSignUpLeft-text
+    font-family: 'Poppins'
+    font-style: normal
+    font-weight: 300
+    font-size: 12px
+    line-height: 132.5%
+  .FooterSignUpLeft
+    max-width: 300px
+    .FooterSignUpRight-input
+      max-width: 200px
+
+@media screen and (max-width: 904.5px)
+  .FooterSignUpRight-button
+    margin-left: 8px
+    width: 130px
+  .FooterSignUpRight-input
+    width: 186px
+  .FooterSignUpLeft
+    margin-right: 0
+    width: 200px
+  .FooterSignUp
+    padding-left: 23px
+    padding-right: 23px
+  .FooterSignUpRight-button
+    margin-left: 8px
+
+@media screen and (max-width: 700px)
+  .FooterSignUp
+    flex-direction: column
+    align-items: center
+  .FooterSignUpLeft
+    width: 300px
+    text-align: center
+  .FooterSignUp
+    padding-left: 23px
+    padding-right: 23px
+  .FooterSignUpRight-button
+    margin-left: 8px
+
+@media screen and (max-width: 385px)
+  .FooterSignUpRight
+    display: flex
+    align-items: center
+    flex-direction: column
+  .FooterSignUpRight-button
+    margin-left: 0px
+    margin-top: 10px
+
+  .FooterSignUpRight-input
+    align-self: end
