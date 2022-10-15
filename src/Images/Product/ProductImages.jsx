@@ -40,8 +40,8 @@ export const InputArrow = (
     <path
       d="M1 4.00006L3 2.00006L5 4.00006"
       stroke="#A2A6B0"
-      stroke-width="1.6"
-      stroke-linecap="round"
+      strokeWidth="1.6"
+      strokeLinecap="round"
     />
   </svg>
 );

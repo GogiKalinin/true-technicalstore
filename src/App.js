@@ -135,6 +135,7 @@ export default App;
 //.filter
 //.replace
 //.split
+//onClick={() => removeFromBasket(prod.id)}
 
 // УНИВЕРСАЛЬНОЕ ПОСОБИЕ ПО ПУШУ НА ГИТ [ХАБ]
 

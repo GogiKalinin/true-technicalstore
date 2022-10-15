@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import { Cancel } from "../../Images/Product/ProductImages";
 import BasketButton from "../BasketButton/BasketButton";
@@ -11,6 +11,16 @@ const BasketModal = (props) => {
     console.log("clicked");
   };
 
+  const removeFromBasket = (id) => {
+    const basketDataNew = [];
+    for (let i = 0; i < props.basketData.length; i++) {
+      if (id !== props.basketData[i].id) {
+        basketDataNew.push(props.basketData[i]);
+      }
+    }
+    props.setBasketData(basketDataNew);
+  };
+
   const searchaItemCount = (id) => {
     const needId = props.countItems.filter((idCheck) => idCheck.id === id);
     return needId[0].count;
@@ -18,17 +28,13 @@ const BasketModal = (props) => {
 
   const countPrice = (currentPrice, id) => {
     const count = searchaItemCount(id);
-    console.log("currentPrice", currentPrice);
-    console.log("count", count);
+    // console.log("currentPrice", currentPrice);
+    // console.log("count", count);
     const prevPrice = currentPrice.replace("$", "").split(".")[0];
-    console.log("prevPrice", prevPrice);
+    // console.log("prevPrice", prevPrice);
     const resultPrice = "$" + prevPrice * count + ".00";
-    console.log("resultPRice", resultPrice);
+    // console.log("resultPRice", resultPrice);
     return resultPrice;
-  };
-
-  const removeFromBasket = () => {
-    console.log("removeFromBasket");
   };
 
   return (
@@ -45,14 +51,20 @@ const BasketModal = (props) => {
                   number={searchaItemCount(prod.id)}
                   {...searchaItemCount}
                 />
-                <div className="BaskedProdCancel" onClick={removeFromBasket}>
+                <div
+                  className="BaskedProdCancel"
+                  onClick={() => removeFromBasket(prod.id)}
+                >
                   {Cancel}
                 </div>
               </div>
             );
           })}
           <div className="BasketModalButtonsBlock">
-            <BasketButton text={"Continue Shopping"} />
+            <BasketButton
+              // onClick={handleClickAway}
+              text={"Continue Shopping"}
+            />
             <BasketButton text={"Clear Shopping Cart"} />
             <BasketButton text={"Purchase"} />
           </div>
