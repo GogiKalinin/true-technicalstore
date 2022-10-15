@@ -1,6 +1,6 @@
 import React from "react";
 import "./Inform.sass";
-import { FacebookIcon, InstaIcon } from "../../Images/Header";
+import { FacebookIcon, InstaIcon } from "../../Images/Footer/";
 import { TabletLogo } from "../../TabletImages/TabletHeader/Logo";
 
 const Inform = () => {

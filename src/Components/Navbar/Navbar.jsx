@@ -12,7 +12,13 @@ import {
   TabletUser,
 } from "../../TabletImages/TabletHeader/TabletNavbar";
 
-const Navbar = ({ showBasketModal, setShowBasketModal, basketDataLength }) => {
+const Navbar = ({
+  showBasketModal,
+  setShowBasketModal,
+  basketDataLength,
+  productArray,
+  setAllProducts,
+}) => {
   const [showNavbarModul, setShowNavbarModul] = useState(false);
   console.log("basketDataLength", basketDataLength);
   const toggleShowNavbarModul = () => {
@@ -68,7 +74,18 @@ const Navbar = ({ showBasketModal, setShowBasketModal, basketDataLength }) => {
     },
   ]);
 
+  //  productArray,
+  //  setAllProducts
+
   const selectNavItem = (name) => {
+    const selectedCategoryElem = [];
+    for (let i = 0; i < productArray.length; i++) {
+      if (name === productArray[i].category) {
+        selectedCategoryElem.push(productArray[i]);
+      }
+    }
+    setAllProducts(selectedCategoryElem);
+
     const updatedNavigationItems = [];
     for (let i = 0; i < navigationItems.length; i++) {
       const newNavigationItem = navigationItems[i];

@@ -10,16 +10,93 @@ import NewProducts from "./Components/NewProducts/NewProducts";
 import Quote from "./Components/Quote/Quote";
 import MyBannerSlider from "./Components/MyBannerSlider/MyBannerSlider";
 import BasketInput from "./Components/BasketInput/BasketInput";
-
+import Planshet from "./assets/ProductImages/Planshet.png";
+import Proc from "./assets/ProductImages/Proc.png";
+import Proc1 from "./assets/ProductImages/Proc1.png";
 const App = () => {
-  // const array = [
-  //   { name: "serduck", gender: "boy" },
-  //   { name: "dimochka", gender: "gay" },
-  //   { name: "dianOchka", gender: "lesbian" },
-  //   { name: "zhenia", gender: "boy" },
-  // ];
-  // array.filter((element) => console.log("element", element));
-
+  const productArray = [
+    {
+      id: 0,
+      image: Planshet,
+      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
+      oldPrice: "$499.00",
+      newPrice: "$499.00",
+      category: "Laptops",
+    },
+    {
+      id: 1,
+      image: Proc,
+      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
+      oldPrice: "$799.00",
+      newPrice: "$799.00",
+      category: "Desktop PCs",
+    },
+    {
+      id: 2,
+      image: Proc1,
+      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
+      oldPrice: "$999.00",
+      newPrice: "$999.00",
+      category: "Networking Devices",
+    },
+    {
+      id: 3,
+      image: Planshet,
+      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
+      oldPrice: "$999.00",
+      newPrice: "$999.00",
+      category: "Printers & Scanners",
+    },
+    {
+      id: 4,
+      image: Proc,
+      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
+      oldPrice: "$999.00",
+      newPrice: "$999.00",
+      category: "PC Parts",
+    },
+    {
+      id: 5,
+      image: Proc1,
+      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
+      oldPrice: "$999.00",
+      newPrice: "$999.00",
+      category: "All Other Products",
+    },
+    {
+      id: 6,
+      image: Proc,
+      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
+      oldPrice: "$999.00",
+      newPrice: "$999.00",
+      category: "Repairs",
+    },
+    {
+      id: 7,
+      image: Planshet,
+      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
+      oldPrice: "$999.00",
+      newPrice: "$999.00",
+      category: "Laptops",
+    },
+    {
+      id: 8,
+      image: Proc,
+      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
+      oldPrice: "$999.00",
+      newPrice: "$999.00",
+      category: "Desktop PCs",
+    },
+    {
+      id: 9,
+      image: Planshet,
+      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
+      oldPrice: "$999.00",
+      newPrice: "$999.00",
+      category: "Networking Devices",
+    },
+  ];
+  const [allProducts, setAllProducts] = useState(productArray);
   const [showBasketModal, setShowBasketModal] = useState(false);
 
   const [showNavbarModul, setShowNavbarModul] = useState(false);
@@ -85,6 +162,8 @@ const App = () => {
   return (
     <div className="App">
       <Header
+        productArray={productArray}
+        setAllProducts={setAllProducts}
         setShowBasketModal={setShowBasketModal}
         showBasketModal={showBasketModal}
         setShowNavbarModul={setShowNavbarModul}
@@ -95,7 +174,11 @@ const App = () => {
         {/* <BannerSlider /> */}
         <MyBannerSlider />
         <NewProducts />
-        <Product basketData={basketData} setBasketData={addNewToBusket} />
+        <Product
+          basketData={basketData}
+          setBasketData={addNewToBusket}
+          allProducts={allProducts}
+        />
         <Quote />
         <PreFooter />
       </div>
@@ -118,17 +201,26 @@ export default App;
 
 // 2. Добавить логику удаления товара из корзины при нажатии на соответствующую кнопку DONE
 
-// 3. Добавить редактор количества товара (инпут + кнопки) DONE
+// 3.4. Добавить редактор количества товара (инпут + кнопки)
+//  Щоб прочитати значення з інпута ти маєш вказати атрибут onChange={(event)=>changeInput(event, id)}
+// Значення інпуту зберігаються в event.target.value
+//
+//const changeInput = (event, id) => {
+//  const currentValue = event.target.value
+//}
 
-// 4. Добавить компонент кнопки "Continue shopping", при клике закрыть модальное окно
+// 4.3. Добавить компонент кнопки "Continue shopping", при клике закрыть модальное окно
 
-// 5 .Добавить кнопку "Clear Shopping Cart" при клике очистить массив корзины и закрывает модальное окно
+// 5.2. Добавить кнопку "Clear Shopping Cart" при клике очистить массив корзины и закрывает модальное окно
 
-// 6 .Добавить кнопку "Purchase" при клике очищает массив и вместо выбранных товаров большим шрифтом
+// 6.1. Добавить кнопку "Purchase" при клике очищает массив и вместо выбранных товаров большим шрифтом
 
-// "Thanks for sale" на 3 секунды и закрывает модальное окно 
+// "Thanks for sale" на 3 секунды и закрывает модальное окно
 
-// 7 .Если корзина товаров пуста крупным шрифтом "No products in cart" на 2 сек и закрывает модальное окно DONE
+// 7. Если корзина товаров пуста крупным шрифтом "No products in cart" на 2 сек и закрывает модальное окно DONE
+
+// 8. If any category chosed you shouldn't show banner slider, all products, quote, and prefooter.
+// 9. IF you click on logo you should show all products
 
 // src={require("./Userpic.png")}
 // onClick={() => changeStarState(item.id)}

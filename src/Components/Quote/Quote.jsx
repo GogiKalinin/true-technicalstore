@@ -1,5 +1,5 @@
 import React from "react";
-import { InstaIcon } from "../../Images/Header";
+import { InstaIcon } from "../../Images/Footer";
 import { QuoteImage } from "../../Images/Quote/index.js";
 import "./Quote.sass";
 

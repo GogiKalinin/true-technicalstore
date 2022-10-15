@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import "./Product.sass";
-import PlanshetImage from "../../Images/ProductImages/Planshet.png";
-import ProcImage from "../../Images/ProductImages/Proc.png";
-import ProcImage1 from "../../Images/ProductImages/Proc1.png";
-import Stars from "./Stars/Stars";
+
 import StarsNew from "../StarsNew/StarsNew";
 // import image1 from "../../Images/ProductImages/Proc.png";
 // import "../../Images/ProductImages/Proc1.png";
@@ -11,78 +8,6 @@ import StarsNew from "../StarsNew/StarsNew";
 // import Stars from "./Stars/Stars";
 
 const Product = (props) => {
-  const productArray = [
-    {
-      id: 0,
-      image: ProcImage,
-      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      oldPrice: "$499.00",
-      newPrice: "$499.00",
-    },
-    {
-      id: 1,
-      image: ProcImage1,
-      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      oldPrice: "$799.00",
-      newPrice: "$799.00",
-    },
-    {
-      id: 2,
-      image: PlanshetImage,
-      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      oldPrice: "$999.00",
-      newPrice: "$999.00",
-    },
-    {
-      id: 3,
-      image: PlanshetImage,
-      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      oldPrice: "$999.00",
-      newPrice: "$999.00",
-    },
-    {
-      id: 4,
-      image: PlanshetImage,
-      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      oldPrice: "$999.00",
-      newPrice: "$999.00",
-    },
-    {
-      id: 5,
-      image: PlanshetImage,
-      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      oldPrice: "$999.00",
-      newPrice: "$999.00",
-    },
-    {
-      id: 6,
-      image: PlanshetImage,
-      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      oldPrice: "$999.00",
-      newPrice: "$999.00",
-    },
-    {
-      id: 7,
-      image: PlanshetImage,
-      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      oldPrice: "$999.00",
-      newPrice: "$999.00",
-    },
-    {
-      id: 8,
-      image: PlanshetImage,
-      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      oldPrice: "$999.00",
-      newPrice: "$999.00",
-    },
-    {
-      id: 9,
-      image: PlanshetImage,
-      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      oldPrice: "$999.00",
-      newPrice: "$999.00",
-    },
-  ];
   // console.log("basketData", props.basketData);
 
   // const setClickedProduct = (prod) => {
@@ -99,7 +24,7 @@ const Product = (props) => {
           See All New Products
         </a>
       </div> */}
-      {productArray.map((prod) => {
+      {props.allProducts.map((prod) => {
         return (
           <div
             className={prod.active ? "Product Product-active" : "Product"}

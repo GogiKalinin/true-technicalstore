@@ -3,7 +3,13 @@ import Inform from "../Inform/Inform";
 import Navbar from "../Navbar/Navbar";
 import "./Header.sass";
 
-const Header = ({ showBasketModal, setShowBasketModal, basketDataLength }) => {
+const Header = ({
+  showBasketModal,
+  setShowBasketModal,
+  basketDataLength,
+  productArray,
+  setAllProducts,
+}) => {
   return (
     <div className="Header">
       <Inform />
@@ -11,6 +17,8 @@ const Header = ({ showBasketModal, setShowBasketModal, basketDataLength }) => {
         setShowBasketModal={setShowBasketModal}
         showBasketModal={showBasketModal}
         basketDataLength={basketDataLength}
+        productArray={productArray}
+        setAllProducts={setAllProducts}
       />
     </div>
   );
