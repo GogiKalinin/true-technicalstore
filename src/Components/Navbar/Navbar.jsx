@@ -11,14 +11,14 @@ import {
   TabletBurger,
   TabletUser,
 } from "../../TabletImages/TabletHeader/TabletNavbar";
+
 const Navbar = ({ showBasketModal, setShowBasketModal }) => {
+  
   const [showNavbarModul, setShowNavbarModul] = useState(false);
 
   const toggleShowNavbarModul = () => {
     setShowNavbarModul(!showNavbarModul);
   };
-  console.log("modul", showNavbarModul);
-  console.log("toggleShowNavbarModul", toggleShowNavbarModul);
 
   const toggleBasketModalView = () => {
     setShowBasketModal(!showBasketModal);

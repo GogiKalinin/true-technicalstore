@@ -1,5 +1,8 @@
 import React from "react";
 import ClickAwayListener from "react-click-away-listener";
+import { Cancel } from "../../Images/Product/ProductImages";
+import BasketButton from "../BasketButton/BasketButton";
+import BasketInput from "../BasketInput/BasketInput";
 import "./BasketModal.sass";
 
 const BasketModal = (props) => {
@@ -24,6 +27,10 @@ const BasketModal = (props) => {
     return resultPrice;
   };
 
+  const removeFromBasket = () => {
+    console.log("removeFromBasket");
+  };
+
   return (
     <div className="BasketModalGeneral">
       <ClickAwayListener onClickAway={handleClickAway}>
@@ -34,12 +41,21 @@ const BasketModal = (props) => {
                 <img src={prod.image} alt="img"></img>
                 <span>{prod.title.slice(0, 15)}</span>
                 <h1>{countPrice(prod.newPrice, prod.id)}</h1>
-                <div className="BasketProdContainerCounter">
-                  {searchaItemCount(prod.id)}
+                <BasketInput
+                  number={searchaItemCount(prod.id)}
+                  {...searchaItemCount}
+                />
+                <div className="BaskedProdCancel" onClick={removeFromBasket}>
+                  {Cancel}
                 </div>
               </div>
             );
           })}
+          <div className="BasketModalButtonsBlock">
+            <BasketButton text={"Continue Shopping"} />
+            <BasketButton text={"Clear Shopping Cart"} />
+            <BasketButton text={"Purchase"} />
+          </div>
         </div>
       </ClickAwayListener>
     </div>

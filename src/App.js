@@ -9,6 +9,7 @@ import BasketModal from "./Components/BasketModal/BasketModal";
 import NewProducts from "./Components/NewProducts/NewProducts";
 import Quote from "./Components/Quote/Quote";
 import MyBannerSlider from "./Components/MyBannerSlider/MyBannerSlider";
+import BasketInput from "./Components/BasketInput/BasketInput";
 
 const App = () => {
   // const array = [
@@ -112,17 +113,21 @@ const App = () => {
 
 export default App;
 
-// Добавить кнопку удаления для КАЖДОГО товара модального окна
-// Добавить логику удаления товара из корзины при нажатии на соответствующую кнопку
-// Добавить редактор количества товара (инпут + кнопки)
-// Добавить компонент кнопки "continue shopping", при клике закрыть модальное окно
-// Добавить кнопку "Clear Shopping Cart" при клике очистить массив корзины и закрывает модальное окно
-// Добавить кнопку "Purchase" при клике очищает массив и вместо выбранных товаров большим шрифтом
-// "Thanks for sale" на 3 секунды и закрывает модальное окно
-//
-// Если корзина товаров пуста крупным шрифтом "No products in cart" на 2 сек и закрывает модальное окно
+// 1. Добавить кнопку удаления для КАЖДОГО товара модального окна DONE
 
-//
+// 2. Добавить логику удаления товара из корзины при нажатии на соответствующую кнопку
+
+// 3. Добавить редактор количества товара (инпут + кнопки) DONE
+
+// 4. Добавить компонент кнопки "Continue shopping", при клике закрыть модальное окно
+
+// 5 .Добавить кнопку "Clear Shopping Cart" при клике очистить массив корзины и закрывает модальное окно
+
+// 6 .Добавить кнопку "Purchase" при клике очищает массив и вместо выбранных товаров большим шрифтом
+
+// "Thanks for sale" на 3 секунды и закрывает модальное окно
+
+// 7 .Если корзина товаров пуста крупным шрифтом "No products in cart" на 2 сек и закрывает модальное окно
 
 // src={require("./Userpic.png")}
 // onClick={() => changeStarState(item.id)}
