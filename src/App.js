@@ -89,6 +89,7 @@ const App = () => {
         showBasketModal={showBasketModal}
         setShowNavbarModul={setShowNavbarModul}
         showNavbarModul={showNavbarModul}
+        basketDataLength={basketData.length ? true : false}
       />
       <div className="Main">
         {/* <BannerSlider /> */}
@@ -115,7 +116,7 @@ export default App;
 
 // 1. Добавить кнопку удаления для КАЖДОГО товара модального окна DONE
 
-// 2. Добавить логику удаления товара из корзины при нажатии на соответствующую кнопку
+// 2. Добавить логику удаления товара из корзины при нажатии на соответствующую кнопку DONE
 
 // 3. Добавить редактор количества товара (инпут + кнопки) DONE
 
@@ -125,9 +126,9 @@ export default App;
 
 // 6 .Добавить кнопку "Purchase" при клике очищает массив и вместо выбранных товаров большим шрифтом
 
-// "Thanks for sale" на 3 секунды и закрывает модальное окно
+// "Thanks for sale" на 3 секунды и закрывает модальное окно 
 
-// 7 .Если корзина товаров пуста крупным шрифтом "No products in cart" на 2 сек и закрывает модальное окно
+// 7 .Если корзина товаров пуста крупным шрифтом "No products in cart" на 2 сек и закрывает модальное окно DONE
 
 // src={require("./Userpic.png")}
 // onClick={() => changeStarState(item.id)}

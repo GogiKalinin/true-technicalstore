@@ -12,16 +12,22 @@ import {
   TabletUser,
 } from "../../TabletImages/TabletHeader/TabletNavbar";
 
-const Navbar = ({ showBasketModal, setShowBasketModal }) => {
-  
+const Navbar = ({ showBasketModal, setShowBasketModal, basketDataLength }) => {
   const [showNavbarModul, setShowNavbarModul] = useState(false);
-
+  console.log("basketDataLength", basketDataLength);
   const toggleShowNavbarModul = () => {
     setShowNavbarModul(!showNavbarModul);
   };
 
   const toggleBasketModalView = () => {
-    setShowBasketModal(!showBasketModal);
+    if (!showBasketModal && !basketDataLength) {
+      setShowBasketModal(true);
+      setTimeout(() => {
+        setShowBasketModal(false);
+      }, 2000);
+    } else {
+      setShowBasketModal(!showBasketModal);
+    }
   };
 
   const [navigationItems, setNavigationItems] = useState([

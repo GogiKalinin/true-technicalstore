@@ -41,33 +41,39 @@ const BasketModal = (props) => {
     <div className="BasketModalGeneral">
       <ClickAwayListener onClickAway={handleClickAway}>
         <div className="BasketModalContainer">
-          {props.basketData.map((prod) => {
-            return (
-              <div className="BasketProdContainer" key={prod.id}>
-                <img src={prod.image} alt="img"></img>
-                <span>{prod.title.slice(0, 15)}</span>
-                <h1>{countPrice(prod.newPrice, prod.id)}</h1>
-                <BasketInput
-                  number={searchaItemCount(prod.id)}
-                  {...searchaItemCount}
+          {props.basketData.length === 0 ? (
+            <div className="BasketModalEmpty">No products in cart</div>
+          ) : (
+            <>
+              {props.basketData.map((prod) => {
+                return (
+                  <div className="BasketProdContainer" key={prod.id}>
+                    <img src={prod.image} alt="img"></img>
+                    <span>{prod.title.slice(0, 15)}</span>
+                    <h1>{countPrice(prod.newPrice, prod.id)}</h1>
+                    <BasketInput
+                      number={searchaItemCount(prod.id)}
+                      {...searchaItemCount}
+                    />
+                    <div
+                      className="BaskedProdCancel"
+                      onClick={() => removeFromBasket(prod.id)}
+                    >
+                      {Cancel}
+                    </div>
+                  </div>
+                );
+              })}
+              <div className="BasketModalButtonsBlock">
+                <BasketButton
+                  // onClick={handleClickAway}
+                  text={"Continue Shopping"}
                 />
-                <div
-                  className="BaskedProdCancel"
-                  onClick={() => removeFromBasket(prod.id)}
-                >
-                  {Cancel}
-                </div>
+                <BasketButton text={"Clear Shopping Cart"} />
+                <BasketButton text={"Purchase"} />
               </div>
-            );
-          })}
-          <div className="BasketModalButtonsBlock">
-            <BasketButton
-              // onClick={handleClickAway}
-              text={"Continue Shopping"}
-            />
-            <BasketButton text={"Clear Shopping Cart"} />
-            <BasketButton text={"Purchase"} />
-          </div>
+            </>
+          )}
         </div>
       </ClickAwayListener>
     </div>
