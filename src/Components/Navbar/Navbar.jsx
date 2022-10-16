@@ -17,7 +17,12 @@ const Navbar = ({
   setShowBasketModal,
   basketDataLength,
   productArray,
+  allProducts,
   setAllProducts,
+  navigationItems,
+  setNavigationItems,
+  setShowMainElements,
+  showMainElements,
 }) => {
   const [showNavbarModul, setShowNavbarModul] = useState(false);
   console.log("basketDataLength", basketDataLength);
@@ -35,47 +40,6 @@ const Navbar = ({
       setShowBasketModal(!showBasketModal);
     }
   };
-
-  const [navigationItems, setNavigationItems] = useState([
-    {
-      id: 0,
-      name: "Laptops",
-      active: false,
-    },
-    {
-      id: 1,
-      name: "Desktop PCs",
-      active: false,
-    },
-    {
-      id: 2,
-      name: "Networking Devices",
-      active: false,
-    },
-    {
-      id: 3,
-      name: "Printers & Scanners",
-      active: false,
-    },
-    {
-      id: 4,
-      name: "PC Parts",
-      active: false,
-    },
-    {
-      id: 5,
-      name: "All Other Products",
-      active: false,
-    },
-    {
-      id: 6,
-      name: "Repairs",
-      active: false,
-    },
-  ]);
-
-  //  productArray,
-  //  setAllProducts
 
   const selectNavItem = (name) => {
     const selectedCategoryElem = [];
@@ -99,14 +63,25 @@ const Navbar = ({
     setNavigationItems(updatedNavigationItems);
   };
 
+  const showAll = (updatedNavigationItems) => {
+    setAllProducts(productArray);
+  };
+
+  const checkShow = () => {
+    if (allProducts !== productArray) {
+      setShowMainElements(false);
+    } else {
+      setShowMainElements(true);
+    }
+  };
+
   return (
     <>
       <div className="Navbar">
         <div className="NavbarUniversal">
-          <a className="Navbar__logo" href="#">
+          <div className="NavbarLogo" onClick={showAll}>
             <Logo />
-          </a>
-
+          </div>
           <div
             className={showNavbarModul ? "NavbarMenuUnActive" : "Navbar__menu"}
           >
@@ -118,7 +93,7 @@ const Navbar = ({
                     : "Navbar__item"
                 }
                 key={item.id}
-                onClick={() => selectNavItem(item.name)}
+                onClick={() => selectNavItem(item.name) && checkShow}
                 name={item.name}
               >
                 {item.name}

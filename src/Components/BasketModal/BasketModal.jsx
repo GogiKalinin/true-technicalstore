@@ -26,6 +26,16 @@ const BasketModal = (props) => {
     return needId[0].count;
   };
 
+  const continueShopping = () => {};
+
+  const purchase = () => {
+    props.setBasketData([]);
+  };
+
+  // const purchaseAccited = () => {
+  //   console.log("purchaseAccited");
+  // };
+
   const countPrice = (currentPrice, id) => {
     const count = searchaItemCount(id);
     // console.log("currentPrice", currentPrice);
@@ -66,11 +76,11 @@ const BasketModal = (props) => {
               })}
               <div className="BasketModalButtonsBlock">
                 <BasketButton
-                  // onClick={handleClickAway}
                   text={"Continue Shopping"}
+                  onClick={continueShopping}
                 />
                 <BasketButton text={"Clear Shopping Cart"} />
-                <BasketButton text={"Purchase"} />
+                <BasketButton text={"Purchase"} onClick={purchase} />
               </div>
             </>
           )}

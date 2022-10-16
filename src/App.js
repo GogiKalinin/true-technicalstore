@@ -13,7 +13,49 @@ import BasketInput from "./Components/BasketInput/BasketInput";
 import Planshet from "./assets/ProductImages/Planshet.png";
 import Proc from "./assets/ProductImages/Proc.png";
 import Proc1 from "./assets/ProductImages/Proc1.png";
+import Laptop1 from "./assets/ProductImages/laptop1.png";
+import Laptop2 from "./assets/ProductImages/laptop2.png";
+import Laptop3 from "./assets/ProductImages/laptop3.png";
+
 const App = () => {
+  const [navigationItems, setNavigationItems] = useState([
+    {
+      id: 0,
+      name: "Laptops",
+      active: false,
+    },
+    {
+      id: 1,
+      name: "Desktop PCs",
+      active: false,
+    },
+    {
+      id: 2,
+      name: "Networking Devices",
+      active: false,
+    },
+    {
+      id: 3,
+      name: "Printers & Scanners",
+      active: false,
+    },
+    {
+      id: 4,
+      name: "PC Parts",
+      active: false,
+    },
+    {
+      id: 5,
+      name: "All Other Products",
+      active: false,
+    },
+    {
+      id: 6,
+      name: "Repairs",
+      active: false,
+    },
+  ]);
+
   const productArray = [
     {
       id: 0,
@@ -21,7 +63,7 @@ const App = () => {
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$499.00",
       newPrice: "$499.00",
-      category: "Laptops",
+      category: "All Other Products",
     },
     {
       id: 1,
@@ -41,27 +83,27 @@ const App = () => {
     },
     {
       id: 3,
-      image: Planshet,
+      image: Laptop1,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
-      category: "Printers & Scanners",
+      category: "Laptops",
     },
     {
       id: 4,
-      image: Proc,
+      image: Laptop2,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
-      category: "PC Parts",
+      category: "Laptops",
     },
     {
       id: 5,
-      image: Proc1,
+      image: Laptop3,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
-      category: "All Other Products",
+      category: "Laptops",
     },
     {
       id: 6,
@@ -77,7 +119,7 @@ const App = () => {
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
-      category: "Laptops",
+      category: "All Other Products",
     },
     {
       id: 8,
@@ -93,20 +135,27 @@ const App = () => {
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
-      category: "Networking Devices",
+      category: "All Other Products",
     },
   ];
   const [allProducts, setAllProducts] = useState(productArray);
+
   const [showBasketModal, setShowBasketModal] = useState(false);
 
   const [showNavbarModul, setShowNavbarModul] = useState(false);
 
-  // console.log("app search", showNavbarModul);
-  // console.log("app search", setShowNavbarModul);
-  // console.log("app search", useState);
   const [basketData, setBasketData] = useState([]);
-  console.log("basketData", basketData);
+
   const [countItems, setCountItems] = useState([]);
+
+  const [showMainElements, setShowMainElements] = useState(true);
+
+  if (allProducts !== productArray) {
+    // setShowMainElements(false);
+  } else {
+    // setShowMainElements(true);
+  }
+
   // {
   //  id: someProductId,
   //  count: count product with this id,
@@ -163,24 +212,36 @@ const App = () => {
     <div className="App">
       <Header
         productArray={productArray}
+        allProducts={allProducts}
         setAllProducts={setAllProducts}
         setShowBasketModal={setShowBasketModal}
         showBasketModal={showBasketModal}
         setShowNavbarModul={setShowNavbarModul}
         showNavbarModul={showNavbarModul}
         basketDataLength={basketData.length ? true : false}
+        navigationItems={navigationItems}
+        setNavigationItems={setNavigationItems}
+        setShowMainElements={setShowMainElements}
+        showMainElements={showMainElements}
       />
       <div className="Main">
-        {/* <BannerSlider /> */}
-        <MyBannerSlider />
+        {showMainElements ? (
+          <>
+            <MyBannerSlider />
+          </>
+        ) : null}
         <NewProducts />
         <Product
           basketData={basketData}
           setBasketData={addNewToBusket}
           allProducts={allProducts}
         />
-        <Quote />
-        <PreFooter />
+        {showMainElements ? (
+          <>
+            <Quote />
+            <PreFooter />
+          </>
+        ) : null}
       </div>
       <Footer />
       {showBasketModal ? (
@@ -204,7 +265,7 @@ export default App;
 // 3.4. Добавить редактор количества товара (инпут + кнопки)
 //  Щоб прочитати значення з інпута ти маєш вказати атрибут onChange={(event)=>changeInput(event, id)}
 // Значення інпуту зберігаються в event.target.value
-//
+
 //const changeInput = (event, id) => {
 //  const currentValue = event.target.value
 //}
@@ -220,6 +281,7 @@ export default App;
 // 7. Если корзина товаров пуста крупным шрифтом "No products in cart" на 2 сек и закрывает модальное окно DONE
 
 // 8. If any category chosed you shouldn't show banner slider, all products, quote, and prefooter.
+
 // 9. IF you click on logo you should show all products
 
 // src={require("./Userpic.png")}

@@ -8,7 +8,12 @@ const Header = ({
   setShowBasketModal,
   basketDataLength,
   productArray,
+  allProducts,
   setAllProducts,
+  setNavigationItems,
+  navigationItems,
+  setShowMainElements,
+  showMainElements,
 }) => {
   return (
     <div className="Header">
@@ -18,7 +23,12 @@ const Header = ({
         showBasketModal={showBasketModal}
         basketDataLength={basketDataLength}
         productArray={productArray}
+        allProducts={allProducts}
         setAllProducts={setAllProducts}
+        navigationItems={navigationItems}
+        setNavigationItems={setNavigationItems}
+        setShowMainElements={setShowMainElements}
+        showMainElements={showMainElements}
       />
     </div>
   );
