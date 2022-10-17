@@ -3,20 +3,26 @@ import { InputArrow } from "../../Images/Product/ProductImages";
 import "./BasketInput.sass";
 
 const BasketInput = (props) => {
-  const add = (searchaItemCount) => {
-    return searchaItemCount + 1;
-  };
-  const away = (searchaItemCount) => {
-    return searchaItemCount - 1;
-  };
   return (
     <div className="BasketInput">
-      <input className="BasketInputInput" placeholder={props.number}></input>
+      <input
+        className="BasketInputInput"
+        value={props.number}
+        onChange={props.onChange}
+      />
       <div className="BasketInputButtonsBlock">
-        <button className="BasketInputButtonMore" onClick={add}>
+        <button
+          className="BasketInputButtonMore"
+          name="more"
+          onClick={props.onClick}
+        >
           {InputArrow}
         </button>
-        <button className="BasketInputButtonLess" onClick={away}>
+        <button
+          className="BasketInputButtonLess"
+          name="less"
+          onClick={props.onClick}
+        >
           {InputArrow}
         </button>
       </div>

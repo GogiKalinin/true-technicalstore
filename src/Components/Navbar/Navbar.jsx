@@ -42,6 +42,7 @@ const Navbar = ({
   };
 
   const selectNavItem = (name) => {
+    setShowMainElements(false);
     const selectedCategoryElem = [];
     for (let i = 0; i < productArray.length; i++) {
       if (name === productArray[i].category) {
@@ -64,15 +65,18 @@ const Navbar = ({
   };
 
   const showAll = () => {
+    const newNavigationItemsForShowAll = [];
     setAllProducts(productArray);
-  };
-
-  const checkShow = () => {
-    if (allProducts !== productArray) {
-      setShowMainElements(false);
-    } else {
-      setShowMainElements(true);
+    setShowMainElements(true);
+    for (let i = 0; i < navigationItems.length; i++) {
+      if (navigationItems[i].active === true) {
+        const newElement = { ...navigationItems[i], active: false };
+        newNavigationItemsForShowAll.push(newElement);
+      } else {
+        newNavigationItemsForShowAll.push(navigationItems[i]);
+      }
     }
+    setNavigationItems(newNavigationItemsForShowAll);
   };
 
   return (
@@ -93,7 +97,7 @@ const Navbar = ({
                     : "Navbar__item"
                 }
                 key={item.id}
-                onClick={() => selectNavItem(item.name) && checkShow}
+                onClick={() => selectNavItem(item.name)}
                 name={item.name}
               >
                 {item.name}

@@ -15,7 +15,6 @@ const Product = (props) => {
   //   clickedProduct.push(prod);
   //   console.log("clickedProduct", clickedProduct);
   // };
-
   return (
     <div className="ProductContainer">
       {/* <div className="ProductTitle">
@@ -31,7 +30,7 @@ const Product = (props) => {
             key={prod.id}
             // onClick={props.basketData.push(prod)}
             // onClick={() => setClickedProduct(prod)}
-            onClick={() => props.setBasketData(prod)}
+            onClick={() => props.setBasketData({ ...prod, count: 1 })}
           >
             <div className="ProductImageContainer">
               <img className="ProductImage" src={prod.image} alt="img"></img>

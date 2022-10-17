@@ -152,16 +152,6 @@ const App = () => {
 
   const [showMainElements, setShowMainElements] = useState(true);
 
-  if (allProducts !== productArray) {
-    // setShowMainElements(false);
-  } else {
-    // setShowMainElements(true);
-  }
-
-  // {
-  //  id: someProductId,
-  //  count: count product with this id,
-  // }
   const getCounerNumber = (new_prod) => {
     const id = new_prod.id;
     let oldCountItems = [...countItems];
@@ -236,6 +226,8 @@ const App = () => {
           navigationItems={navigationItems}
           setAllProducts={setAllProducts}
           productArray={productArray}
+          setShowMainElements={setShowMainElements}
+          setNavigationItems={setNavigationItems}
         />
         <Product
           basketData={basketData}
@@ -297,6 +289,7 @@ export default App;
 //.replace
 //.split
 //onClick={() => removeFromBasket(prod.id)}
+// newBasketData.push({ ...props.basketData[i], count: newCount });
 
 // УНИВЕРСАЛЬНОЕ ПОСОБИЕ ПО ПУШУ НА ГИТ [ХАБ]
 
