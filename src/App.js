@@ -56,6 +56,8 @@ const App = () => {
     },
   ]);
 
+  console.log("navigationItems", navigationItems);
+
   const productArray = [
     {
       id: 0,
@@ -230,7 +232,11 @@ const App = () => {
             <MyBannerSlider />
           </>
         ) : null}
-        <NewProducts />
+        <NewProducts
+          navigationItems={navigationItems}
+          setAllProducts={setAllProducts}
+          productArray={productArray}
+        />
         <Product
           basketData={basketData}
           setBasketData={addNewToBusket}
@@ -302,4 +308,4 @@ export default App;
 // git push
 // "Пуш" на ГІТ
 
-// баг? При нажатии на рейтинговые звезды товара этот товар зачисляется в массив корзины 
+// баг? При нажатии на рейтинговые звезды товара этот товар зачисляется в массив корзины

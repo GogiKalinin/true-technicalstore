@@ -63,7 +63,7 @@ const Navbar = ({
     setNavigationItems(updatedNavigationItems);
   };
 
-  const showAll = (updatedNavigationItems) => {
+  const showAll = () => {
     setAllProducts(productArray);
   };
 
