@@ -26,15 +26,26 @@ const BasketModal = (props) => {
     return needId[0].count;
   };
 
-  const continueShopping = () => {};
+  const [modalThanks, setModalThanks] = useState(false);
 
-  const purchase = () => {
+  const toggleBasketModalViewIfPurchase = () => {
+    setModalThanks(true);
     props.setBasketData([]);
+    setTimeout(() => {
+      props.setShowBasketModal(false);
+    }, 3000);
   };
 
-  // const purchaseAccited = () => {
-  //   console.log("purchaseAccited");
-  // };
+  const [clearShoppingCart, setClearShoppingCart] = useState(false);
+
+  const toggleBasketModalViewCleanCart = () => {
+    props.setBasketData([]);
+    setClearShoppingCart(true);
+  };
+
+  const toggleBasketModalViewContinue = () => {
+    props.setShowBasketModal(false);
+  };
 
   const countPrice = (currentPrice, id) => {
     const count = searchaItemCount(id);
@@ -77,13 +88,23 @@ const BasketModal = (props) => {
               <div className="BasketModalButtonsBlock">
                 <BasketButton
                   text={"Continue Shopping"}
-                  onClick={continueShopping}
+                  onClick={toggleBasketModalViewContinue}
                 />
-                <BasketButton text={"Clear Shopping Cart"} />
-                <BasketButton text={"Purchase"} onClick={purchase} />
+                <BasketButton
+                  text={"Clear Shopping Cart"}
+                  onClick={toggleBasketModalViewCleanCart}
+                />
+                <BasketButton
+                  text={"Purchase"}
+                  onClick={toggleBasketModalViewIfPurchase}
+                />
               </div>
             </>
-          )}
+          )}{" "}
+          : (
+          {props.setShowBasketModal ? null : setModalThanks ? (
+            <div className="ModalThanks">Thanks</div>
+          ) : clearShoppingCart ? null : null}
         </div>
       </ClickAwayListener>
     </div>
