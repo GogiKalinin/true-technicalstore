@@ -6,11 +6,11 @@ import { Search } from "./Search.jsx";
 import { Cancel } from "./Cancel";
 import "./Userpic.png";
 import {
-  InputImage,
   TabletBasket,
   TabletBurger,
   TabletUser,
 } from "../../TabletImages/TabletHeader/TabletNavbar";
+import UniversalButton from "../UniversalButton/UniversalButton";
 
 const Navbar = ({
   showBasketModal,
@@ -23,6 +23,8 @@ const Navbar = ({
   setNavigationItems,
   setShowMainElements,
   showMainElements,
+  changePage,
+  setChangePage,
 }) => {
   const [showNavbarModul, setShowNavbarModul] = useState(false);
   console.log("basketDataLength", basketDataLength);
@@ -79,6 +81,14 @@ const Navbar = ({
     setNavigationItems(newNavigationItemsForShowAll);
   };
 
+  const changeTheme = () => {
+    if (changePage === "main") {
+      setChangePage("ProductPage");
+    } else {
+      setChangePage("main");
+    }
+  };
+
   return (
     <>
       <div className="Navbar">
@@ -123,11 +133,16 @@ const Navbar = ({
         </div>
 
         <ul className="UserMenuList">
+          <UniversalButton
+            text={changePage === "main" ? "about product" : "main"}
+            onClick={changeTheme}
+          />
           <li className="MenuListItem">
             <div className="UserMenuSearch" onClick={toggleShowNavbarModul}>
               {showNavbarModul ? <Cancel /> : <Search />}
             </div>
           </li>
+
           <li className="MenuListItem">
             <div className="UserMenuBasket" onClick={toggleBasketModalView}>
               <Basket />

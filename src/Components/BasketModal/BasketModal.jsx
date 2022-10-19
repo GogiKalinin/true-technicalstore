@@ -23,8 +23,8 @@ const BasketModal = (props) => {
 
   const searchaItemCount = (id) => {
     const needId = props.countItems.filter((idCheck) => idCheck.id === id);
-    console.log("needId", needId[0].count);
-    console.log("needId type", typeof needId[0].count);
+    // console.log("needId", needId[0].count);
+    // console.log("needId type", typeof needId[0].count);
     return needId[0].count;
   };
 
@@ -38,11 +38,10 @@ const BasketModal = (props) => {
     }, 3000);
   };
 
-  const [clearShoppingCart, setClearShoppingCart] = useState(false);
+  // const [clearShoppingCart, setClearShoppingCart] = useState(false);
 
   const toggleBasketModalViewCleanCart = () => {
     props.setBasketData([]);
-    setClearShoppingCart(true);
     props.setShowBasketModal(false);
   };
 

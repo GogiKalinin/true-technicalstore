@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Inform from "../Inform/Inform";
 import Navbar from "../Navbar/Navbar";
 import "./Header.sass";
@@ -12,8 +12,10 @@ const Header = ({
   setAllProducts,
   setNavigationItems,
   navigationItems,
-  setShowMainElements,
   showMainElements,
+  setShowMainElements,
+  changePage,
+  setChangePage,
 }) => {
   return (
     <div className="Header">
@@ -27,8 +29,10 @@ const Header = ({
         setAllProducts={setAllProducts}
         navigationItems={navigationItems}
         setNavigationItems={setNavigationItems}
-        setShowMainElements={setShowMainElements}
         showMainElements={showMainElements}
+        setShowMainElements={setShowMainElements}
+        changePage={changePage}
+        setChangePage={setChangePage}
       />
     </div>
   );

@@ -4,7 +4,6 @@ import Header from "./Components/Header/Header";
 import Product from "./Components/Product/Product";
 import PreFooter from "./Components/PreFooter/PreFooter";
 import Footer from "./Components/Footer/Footer";
-import BannerSlider from "./Components/BannerSlider/BannerSlider";
 import BasketModal from "./Components/BasketModal/BasketModal";
 import NewProducts from "./Components/NewProducts/NewProducts";
 import Quote from "./Components/Quote/Quote";
@@ -16,6 +15,12 @@ import Proc1 from "./assets/ProductImages/Proc1.png";
 import Laptop1 from "./assets/ProductImages/laptop1.png";
 import Laptop2 from "./assets/ProductImages/laptop2.png";
 import Laptop3 from "./assets/ProductImages/laptop3.png";
+import PageImage from "./assets/ProductImages/ProductPageImage.png";
+import { Home } from "./pages/home";
+import { ProductPage } from "./pages/ProductPage/ProductPage";
+// import { ProductPage } from "./pages/ProductPage";
+// import { NavLink, Route, Router } from "react-router-dom";
+// import { ProductPage } from "./pages/ProductPage";
 
 const App = () => {
   const [navigationItems, setNavigationItems] = useState([
@@ -45,11 +50,6 @@ const App = () => {
       active: false,
     },
     {
-      id: 5,
-      name: "All Other Products",
-      active: false,
-    },
-    {
       id: 6,
       name: "Repairs",
       active: false,
@@ -61,83 +61,103 @@ const App = () => {
   const productArray = [
     {
       id: 0,
+      name: "ZX Spectrum",
       image: Planshet,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$499.00",
       newPrice: "$499.00",
       category: "All Other Products",
+      PageImage: PageImage,
     },
     {
       id: 1,
+      name: "ZX Spectrum",
       image: Proc,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$799.00",
       newPrice: "$799.00",
       category: "Desktop PCs",
+      PageImage: PageImage,
     },
     {
       id: 2,
+      name: "ZX Spectrum",
       image: Proc1,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
       category: "Networking Devices",
+      PageImage: PageImage,
     },
     {
       id: 3,
+      name: "ZX Spectrum",
       image: Laptop1,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
       category: "Laptops",
+      PageImage: PageImage,
     },
     {
       id: 4,
+      name: "ZX Spectrum",
       image: Laptop2,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
       category: "Laptops",
+      PageImage: PageImage,
     },
     {
       id: 5,
+      name: "ZX Spectrum",
       image: Laptop3,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
       category: "Laptops",
+      PageImage: PageImage,
     },
     {
       id: 6,
+      name: "ZX Spectrum",
       image: Proc,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
       category: "Repairs",
+      PageImage: PageImage,
     },
     {
       id: 7,
+      name: "ZX Spectrum",
       image: Planshet,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
       category: "All Other Products",
+      PageImage: PageImage,
     },
     {
       id: 8,
+      name: "ZX Spectrum",
       image: Proc,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
       category: "Desktop PCs",
+      PageImage: PageImage,
     },
     {
       id: 9,
+      name: "ZX Spectrum",
       image: Planshet,
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
       category: "All Other Products",
+      PageImage: PageImage,
     },
   ];
   const [allProducts, setAllProducts] = useState(productArray);
@@ -151,6 +171,8 @@ const App = () => {
   const [countItems, setCountItems] = useState([]);
 
   const [showMainElements, setShowMainElements] = useState(true);
+
+  const [changePage, setChangePage] = useState("main");
 
   const getCounerNumber = (new_prod) => {
     const id = new_prod.id;
@@ -200,6 +222,10 @@ const App = () => {
     // console.log("old_busket_data", old_busket_data);
     // console.log("addNewToBusket", new_prod);
   };
+
+  // const page = "main";
+  const page = "ProductPage";
+
   return (
     <div className="App">
       <Header
@@ -215,33 +241,42 @@ const App = () => {
         setNavigationItems={setNavigationItems}
         setShowMainElements={setShowMainElements}
         showMainElements={showMainElements}
+        setChangePage={setChangePage}
+        changePage={changePage}
       />
-      <div className="Main">
-        {showMainElements ? (
-          <>
-            <MyBannerSlider />
-          </>
-        ) : null}
-        <NewProducts
+      {/* {page === "main" && (
+        <Home
+          showMainElements={showMainElements}
           navigationItems={navigationItems}
           setAllProducts={setAllProducts}
           productArray={productArray}
           setShowMainElements={setShowMainElements}
           setNavigationItems={setNavigationItems}
-        />
-        <Product
           basketData={basketData}
-          setBasketData={addNewToBusket}
+          addNewToBusket={addNewToBusket}
           allProducts={allProducts}
         />
-        {showMainElements ? (
-          <>
-            <Quote />
-            <PreFooter />
-          </>
-        ) : null}
-      </div>
-      <Footer />
+      )} */}
+      {changePage === "main" && (
+        <Home
+          showMainElements={showMainElements}
+          navigationItems={navigationItems}
+          setAllProducts={setAllProducts}
+          productArray={productArray}
+          setShowMainElements={setShowMainElements}
+          setNavigationItems={setNavigationItems}
+          basketData={basketData}
+          addNewToBusket={addNewToBusket}
+          allProducts={allProducts}
+        />
+      )}
+      {changePage === "ProductPage" && (
+        <ProductPage
+          setBasketData={setBasketData}
+          productArray={productArray}
+        />
+      )}
+      {changePage === "main" && <Footer />}
       {showBasketModal ? (
         <BasketModal
           countItems={countItems}
@@ -302,3 +337,12 @@ export default App;
 // "Пуш" на ГІТ
 
 // баг? При нажатии на рейтинговые звезды товара этот товар зачисляется в массив корзины
+
+// Ликвидировать пункт other products (navbar и т д)
+// Приколотить футер на место
+// Страница продукта
+// Поправить верстку баннер! все остальное!
+
+// Логика отображения в странице продукта выбранного продукта
+
+// телефон все

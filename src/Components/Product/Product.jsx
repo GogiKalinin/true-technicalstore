@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Product.sass";
 
 import StarsNew from "../StarsNew/StarsNew";
+import UniversalButton from "../UniversalButton/UniversalButton";
 // import image1 from "../../Images/ProductImages/Proc.png";
 // import "../../Images/ProductImages/Proc1.png";
 // import "../../Images/ProductImages/Planshet.png";
@@ -15,6 +16,9 @@ const Product = (props) => {
   //   clickedProduct.push(prod);
   //   console.log("clickedProduct", clickedProduct);
   // };
+
+
+
   return (
     <div className="ProductContainer">
       {/* <div className="ProductTitle">
