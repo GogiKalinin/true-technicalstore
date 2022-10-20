@@ -104,7 +104,6 @@ const BasketModal = (props) => {
                     <h1>{prod.newPrice}</h1>
                     <BasketInput
                       onChange={(event) => changeInput(prod.id, event)}
-                      // number={searchaItemCount(prod.id)}
                       number={prod.count}
                       {...searchaItemCount}
                       onClick={(event) =>

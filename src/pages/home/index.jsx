@@ -3,6 +3,7 @@ import NewProducts from "../../Components/NewProducts/NewProducts";
 import PreFooter from "../../Components/PreFooter/PreFooter";
 import Product from "../../Components/Product/Product";
 import Quote from "../../Components/Quote/Quote";
+import "./index.sass";
 
 export const Home = ({
   showMainElements,
@@ -16,6 +17,8 @@ export const Home = ({
   allProducts,
   changePage,
   setChangePage,
+  setMoreAboutData,
+  moreAboutData,
 }) => {
   return (
     <div className="Main">
@@ -37,6 +40,8 @@ export const Home = ({
         allProducts={allProducts}
         changePage={changePage}
         setChangePage={setChangePage}
+        moreAboutData={moreAboutData}
+        setMoreAboutData={setMoreAboutData}
       />
       {showMainElements ? (
         <>

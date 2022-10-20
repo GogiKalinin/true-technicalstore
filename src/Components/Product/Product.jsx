@@ -1,32 +1,11 @@
 import React, { useState } from "react";
-import "./Product.sass";
-
 import StarsNew from "../StarsNew/StarsNew";
 import UniversalButton from "../UniversalButton/UniversalButton";
-// import image1 from "../../Images/ProductImages/Proc.png";
-// import "../../Images/ProductImages/Proc1.png";
-// import "../../Images/ProductImages/Planshet.png";
-// import Stars from "./Stars/Stars";
+import "./Product.sass";
 
 const Product = (props) => {
-  // console.log("basketData", props.basketData);
-
-  // const setClickedProduct = (prod) => {
-  //   const clickedProduct = [];
-  //   clickedProduct.push(prod);
-  //   console.log("clickedProduct", clickedProduct);
-  // };
-
-
-
   return (
     <div className="ProductContainer">
-      {/* <div className="ProductTitle">
-        <h1 className="ProductTitle-Title">New Products</h1>
-        <a className="ProductTitle-SeeAll" href="google.com">
-          See All New Products
-        </a>
-      </div> */}
       {props.allProducts.map((prod) => {
         return (
           <div
@@ -49,6 +28,10 @@ const Product = (props) => {
               <h3 className="OldPrice">{prod.oldPrice}</h3>
               <h3 className="NewPrice">{prod.newPrice}</h3>
             </div>
+            <UniversalButton
+              text="about"
+              onClick={() => props.setMoreAboutData({ ...prod, count: 1 })}
+            />
           </div>
         );
       })}

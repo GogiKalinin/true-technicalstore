@@ -166,6 +166,9 @@ const App = () => {
 
   const [showNavbarModul, setShowNavbarModul] = useState(false);
 
+  const [moreAboutData, setMoreAboutData] = useState([]);
+  console.log("moreAboutData", moreAboutData);
+
   const [basketData, setBasketData] = useState([]);
 
   const [countItems, setCountItems] = useState([]);
@@ -268,12 +271,15 @@ const App = () => {
           basketData={basketData}
           addNewToBusket={addNewToBusket}
           allProducts={allProducts}
+          moreAboutData={moreAboutData}
+          setMoreAboutData={setMoreAboutData}
         />
       )}
       {changePage === "ProductPage" && (
         <ProductPage
           setBasketData={setBasketData}
           productArray={productArray}
+          moreAboutData={moreAboutData}
         />
       )}
       {changePage === "main" && <Footer />}
