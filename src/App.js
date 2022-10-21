@@ -18,6 +18,8 @@ import Laptop3 from "./assets/ProductImages/laptop3.png";
 import PageImage from "./assets/ProductImages/ProductPageImage.png";
 import { Home } from "./pages/home";
 import { ProductPage } from "./pages/ProductPage/ProductPage";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import ContactUs from "./pages/ContactUs/ContactUs";
 // import { ProductPage } from "./pages/ProductPage";
 // import { NavLink, Route, Router } from "react-router-dom";
 // import { ProductPage } from "./pages/ProductPage";
@@ -66,7 +68,7 @@ const App = () => {
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$499.00",
       newPrice: "$499.00",
-      category: "All Other Products",
+      category: "Desktop PCs",
       PageImage: PageImage,
     },
     {
@@ -136,7 +138,7 @@ const App = () => {
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
-      category: "All Other Products",
+      category: "Repairs",
       PageImage: PageImage,
     },
     {
@@ -156,7 +158,7 @@ const App = () => {
       title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
       oldPrice: "$999.00",
       newPrice: "$999.00",
-      category: "All Other Products",
+      category: "Repairs",
       PageImage: PageImage,
     },
   ];
@@ -175,7 +177,7 @@ const App = () => {
 
   const [showMainElements, setShowMainElements] = useState(true);
 
-  const [changePage, setChangePage] = useState("main");
+  const [changePage, setChangePage] = useState("AboutUs");
 
   const getCounerNumber = (new_prod) => {
     const id = new_prod.id;
@@ -275,13 +277,16 @@ const App = () => {
           setMoreAboutData={setMoreAboutData}
         />
       )}
+      {changePage === "AboutUs" && <AboutUs />}
       {changePage === "ProductPage" && (
         <ProductPage
+          basketData={basketData}
           setBasketData={setBasketData}
           productArray={productArray}
           moreAboutData={moreAboutData}
         />
       )}
+      {changePage === "ContactUs" && <ContactUs />}
       {changePage === "main" && <Footer />}
       {showBasketModal ? (
         <BasketModal

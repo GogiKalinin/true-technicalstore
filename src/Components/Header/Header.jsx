@@ -19,7 +19,7 @@ const Header = ({
 }) => {
   return (
     <div className="Header">
-      <Inform />
+      <Inform setChangePage={setChangePage} />
       <Navbar
         setShowBasketModal={setShowBasketModal}
         showBasketModal={showBasketModal}

@@ -1,0 +1,110 @@
+.ContactUs
+  font-family: 'Poppins'
+  display: flex
+  justify-content: space-between
+
+.ContactUsMain
+  width: 75%
+  margin-top: 21px
+  margin-right: 60px
+
+.ContactUsMainWay
+  font-weight: 400
+  font-size: 12px
+  line-height: 18px
+
+.ContactUsMainTitle
+  font-weight: 600
+  font-size: 32px
+  line-height: 48px
+
+.ContactUsMainText
+  font-weight: 300
+  font-size: 16px
+  line-height: 30px
+
+.ContactUsMainInputs
+  display: flex
+  flex-wrap: wrap
+
+.Input
+  background: #FFFFFF
+  border: 1px solid #A2A6B0
+  border-radius: 4px
+  height: 50px
+  width: 449px
+  margin-right: 30px
+
+.BigInput
+  background: #FFFFFF
+  border: 1px solid #A2A6B0
+  border-radius: 4px
+  height: 236px
+  width: 925px
+  margin-bottom: 16px
+
+.Input[placeholder],
+.BigInput[placeholder]
+  padding-left: 17px
+  font-weight: 300
+  font-size: 14px
+  line-height: 20px
+  color: #A2A6B0
+
+.ContactUsInfo
+  background: #F5F7FF
+  width: 25%
+  margin-top: 127px
+  padding-left: 35px
+  padding-right: 35px
+  max-height: 411px
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+.ContactUsInfoItem
+  display: flex
+
+.InfoItemText
+  margin-top: 10px
+.InfoItemText h4
+  margin: 0
+
+@media screen and (min-width: 1700px)
+  .BigInput
+    width: 925px
+
+@media screen and (min-width: 1600px) and (max-width: 1700px)
+  .BigInput
+    width: 800px
+
+@media screen and (min-width: 1600px) and (max-width: 1700px)
+  .BigInput
+    width: 700px
+
+@media screen and (min-width: 1500px) and (max-width: 1600px)
+  .BigInput
+    width: 600px
+
+@media screen and (min-width: 1500px)
+  .ContactUs
+    padding-left: 260px
+    padding-right: 260px
+
+@media screen and (min-width: 992px) and (max-width: 1500px)
+  .ContactUs
+    padding-left: 30px
+    padding-right: 30px
+  .BigInput
+    width: 700px
+    // .ContactUsInfo
+    //   margin-top: 127px
+
+@media screen and (max-width: 992px)
+  .ContactUs
+    padding-left: 26px
+    padding-right: 26px
+  .BigInput
+    width: 500px
+    // .ContactUsInfo
+    //   margin-top: 153px

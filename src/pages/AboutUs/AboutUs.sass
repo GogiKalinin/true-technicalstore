@@ -1,0 +1,77 @@
+
+.AboutUsItem
+  display: flex
+  background: #FFFFFF
+  color: #000
+  height: 681px
+  font-family: 'Poppins'
+  font-style: normal
+  justify-content: space-between
+
+.AboutUsItemTextSide
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+.AboutUsItemTitle
+  font-weight: 500
+  font-size: 44px
+  line-height: 58px
+
+.AboutUsItemText
+  font-weight: 300
+  font-size: 18px
+  line-height: 26px
+
+.AboutUsItemImage,
+.AboutUsItemTextSide
+  width: 50%
+
+.AboutUsItemImage
+  display: flex
+
+.AboutUsItem:nth-child(odd)
+  display: flex
+  flex-direction: row-reverse
+  background: #000000
+  color: #fff
+
+.AboutUsItemImage:nth-child(odd)
+
+.AboutUsItemTextSide:nth-child(odd)
+
+@media screen and (min-width: 1700px) and (max-width: 2000px)
+  .AboutUsItemImage:nth-child(odd)
+    margin-left: 211px
+  .AboutUsItem
+    padding-left: 380px
+    padding-right: 380px
+@media screen and (min-width: 1700px)
+  .AboutUsItemImage:nth-child(odd)
+    margin-left: 211px
+
+@media screen and (min-width: 1500px) and (max-width: 1700px)
+  .AboutUsItemImage:nth-child(odd)
+    margin-left: 105px
+  .AboutUsItem
+    padding-left: 380px
+    padding-right: 380px
+
+@media screen and (min-width: 1500px)
+  .AboutUsItem
+    padding-left: 380px
+    padding-right: 380px
+
+@media screen and (min-width: 992px) and (max-width: 1500px)
+  .AboutUsItem
+    padding-left: 50px
+    padding-right: 50px
+  .AboutUsItemImage:nth-child(odd)
+    margin-left: 50px
+
+@media screen and (min-width: 500px) and (max-width: 992px)
+  .AboutUsItem
+    padding-left: 50px
+    padding-right: 50px
+  .AboutUsItemImage:nth-child(odd)
+    margin-left: 34px

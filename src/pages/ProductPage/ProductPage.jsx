@@ -13,7 +13,7 @@ import {
 import "./ProductPage.sass";
 
 export const ProductPage = (props) => {
-  const [changeParagraph, setChangeParagraph] = useState("Details");
+  const [changeParagraph, setChangeParagraph] = useState("About Product");
 
   const [activeParagraphSwitch, setActiveParagraphSwitch] =
     useState("About Product");
@@ -33,12 +33,16 @@ export const ProductPage = (props) => {
 
   const ChosenProduct = [props.moreAboutData];
 
+  const addToBasketModal = () => {
+    props.setBasketData(props.moreAboutData);
+  };
+
   return (
     <div className="ProductPage">
       {ChosenProduct.map((prod) => {
         return (
           <>
-            <div className="ProductPageNavigation">
+            <div className="ProductPageNavigation" key={prod.id}>
               <div className="ProductPageNavigationAbout">
                 <span className="ProductPageNavigationAboutItems">
                   <p
@@ -80,10 +84,7 @@ export const ProductPage = (props) => {
                 <BasketInput />
                 <UniversalButton
                   text="Add to Cart"
-                  // onClick={() =>
-                  //   props.setBasketData({ ...props.moreAboutData, count: 1 })
-                  // }
-                  onClick={() => props.setBasketData({ ...prod, count: 1 })}
+                  onClick={addToBasketModal}
                 />
               </div>
             </div>
@@ -147,7 +148,22 @@ export const ProductPage = (props) => {
                         ? "ProductPageAboutProductSpecs"
                         : "Nothing"
                     }
-                  ></div>
+                  >
+                    <div className="SpecsChart">
+                      <div className="SpecsChartItem">
+                        <div className="SpecsChartItemLeft">CPU</div>
+                        <div className="SpecsChartItemRight">N/A</div>
+                      </div>
+                      <div className="SpecsChartItem">
+                        <div className="SpecsChartItemLeft">Featured</div>
+                        <div className="SpecsChartItemRight">N/A</div>
+                      </div>
+                      <div className="SpecsChartItem">
+                        <div className="SpecsChartItemLeft">I/O Ports</div>
+                        <div className="SpecsChartItemRight">N/A</div>
+                      </div>
+                    </div>
+                  </div>
                   <div className="ProductPageAboutProductMainProductMoreContactUs">
                     <p className="ContactUs">
                       Have a Question? <span>Contact Us</span>

@@ -20,9 +20,6 @@
 .ProductPageInformation
   display: flex
 
-.ProductPageProductVisual
-  width: 45%
-
 .ProductPageAboutProduct
   width: 55%
 
@@ -60,18 +57,17 @@
     padding-left: 260px
   .ProductPageAboutProductMain,
   .ProductPageAboutProductDetails,
-  .ProductPageAboutProductSpecs
     padding: 67px 118px 82px 379px
     display: flex
     flex-direction: column
   .ProductPageProductVisual
     margin-left: 23px
-    padding-right: 379px
-    margin-top: 118px
-  .ProductPageProductVisual
-    width: 45%
+    padding-top: 96px
+
   .ProductPageAboutProduct
     min-width: 55%
+  .ProductPageViualTop
+    // padding-top: 96px
 
 @media screen and (min-width: 1150px) and (max-width: 1500px)
   .ProductPageNavigation
@@ -79,12 +75,15 @@
     padding-right: 30px
   .ProductPageAboutProductMain,
   .ProductPageAboutProductDetails,
-  .ProductPageAboutProductSpecs,
+    padding-top: 34px
     padding-left: 200px
     padding-right: 30px
     padding-bottom: 82px
   .ProductPageAboutProductMoreInfo
     padding-left: 200px
+  .ProductPageProductVisual
+    margin-left: 23px
+    padding-top: 53px
 
 @media screen and (min-width: 992px) and (max-width: 1150px)
   .ProductPageNavigation
@@ -92,7 +91,6 @@
     padding-right: 30px
   .ProductPageAboutProductMain,
   .ProductPageAboutProductDetails,
-  .ProductPageAboutProductSpecs
     padding-left: 100px
     padding-right: 30px
   .ProductPageAboutProductMoreInfo
@@ -104,7 +102,6 @@
     padding-right: 25px
   .ProductPageAboutProductMain,
   .ProductPageAboutProductDetails,
-  .ProductPageAboutProductSpecs
     padding-left: 20px
     padding-right: 20px
   .ProductPageAboutProductMoreInfo
@@ -114,7 +111,6 @@
   .ProductPageNavigation,
   .ProductPageAboutProductMain,
   .ProductPageAboutProductDetails,
-  .ProductPageAboutProductSpecs
     padding-left: 10px
     padding-right: 10px
   .ProductPageAboutProductMoreInfo
@@ -131,7 +127,6 @@
     padding-right: 8px
 
 .ProductPageProductVisual
-  justify-content: start
   width: 45%
 
 .ProductPageAboutProduct
@@ -196,8 +191,6 @@
   line-height: 18px
   color: #000000
 
-.ProductPageAboutProductDetails
-
 .ProductPageAboutProductMoreInfo
   font-weight: 700
   font-size: 18px
@@ -209,6 +202,9 @@
 .ProductPageProductVisualForProductStat,
 .ProductPageProductVisualForProductMail
   cursor: pointer
+
+.ProductPageAboutProductMainWay
+  margin: 0
 
 .ProductPageViualTop
   display: flex
@@ -226,3 +222,28 @@
 
 .ProductPageViualBottom p
   padding-left: 14.5px
+
+.SpecsChart
+  border: 1px solid #CACDD8
+  width: 401px
+  font-family: 'Poppins'
+  font-style: normal
+  font-weight: 400
+  font-size: 14px
+  line-height: 21px
+
+  color: #000000
+
+.SpecsChartItem
+  display: flex
+
+.SpecsChartItemLeft,
+.SpecsChartItemRight
+  height: 41px
+  width: 50%
+  display: flex
+  align-items: center
+  padding-left: 15px
+
+.SpecsChartItemRight
+  color: #666666

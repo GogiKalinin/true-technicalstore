@@ -3,7 +3,11 @@ import "./Inform.sass";
 import { FacebookIcon, InstaIcon } from "../../Images/Footer/";
 import { TabletLogo } from "../../TabletImages/TabletHeader/Logo";
 
-const Inform = () => {
+const Inform = (props) => {
+  const ChangeThemeOnContactUs = () => {
+    props.setChangePage("ContactUs");
+  };
+
   return (
     <>
       <div className="Inform">
@@ -13,7 +17,9 @@ const Inform = () => {
         </div>
         <address className="Inform__adress">
           <p>Visit our showroom in 1234 Street Adress City Address, 1234 </p>
-          <a href="google.com">Contact Us</a>
+          <div className="ContactUsInform" onClick={ChangeThemeOnContactUs}>
+            Contact Us
+          </div>
         </address>
         <div className="Inform__media">
           <p className="Inform__media-call">
@@ -36,9 +42,9 @@ const Inform = () => {
           <p>Mon-Thu: </p>
           <time>9:00 AM - 5:30 PM</time>
         </div>
-        <a className="TabletContactUs" href="google.com">
+        <div className="TabletContactUs" onClick={ChangeThemeOnContactUs}>
           Contact Us
-        </a>
+        </div>
       </div>
     </>
   );
