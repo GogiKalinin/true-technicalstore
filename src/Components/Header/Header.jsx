@@ -16,6 +16,8 @@ const Header = ({
   setShowMainElements,
   changePage,
   setChangePage,
+  showFavouriteProducts,
+  setShowFavouriteProducts,
 }) => {
   return (
     <div className="Header">
@@ -33,6 +35,8 @@ const Header = ({
         setShowMainElements={setShowMainElements}
         changePage={changePage}
         setChangePage={setChangePage}
+        showFavouriteProducts={showFavouriteProducts}
+        setShowFavouriteProducts={setShowFavouriteProducts}
       />
     </div>
   );

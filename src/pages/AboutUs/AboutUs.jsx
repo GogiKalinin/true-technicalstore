@@ -5,6 +5,12 @@ import Image2 from "../PagesImages/AboutUs/Image2.png";
 import Image3 from "../PagesImages/AboutUs/Image3.png";
 import Image4 from "../PagesImages/AboutUs/Image4.png";
 import Image5 from "../PagesImages/AboutUs/Image5.png";
+import {
+  Delivery,
+  Quality,
+  SafeHands,
+  Shop,
+} from "../PagesImages/ContactUsImg";
 
 const AboutUs = () => {
   const AboutUsArray = [

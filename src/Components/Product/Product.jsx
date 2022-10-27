@@ -4,6 +4,14 @@ import UniversalButton from "../UniversalButton/UniversalButton";
 import "./Product.sass";
 
 const Product = (props) => {
+  const changeTheme = () => {
+    if (props.changePage === "main") {
+      props.setChangePage("ProductPage");
+    } else {
+      props.setChangePage("main");
+    }
+  };
+
   return (
     <div className="ProductContainer">
       {props.allProducts.map((prod) => {
@@ -13,9 +21,11 @@ const Product = (props) => {
             key={prod.id}
             // onClick={props.basketData.push(prod)}
             // onClick={() => setClickedProduct(prod)}
-            onClick={() => props.setBasketData({ ...prod, count: 1 })}
           >
-            <div className="ProductImageContainer">
+            <div
+              className="ProductImageContainer"
+              onClick={() => props.setBasketData({ ...prod, count: 1 })}
+            >
               <img className="ProductImage" src={prod.image} alt="img"></img>
             </div>
             <div className="ProductRating">
@@ -32,6 +42,7 @@ const Product = (props) => {
               text="about"
               onClick={() => props.setMoreAboutData({ ...prod, count: 1 })}
             />
+            <UniversalButton text={"about product"} onClick={changeTheme} />
           </div>
         );
       })}

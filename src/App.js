@@ -20,6 +20,9 @@ import { Home } from "./pages/home";
 import { ProductPage } from "./pages/ProductPage/ProductPage";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import iMacBlue from "./assets/ProductImages/imacBlue.jpg";
+import iMacPink from "./assets/ProductImages/imacPink.jpg";
+import FavouriteProducts from "./Components/FavouriteProducts/FavouriteProducts";
 // import { ProductPage } from "./pages/ProductPage";
 // import { NavLink, Route, Router } from "react-router-dom";
 // import { ProductPage } from "./pages/ProductPage";
@@ -161,23 +164,55 @@ const App = () => {
       category: "Repairs",
       PageImage: PageImage,
     },
+    {
+      id: 10,
+      name: "Apple iMac M1",
+      image: iMacBlue,
+      title: "Apple iMac 24 Custom Purple (2021) M1 Chip Z130000N7",
+      oldPrice: "$1800.00",
+      newPrice: "$1600.00",
+      category: "Desktop PCs",
+      // colors: {
+      //   black: {
+      //     color: "#000",
+      //     image: iMacBlue,
+      //   },
+      //   pink: {
+      //     color: "#010",
+      //     image: iMacPink,
+      //   },
+      // },
+      colors: [
+        { id: 0, color: "#0000ff", image: iMacBlue },
+        { id: 1, color: "#ffc0cb", image: iMacPink },
+      ],
+    },
   ];
+
+  console.log(productArray[10].colors[1]);
+
   const [allProducts, setAllProducts] = useState(productArray);
+  console.log("allProducts", allProducts);
+  console.log("productArray", productArray);
 
   const [showBasketModal, setShowBasketModal] = useState(false);
 
   const [showNavbarModul, setShowNavbarModul] = useState(false);
 
   const [moreAboutData, setMoreAboutData] = useState([]);
+
   console.log("moreAboutData", moreAboutData);
 
   const [basketData, setBasketData] = useState([]);
+  console.log("basketData", basketData);
 
   const [countItems, setCountItems] = useState([]);
 
   const [showMainElements, setShowMainElements] = useState(true);
 
-  const [changePage, setChangePage] = useState("AboutUs");
+  const [changePage, setChangePage] = useState("main");
+
+  const [showFavouriteProducts, setShowFavouriteProducts] = useState(false);
 
   const getCounerNumber = (new_prod) => {
     const id = new_prod.id;
@@ -248,20 +283,9 @@ const App = () => {
         showMainElements={showMainElements}
         setChangePage={setChangePage}
         changePage={changePage}
+        showFavouriteProducts={showFavouriteProducts}
+        setShowFavouriteProducts={setShowFavouriteProducts}
       />
-      {/* {page === "main" && (
-        <Home
-          showMainElements={showMainElements}
-          navigationItems={navigationItems}
-          setAllProducts={setAllProducts}
-          productArray={productArray}
-          setShowMainElements={setShowMainElements}
-          setNavigationItems={setNavigationItems}
-          basketData={basketData}
-          addNewToBusket={addNewToBusket}
-          allProducts={allProducts}
-        />
-      )} */}
       {changePage === "main" && (
         <Home
           showMainElements={showMainElements}
@@ -275,6 +299,8 @@ const App = () => {
           allProducts={allProducts}
           moreAboutData={moreAboutData}
           setMoreAboutData={setMoreAboutData}
+          setChangePage={setChangePage}
+          changePage={changePage}
         />
       )}
       {changePage === "AboutUs" && <AboutUs />}
@@ -284,16 +310,25 @@ const App = () => {
           setBasketData={setBasketData}
           productArray={productArray}
           moreAboutData={moreAboutData}
+          allProducts={allProducts}
         />
       )}
       {changePage === "ContactUs" && <ContactUs />}
-      {changePage === "main" && <Footer />}
+      {changePage === "main" && <Footer setChangePage={setChangePage} />}
       {showBasketModal ? (
         <BasketModal
           countItems={countItems}
           basketData={basketData}
           setBasketData={setBasketData}
           setShowBasketModal={setShowBasketModal}
+        />
+      ) : null}{" "}
+      {showFavouriteProducts ? (
+        <FavouriteProducts
+          countItems={countItems}
+          basketData={basketData}
+          setBasketData={setBasketData}
+          setShowFavouriteProducts={setShowFavouriteProducts}
         />
       ) : null}{" "}
     </div>

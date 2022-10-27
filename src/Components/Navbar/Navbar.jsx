@@ -11,6 +11,7 @@ import {
   TabletUser,
 } from "../../TabletImages/TabletHeader/TabletNavbar";
 import UniversalButton from "../UniversalButton/UniversalButton";
+import UserCard from "../UserCard/UserCard";
 
 const Navbar = ({
   showBasketModal,
@@ -25,8 +26,12 @@ const Navbar = ({
   showMainElements,
   changePage,
   setChangePage,
+  showFavouriteProducts,
+  setShowFavouriteProducts,
 }) => {
   const [showNavbarModul, setShowNavbarModul] = useState(false);
+
+  const [showUserCard, setShowUserCard] = useState(false);
   console.log("basketDataLength", basketDataLength);
   const toggleShowNavbarModul = () => {
     setShowNavbarModul(!showNavbarModul);
@@ -89,11 +94,28 @@ const Navbar = ({
     }
   };
 
+  const changeThemeOnMain = () => {
+    if (changePage !== "main") {
+      setChangePage("main");
+    }
+  };
+
+  const userCardSwitch = () => {
+    setShowUserCard(!showUserCard);
+  };
+
   return (
     <>
       <div className="Navbar">
         <div className="NavbarUniversal">
-          <div className="NavbarLogo" onClick={showAll}>
+          <div
+            className="NavbarLogo"
+            // onClick={showAll}
+            onClick={() => {
+              showAll();
+              changeThemeOnMain();
+            }}
+          >
             <Logo />
           </div>
           <div
@@ -133,10 +155,6 @@ const Navbar = ({
         </div>
 
         <ul className="UserMenuList">
-          <UniversalButton
-            text={changePage === "main" ? "about product" : "main"}
-            onClick={changeTheme}
-          />
           <li className="MenuListItem">
             <div className="UserMenuSearch" onClick={toggleShowNavbarModul}>
               {showNavbarModul ? <Cancel /> : <Search />}
@@ -149,11 +167,19 @@ const Navbar = ({
             </div>
           </li>
           <li className="MenuListItem">
-            <a href="google.com">
-              <img src={require("./Userpic.png")} alt="userpic"></img>
-            </a>
+            <img
+              src={require("./Userpic.png")}
+              alt="userpic"
+              onClick={userCardSwitch}
+            ></img>
           </li>
         </ul>
+        {showUserCard && (
+          <UserCard
+            showFavouriteProducts={showFavouriteProducts}
+            setShowFavouriteProducts={setShowFavouriteProducts}
+          />
+        )}
       </div>
       <div className="TabletNavbar">
         <a className="TabletNavbarBurger" href="google.com">

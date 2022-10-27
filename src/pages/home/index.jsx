@@ -42,6 +42,7 @@ export const Home = ({
         setChangePage={setChangePage}
         moreAboutData={moreAboutData}
         setMoreAboutData={setMoreAboutData}
+
       />
       {showMainElements ? (
         <>

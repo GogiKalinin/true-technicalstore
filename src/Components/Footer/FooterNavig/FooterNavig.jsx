@@ -58,7 +58,11 @@ const Adress = [
   },
 ];
 
-const FooterNavig = () => {
+const FooterNavig = (setChangePage) => {
+  const changeThemeOnAboutUs = () => {
+    setChangePage("AboutUs");
+  };
+
   return (
     <div className="FooterNavigContainer">
       <div className="FooterNavig">
@@ -66,9 +70,9 @@ const FooterNavig = () => {
         {Information.map((info) => {
           return (
             <div className="FooterNavigItem" key={info.id}>
-              <a className="FooterNavigItem-a" href={info.href} key={info.id}>
+              <p className="FooterNavigItem-a" href={info.href} key={info.id}>
                 {info.name}
-              </a>
+              </p>
             </div>
           );
         })}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BasketInput from "../../Components/BasketInput/BasketInput";
+import ChoseColor from "../../Components/ChoseColor/ChoseColor";
 import UniversalButton from "../../Components/UniversalButton/UniversalButton";
 import {
   Bezh,
@@ -18,6 +19,10 @@ export const ProductPage = (props) => {
   const [activeParagraphSwitch, setActiveParagraphSwitch] =
     useState("About Product");
 
+  const [choseColor, setChoseColor] = useState();
+
+  const viewChosenColor = () => {};
+
   const ChangeParagraphAboutProduct = () => {
     setChangeParagraph("About Product");
     setActiveParagraphSwitch("About Product");
@@ -32,9 +37,33 @@ export const ProductPage = (props) => {
   };
 
   const ChosenProduct = [props.moreAboutData];
+  console.log("ChosenProduct", ChosenProduct);
 
-  const addToBasketModal = () => {
-    props.setBasketData(props.moreAboutData);
+  // const addBasketFromProductPage = () => {
+  //   for (let i = 0; i < props.allProducts.length; i++) {
+  //     if (props.moreAboutData.id === props.allProducts[i].id) {
+  //       props.setBasketData(props.allProducts[i]);
+  //     }
+  //   }
+  // };
+
+  // const addBasketFromProductPage = () => {
+  //   props.setBasketData([...props.basketData, props.moreAboutData]);
+  // };
+
+  const productColors = props.moreAboutData.colors;
+  console.log("colors", productColors);
+
+  console.log("ChosenProduct.colors", props.moreAboutData.colors);
+
+  const [getImage, setGetImage] = useState(productColors[0].image);
+
+  const changeImage = (id) => {
+    for (let i = 0; i < productColors.length; i++) {
+      if (id === productColors[i].id) {
+        setGetImage(productColors[i].image);
+      }
+    }
   };
 
   return (
@@ -84,7 +113,7 @@ export const ProductPage = (props) => {
                 <BasketInput />
                 <UniversalButton
                   text="Add to Cart"
-                  onClick={addToBasketModal}
+                  // onClick={addBasketFromProductPage}
                 />
               </div>
             </div>
@@ -112,7 +141,19 @@ export const ProductPage = (props) => {
                     </p>
                     <div className="ProductPageAboutProductMainProductMoreAbout">
                       <div className="ProductPageAboutProductMainProductMoreAboutColors">
-                        <div className="ColorsChooseColor" alt="choose color">
+                        {productColors.map((color) => {
+                          return (
+                            <>
+                              <ChoseColor
+                                onClick={() => changeImage(color.id)}
+                                background={color.color}
+                                key={color.id}
+                              />
+                            </>
+                          );
+                        })}
+                      </div>
+                      {/* <div className="ColorsChooseColor" alt="choose color">
                           {Braun}
                         </div>
                         <div className="ColorsChooseColor" alt="choose color">
@@ -120,8 +161,7 @@ export const ProductPage = (props) => {
                         </div>
                         <div className="ColorsChooseColor" alt="choose color">
                           {Gray}
-                        </div>
-                      </div>
+                        </div> */}
                     </div>
                   </div>
                   <div
@@ -191,14 +231,15 @@ export const ProductPage = (props) => {
                   </div>
                   <img
                     className="ProductPageProductVisualImage"
-                    src={props.moreAboutData.PageImage}
+                    src={getImage}
                     alt={props.moreAboutData.name}
                   ></img>
                 </div>
                 <div className="ProductPageViualBottom">
                   {Zip}
                   <p>
-                    own it now, up to 6 months interest free <a>learn more</a>
+                    own it now, up to 6 months interest free{" "}
+                    <span>learn more</span>
                   </p>
                 </div>
               </div>
