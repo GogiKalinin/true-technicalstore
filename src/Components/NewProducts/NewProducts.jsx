@@ -34,7 +34,6 @@ const NewProducts = ({
     setNavigationItems(newNavigationItemsForShowAll);
   };
 
-  console.log("name", name);
 
   return (
     <div className="NewProducts">

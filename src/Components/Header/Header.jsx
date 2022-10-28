@@ -14,14 +14,13 @@ const Header = ({
   navigationItems,
   showMainElements,
   setShowMainElements,
-  changePage,
-  setChangePage,
+
   showFavouriteProducts,
   setShowFavouriteProducts,
 }) => {
   return (
     <div className="Header">
-      <Inform setChangePage={setChangePage} />
+      <Inform />
       <Navbar
         setShowBasketModal={setShowBasketModal}
         showBasketModal={showBasketModal}
@@ -33,8 +32,6 @@ const Header = ({
         setNavigationItems={setNavigationItems}
         showMainElements={showMainElements}
         setShowMainElements={setShowMainElements}
-        changePage={changePage}
-        setChangePage={setChangePage}
         showFavouriteProducts={showFavouriteProducts}
         setShowFavouriteProducts={setShowFavouriteProducts}
       />

@@ -8,7 +8,6 @@ import "./BasketModal.sass";
 const BasketModal = (props) => {
   const handleClickAway = () => {
     props.setShowBasketModal(false);
-    console.log("clicked");
   };
 
   const removeFromBasket = (id) => {
@@ -70,7 +69,6 @@ const BasketModal = (props) => {
 
   const changeInput = (id, event) => {
     const value = event.target.value;
-    console.log("value", value);
     changeCounter(id, +value);
   };
 

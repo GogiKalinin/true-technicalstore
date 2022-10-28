@@ -12,6 +12,7 @@ import {
 } from "../../TabletImages/TabletHeader/TabletNavbar";
 import UniversalButton from "../UniversalButton/UniversalButton";
 import UserCard from "../UserCard/UserCard";
+import { Link } from "react-router-dom";
 
 const Navbar = ({
   showBasketModal,
@@ -24,15 +25,13 @@ const Navbar = ({
   setNavigationItems,
   setShowMainElements,
   showMainElements,
-  changePage,
-  setChangePage,
+
   showFavouriteProducts,
   setShowFavouriteProducts,
 }) => {
   const [showNavbarModul, setShowNavbarModul] = useState(false);
 
   const [showUserCard, setShowUserCard] = useState(false);
-  console.log("basketDataLength", basketDataLength);
   const toggleShowNavbarModul = () => {
     setShowNavbarModul(!showNavbarModul);
   };
@@ -86,20 +85,6 @@ const Navbar = ({
     setNavigationItems(newNavigationItemsForShowAll);
   };
 
-  const changeTheme = () => {
-    if (changePage === "main") {
-      setChangePage("ProductPage");
-    } else {
-      setChangePage("main");
-    }
-  };
-
-  const changeThemeOnMain = () => {
-    if (changePage !== "main") {
-      setChangePage("main");
-    }
-  };
-
   const userCardSwitch = () => {
     setShowUserCard(!showUserCard);
   };
@@ -108,16 +93,16 @@ const Navbar = ({
     <>
       <div className="Navbar">
         <div className="NavbarUniversal">
-          <div
+          <Link
+            to={"/"}
             className="NavbarLogo"
             // onClick={showAll}
             onClick={() => {
               showAll();
-              changeThemeOnMain();
             }}
           >
             <Logo />
-          </div>
+          </Link>
           <div
             className={showNavbarModul ? "NavbarMenuUnActive" : "Navbar__menu"}
           >

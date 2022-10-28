@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.sass";
 import Header from "./Components/Header/Header";
 import Product from "./Components/Product/Product";
@@ -62,8 +63,6 @@ const App = () => {
       active: false,
     },
   ]);
-
-  console.log("navigationItems", navigationItems);
 
   const productArray = [
     {
@@ -231,11 +230,7 @@ const App = () => {
     },
   ];
 
-  console.log(productArray[10].colors[1]);
-
   const [allProducts, setAllProducts] = useState(productArray);
-  console.log("allProducts", allProducts);
-  console.log("productArray", productArray);
 
   const [showBasketModal, setShowBasketModal] = useState(false);
 
@@ -243,21 +238,13 @@ const App = () => {
 
   const [moreAboutData, setMoreAboutData] = useState([]);
 
-  console.log("moreAboutData", moreAboutData);
-
   const [basketData, setBasketData] = useState([]);
 
   const [favouritesData, setFavouritesData] = useState([]);
 
-  console.log("basketData", basketData);
-
-  console.log("favouritesData", favouritesData);
-
   const [countItems, setCountItems] = useState([]);
 
   const [showMainElements, setShowMainElements] = useState(true);
-
-  const [changePage, setChangePage] = useState("main");
 
   const [showFavouriteProducts, setShowFavouriteProducts] = useState(false);
 
@@ -288,13 +275,10 @@ const App = () => {
         //Додаємо цей елемент
         oldCountItems.push({ id, count: 1 });
       }
-      // console.log("elementsWithClickedId", elementsWithClickedId);
       //Тут ми оновлюємо глобальний countItems додаючи до нього наш новозмінений масив
       setCountItems(oldCountItems);
     }
   };
-  // console.log("count items", countItems);
-  // console.log("basketData", basketData);
   const addNewToBusket = (new_prod) => {
     const old_busket_data = [...basketData];
     const prodFilter = old_busket_data.filter(
@@ -318,8 +302,8 @@ const App = () => {
     getCounerNumber(new_prod);
   };
 
-  // const page = "main";
-  const page = "ProductPage";
+  const location = useLocation();
+  console.log("location", location);
 
   return (
     <div className="App">
@@ -336,44 +320,9 @@ const App = () => {
         setNavigationItems={setNavigationItems}
         setShowMainElements={setShowMainElements}
         showMainElements={showMainElements}
-        setChangePage={setChangePage}
-        changePage={changePage}
         showFavouriteProducts={showFavouriteProducts}
         setShowFavouriteProducts={setShowFavouriteProducts}
       />
-      {changePage === "main" && (
-        <Home
-          showMainElements={showMainElements}
-          navigationItems={navigationItems}
-          setAllProducts={setAllProducts}
-          productArray={productArray}
-          setShowMainElements={setShowMainElements}
-          setNavigationItems={setNavigationItems}
-          basketData={basketData}
-          addNewToBusket={addNewToBusket}
-          allProducts={allProducts}
-          moreAboutData={moreAboutData}
-          setMoreAboutData={setMoreAboutData}
-          setChangePage={setChangePage}
-          changePage={changePage}
-          favouritesData={favouritesData}
-          setFavouritesData={setFavouritesData}
-          //
-          addNewToFavourites={addNewToFavourites}
-        />
-      )}
-      {changePage === "AboutUs" && <AboutUs />}
-      {changePage === "ProductPage" && (
-        <ProductPage
-          basketData={basketData}
-          setBasketData={setBasketData}
-          productArray={productArray}
-          moreAboutData={moreAboutData}
-          allProducts={allProducts}
-        />
-      )}
-      {changePage === "ContactUs" && <ContactUs />}
-      {changePage === "main" && <Footer setChangePage={setChangePage} />}
       {showBasketModal ? (
         <BasketModal
           countItems={countItems}
@@ -392,6 +341,44 @@ const App = () => {
           setFavouritesData={setFavouritesData}
         />
       ) : null}{" "}
+      <Routes>
+        <Route
+          path="/product"
+          element={
+            <ProductPage
+              basketData={basketData}
+              setBasketData={setBasketData}
+              productArray={productArray}
+              moreAboutData={moreAboutData}
+              allProducts={allProducts}
+            />
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <Home
+              showMainElements={showMainElements}
+              navigationItems={navigationItems}
+              setAllProducts={setAllProducts}
+              productArray={productArray}
+              setShowMainElements={setShowMainElements}
+              setNavigationItems={setNavigationItems}
+              basketData={basketData}
+              addNewToBusket={addNewToBusket}
+              allProducts={allProducts}
+              moreAboutData={moreAboutData}
+              setMoreAboutData={setMoreAboutData}
+              favouritesData={favouritesData}
+              setFavouritesData={setFavouritesData}
+              addNewToFavourites={addNewToFavourites}
+            />
+          }
+        />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<ContactUs />} />
+      </Routes>
+      <Footer />
     </div>
   );
 };

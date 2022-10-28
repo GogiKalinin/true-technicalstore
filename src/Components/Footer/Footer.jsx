@@ -6,11 +6,11 @@ import FooterEnd from "./FooterEnd/FooterEnd";
 import PreFooter from "../PreFooter/PreFooter";
 // import PreFooter from "./PreFooter/PreFooter";
 
-const Footer = (setChangePage) => {
+const Footer = () => {
   return (
     <div className="Footer">
       <FooterSignUp />
-      <FooterNavig setChangePage={setChangePage} />
+      <FooterNavig />
       <FooterEnd />
     </div>
   );

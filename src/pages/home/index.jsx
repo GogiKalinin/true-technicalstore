@@ -15,8 +15,7 @@ export const Home = ({
   basketData,
   addNewToBusket,
   allProducts,
-  changePage,
-  setChangePage,
+
   setMoreAboutData,
   moreAboutData,
   favouritesData,
@@ -44,8 +43,6 @@ export const Home = ({
         setFavouritesData={addNewToFavourites}
         //
         allProducts={allProducts}
-        changePage={changePage}
-        setChangePage={setChangePage}
         moreAboutData={moreAboutData}
         setMoreAboutData={setMoreAboutData}
         favouritesData={favouritesData}

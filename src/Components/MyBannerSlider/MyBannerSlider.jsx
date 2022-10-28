@@ -19,7 +19,6 @@ const MyBannerSlider = () => {
 
   const prev = () => {
     const currentImageIndex = bannerImages.indexOf(currentImage);
-    console.log("currentImageIndex", currentImageIndex);
     if (currentImageIndex > 0) {
       setCurrentImage(bannerImages[currentImageIndex - 1]);
     } else {
@@ -29,7 +28,6 @@ const MyBannerSlider = () => {
 
   const next = () => {
     const currentImageIndex = bannerImages.indexOf(currentImage);
-    console.log("currentImageIndex", currentImageIndex);
     if (currentImageIndex === bannerImages.length - 1) {
       setCurrentImage(bannerImages[0]);
     } else {

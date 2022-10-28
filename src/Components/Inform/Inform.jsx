@@ -2,12 +2,9 @@ import React from "react";
 import "./Inform.sass";
 import { FacebookIcon, InstaIcon } from "../../Images/Footer/";
 import { TabletLogo } from "../../TabletImages/TabletHeader/Logo";
+import { Link } from "react-router-dom";
 
 const Inform = (props) => {
-  const ChangeThemeOnContactUs = () => {
-    props.setChangePage("ContactUs");
-  };
-
   return (
     <>
       <div className="Inform">
@@ -17,9 +14,9 @@ const Inform = (props) => {
         </div>
         <address className="Inform__adress">
           <p>Visit our showroom in 1234 Street Adress City Address, 1234 </p>
-          <div className="ContactUsInform" onClick={ChangeThemeOnContactUs}>
+          <Link to="/about" className="ContactUsInform">
             Contact Us
-          </div>
+          </Link>
         </address>
         <div className="Inform__media">
           <p className="Inform__media-call">
@@ -42,9 +39,7 @@ const Inform = (props) => {
           <p>Mon-Thu: </p>
           <time>9:00 AM - 5:30 PM</time>
         </div>
-        <div className="TabletContactUs" onClick={ChangeThemeOnContactUs}>
-          Contact Us
-        </div>
+        <div className="TabletContactUs">Contact Us</div>
       </div>
     </>
   );

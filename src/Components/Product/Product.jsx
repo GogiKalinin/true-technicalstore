@@ -5,18 +5,9 @@ import "./Product.sass";
 import Like from "../../Images/Product/like.png";
 import LikeUnactive from "../../Images/Product/likeUnActive.png";
 import LikeActive from "../../Images/Product/likeActive.png";
+import { Link } from "react-router-dom";
 
 const Product = (props) => {
-  const changeTheme = () => {
-    if (props.changePage === "main") {
-      props.setChangePage("ProductPage");
-    } else {
-      props.setChangePage("main");
-    }
-  };
-
-  const [productStatus, setProductStatus] = useState(false);
-
   return (
     <div className="ProductContainer">
       {props.allProducts.map((prod) => {
@@ -61,7 +52,9 @@ const Product = (props) => {
                 text="about"
                 onClick={() => props.setMoreAboutData({ ...prod, count: 1 })}
               />
-              <UniversalButton text={"about product"} onClick={changeTheme} />
+              <Link to={"/product"}>
+                <UniversalButton text={"about product"} />
+              </Link>
             </div>
           </div>
         );

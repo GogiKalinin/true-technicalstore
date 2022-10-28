@@ -52,7 +52,6 @@ const StarsNew = () => {
 
   const changeStarState = (id) => {
     setMark(id + 1);
-    // console.log("star id", id);
     const updatedStars = [];
     for (let i = 0; i < starsArray.length; i++) {
       const starItem = starsArray[i];
@@ -66,7 +65,6 @@ const StarsNew = () => {
         updatedStars.push(starItem);
       }
     }
-    // console.log("starsArray", starsArray);
     setStarsArray(starsArray);
   };
 

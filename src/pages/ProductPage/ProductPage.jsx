@@ -37,7 +37,6 @@ export const ProductPage = (props) => {
   };
 
   const ChosenProduct = [props.moreAboutData];
-  console.log("ChosenProduct", ChosenProduct);
 
   // const addBasketFromProductPage = () => {
   //   for (let i = 0; i < props.allProducts.length; i++) {
@@ -53,12 +52,9 @@ export const ProductPage = (props) => {
       { ...props.moreAboutData, count: 1 },
     ]);
   };
-  console.log("basketData", props.basketData);
 
   const productColors = props.moreAboutData.colors;
-  console.log("colors", productColors);
 
-  console.log("ChosenProduct.colors", props.moreAboutData.colors);
 
   const [getImage, setGetImage] = useState(productColors[0].image);
 

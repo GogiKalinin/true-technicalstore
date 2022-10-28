@@ -58,11 +58,7 @@ const Adress = [
   },
 ];
 
-const FooterNavig = (setChangePage) => {
-  const changeThemeOnAboutUs = () => {
-    setChangePage("AboutUs");
-  };
-
+const FooterNavig = () => {
   return (
     <div className="FooterNavigContainer">
       <div className="FooterNavig">

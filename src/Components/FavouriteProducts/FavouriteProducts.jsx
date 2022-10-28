@@ -7,7 +7,6 @@ import "./FavouriteProducts.sass";
 const FavouriteProducts = (props) => {
   const handleClickAway = () => {
     props.setShowFavouriteProducts(false);
-    console.log("clicked");
   };
 
   const removeFromFavourites = (id) => {
