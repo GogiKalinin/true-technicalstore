@@ -23,9 +23,9 @@ const BasketModal = (props) => {
 
   const searchaItemCount = (id) => {
     const needId = props.countItems.filter((idCheck) => idCheck.id === id);
-    // console.log("needId", needId[0].count);
-    // console.log("needId type", typeof needId[0].count);
-    return needId[0].count;
+    if (needId[0]) {
+      return needId[0].count;
+    } else return 0;
   };
 
   const [modalThanks, setModalThanks] = useState(false);
@@ -101,7 +101,7 @@ const BasketModal = (props) => {
                   <div className="BasketProdContainer" key={prod.id}>
                     <img src={prod.image} alt="img"></img>
                     <span>{prod.title.slice(0, 15)}</span>
-                    <h1>{prod.newPrice}</h1>
+                    {/* <h1>{prod.newPrice}</h1> */}
                     <BasketInput
                       onChange={(event) => changeInput(prod.id, event)}
                       number={prod.count}

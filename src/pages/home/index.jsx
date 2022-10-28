@@ -19,6 +19,9 @@ export const Home = ({
   setChangePage,
   setMoreAboutData,
   moreAboutData,
+  favouritesData,
+  setFavouritesData,
+  addNewToFavourites,
 }) => {
   return (
     <div className="Main">
@@ -37,12 +40,16 @@ export const Home = ({
       <Product
         basketData={basketData}
         setBasketData={addNewToBusket}
+        //
+        setFavouritesData={addNewToFavourites}
+        //
         allProducts={allProducts}
         changePage={changePage}
         setChangePage={setChangePage}
         moreAboutData={moreAboutData}
         setMoreAboutData={setMoreAboutData}
-
+        favouritesData={favouritesData}
+        // setFavouritesData={setFavouritesData}
       />
       {showMainElements ? (
         <>

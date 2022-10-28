@@ -2,6 +2,7 @@
   display: flex
   flex-wrap: wrap
   align-items: center
+  // justify-content: space-around
 
 @media screen and (min-width: 1500px)
   .ProductContainer
@@ -69,6 +70,9 @@
 
 .ProductRating
   cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
 
   .ProductTitle
 
@@ -83,5 +87,18 @@
   color: #000000
 
 .ProductImage
-  height: 150px
-  width: 150px
+  height: 40%
+  width: 80%
+
+.ProductButtons
+  display: flex
+  align-items: center
+  flex-direction: column
+
+.ProductToFavourites
+  height: 20px
+  width: 30px
+
+.ProductToFavourites img
+  height: 20px
+  width: 20px

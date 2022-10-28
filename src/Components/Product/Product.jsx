@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import StarsNew from "../StarsNew/StarsNew";
 import UniversalButton from "../UniversalButton/UniversalButton";
 import "./Product.sass";
+import Like from "../../Images/Product/like.png";
+import LikeUnactive from "../../Images/Product/likeUnActive.png";
+import LikeActive from "../../Images/Product/likeActive.png";
 
 const Product = (props) => {
   const changeTheme = () => {
@@ -11,6 +14,8 @@ const Product = (props) => {
       props.setChangePage("main");
     }
   };
+
+  const [productStatus, setProductStatus] = useState(false);
 
   return (
     <div className="ProductContainer">
@@ -30,6 +35,19 @@ const Product = (props) => {
             </div>
             <div className="ProductRating">
               <StarsNew />
+              <div
+                className="ProductToFavourites"
+                onClick={() => props.setFavouritesData({ ...prod, count: 1 })}
+              >
+                <img
+                  src={
+                    prod.id === props.favouritesData.id
+                      ? LikeActive
+                      : LikeUnactive
+                  }
+                  alt=""
+                ></img>
+              </div>
             </div>
             <div className="ProductDescription">
               <p>{prod.title}</p>
@@ -38,11 +56,13 @@ const Product = (props) => {
               <h3 className="OldPrice">{prod.oldPrice}</h3>
               <h3 className="NewPrice">{prod.newPrice}</h3>
             </div>
-            <UniversalButton
-              text="about"
-              onClick={() => props.setMoreAboutData({ ...prod, count: 1 })}
-            />
-            <UniversalButton text={"about product"} onClick={changeTheme} />
+            <div className="ProductButtons">
+              <UniversalButton
+                text="about"
+                onClick={() => props.setMoreAboutData({ ...prod, count: 1 })}
+              />
+              <UniversalButton text={"about product"} onClick={changeTheme} />
+            </div>
           </div>
         );
       })}

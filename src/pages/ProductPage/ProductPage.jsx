@@ -47,9 +47,13 @@ export const ProductPage = (props) => {
   //   }
   // };
 
-  // const addBasketFromProductPage = () => {
-  //   props.setBasketData([...props.basketData, props.moreAboutData]);
-  // };
+  const addBasketFromProductPage = () => {
+    props.setBasketData([
+      ...props.basketData,
+      { ...props.moreAboutData, count: 1 },
+    ]);
+  };
+  console.log("basketData", props.basketData);
 
   const productColors = props.moreAboutData.colors;
   console.log("colors", productColors);
@@ -113,7 +117,7 @@ export const ProductPage = (props) => {
                 <BasketInput />
                 <UniversalButton
                   text="Add to Cart"
-                  // onClick={addBasketFromProductPage}
+                  onClick={addBasketFromProductPage}
                 />
               </div>
             </div>
@@ -154,7 +158,10 @@ export const ProductPage = (props) => {
                         })}
                       </div>
                       {/* <div className="ColorsChooseColor" alt="choose color">
-                          {Braun}
+                          {Braun}  // const addBasketFromProductPage = () => {
+  //   props.setBasketData([...props.basketData, props.moreAboutData]);
+  // };
+
                         </div>
                         <div className="ColorsChooseColor" alt="choose color">
                           {Bezh}

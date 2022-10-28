@@ -22,6 +22,8 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import iMacBlue from "./assets/ProductImages/imacBlue.jpg";
 import iMacPink from "./assets/ProductImages/imacPink.jpg";
+import macBookGold from "./assets/ProductImages/macbookGold.jpg";
+import macBookGrey from "./assets/ProductImages/macbookGrey.jpg";
 import FavouriteProducts from "./Components/FavouriteProducts/FavouriteProducts";
 // import { ProductPage } from "./pages/ProductPage";
 // import { NavLink, Route, Router } from "react-router-dom";
@@ -73,6 +75,10 @@ const App = () => {
       newPrice: "$499.00",
       category: "Desktop PCs",
       PageImage: PageImage,
+      colors: [
+        { id: 0, color: "#afeeee", image: iMacBlue },
+        { id: 1, color: "#ffc0cb", image: iMacPink },
+      ],
     },
     {
       id: 1,
@@ -83,6 +89,10 @@ const App = () => {
       newPrice: "$799.00",
       category: "Desktop PCs",
       PageImage: PageImage,
+      colors: [
+        { id: 0, color: "#afeeee", image: iMacBlue },
+        { id: 1, color: "#ffc0cb", image: iMacPink },
+      ],
     },
     {
       id: 2,
@@ -93,6 +103,10 @@ const App = () => {
       newPrice: "$999.00",
       category: "Networking Devices",
       PageImage: PageImage,
+      colors: [
+        { id: 0, color: "#afeeee", image: iMacBlue },
+        { id: 1, color: "#ffc0cb", image: iMacPink },
+      ],
     },
     {
       id: 3,
@@ -103,6 +117,10 @@ const App = () => {
       newPrice: "$999.00",
       category: "Laptops",
       PageImage: PageImage,
+      colors: [
+        { id: 0, color: "#afeeee", image: iMacBlue },
+        { id: 1, color: "#ffc0cb", image: iMacPink },
+      ],
     },
     {
       id: 4,
@@ -113,6 +131,10 @@ const App = () => {
       newPrice: "$999.00",
       category: "Laptops",
       PageImage: PageImage,
+      colors: [
+        { id: 0, color: "#afeeee", image: iMacBlue },
+        { id: 1, color: "#ffc0cb", image: iMacPink },
+      ],
     },
     {
       id: 5,
@@ -123,6 +145,10 @@ const App = () => {
       newPrice: "$999.00",
       category: "Laptops",
       PageImage: PageImage,
+      colors: [
+        { id: 0, color: "#afeeee", image: iMacBlue },
+        { id: 1, color: "#ffc0cb", image: iMacPink },
+      ],
     },
     {
       id: 6,
@@ -133,6 +159,10 @@ const App = () => {
       newPrice: "$999.00",
       category: "Repairs",
       PageImage: PageImage,
+      colors: [
+        { id: 0, color: "#afeeee", image: iMacBlue },
+        { id: 1, color: "#ffc0cb", image: iMacPink },
+      ],
     },
     {
       id: 7,
@@ -143,6 +173,10 @@ const App = () => {
       newPrice: "$999.00",
       category: "Repairs",
       PageImage: PageImage,
+      colors: [
+        { id: 0, color: "#afeeee", image: iMacBlue },
+        { id: 1, color: "#ffc0cb", image: iMacPink },
+      ],
     },
     {
       id: 8,
@@ -153,16 +187,24 @@ const App = () => {
       newPrice: "$999.00",
       category: "Desktop PCs",
       PageImage: PageImage,
+      colors: [
+        { id: 0, color: "#afeeee", image: iMacBlue },
+        { id: 1, color: "#ffc0cb", image: iMacPink },
+      ],
     },
     {
       id: 9,
-      name: "ZX Spectrum",
-      image: Planshet,
-      title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      oldPrice: "$999.00",
+      name: "Apple MacBook Air 13",
+      image: macBookGold,
+      title: "Apple MacBook Air 13 M1 256GB 2020 (MGN63) Space Gray",
+      oldPrice: "$1149.00",
       newPrice: "$999.00",
-      category: "Repairs",
+      category: "Laptops",
       PageImage: PageImage,
+      colors: [
+        { id: 0, color: "#ffee90", image: macBookGold },
+        { id: 1, color: "#c0c0c0", image: macBookGrey },
+      ],
     },
     {
       id: 10,
@@ -183,7 +225,7 @@ const App = () => {
       //   },
       // },
       colors: [
-        { id: 0, color: "#0000ff", image: iMacBlue },
+        { id: 0, color: "#afeeee", image: iMacBlue },
         { id: 1, color: "#ffc0cb", image: iMacPink },
       ],
     },
@@ -204,7 +246,12 @@ const App = () => {
   console.log("moreAboutData", moreAboutData);
 
   const [basketData, setBasketData] = useState([]);
+
+  const [favouritesData, setFavouritesData] = useState([]);
+
   console.log("basketData", basketData);
+
+  console.log("favouritesData", favouritesData);
 
   const [countItems, setCountItems] = useState([]);
 
@@ -257,10 +304,18 @@ const App = () => {
       old_busket_data.push(new_prod);
       setBasketData(old_busket_data);
     }
-    // console.log("old_busket_data", old_busket_data);
     getCounerNumber(new_prod);
-    // console.log("old_busket_data", old_busket_data);
-    // console.log("addNewToBusket", new_prod);
+  };
+  const addNewToFavourites = (new_prod) => {
+    const old_favourites_data = [...favouritesData];
+    const prodFilter = old_favourites_data.filter(
+      (prodCheck) => prodCheck.id === new_prod.id
+    );
+    if (prodFilter.length === 0) {
+      old_favourites_data.push(new_prod);
+      setFavouritesData(old_favourites_data);
+    }
+    getCounerNumber(new_prod);
   };
 
   // const page = "main";
@@ -301,6 +356,10 @@ const App = () => {
           setMoreAboutData={setMoreAboutData}
           setChangePage={setChangePage}
           changePage={changePage}
+          favouritesData={favouritesData}
+          setFavouritesData={setFavouritesData}
+          //
+          addNewToFavourites={addNewToFavourites}
         />
       )}
       {changePage === "AboutUs" && <AboutUs />}
@@ -329,6 +388,8 @@ const App = () => {
           basketData={basketData}
           setBasketData={setBasketData}
           setShowFavouriteProducts={setShowFavouriteProducts}
+          favouritesData={favouritesData}
+          setFavouritesData={setFavouritesData}
         />
       ) : null}{" "}
     </div>
