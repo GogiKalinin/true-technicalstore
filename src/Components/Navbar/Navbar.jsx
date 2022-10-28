@@ -13,6 +13,7 @@ import {
 import UniversalButton from "../UniversalButton/UniversalButton";
 import UserCard from "../UserCard/UserCard";
 import { Link } from "react-router-dom";
+import { selectNavItem } from "../../tools/filterCategory";
 
 const Navbar = ({
   showBasketModal,
@@ -25,7 +26,6 @@ const Navbar = ({
   setNavigationItems,
   setShowMainElements,
   showMainElements,
-
   showFavouriteProducts,
   setShowFavouriteProducts,
 }) => {
@@ -47,29 +47,6 @@ const Navbar = ({
     }
   };
 
-  const selectNavItem = (name) => {
-    setShowMainElements(false);
-    const selectedCategoryElem = [];
-    for (let i = 0; i < productArray.length; i++) {
-      if (name === productArray[i].category) {
-        selectedCategoryElem.push(productArray[i]);
-      }
-    }
-    setAllProducts(selectedCategoryElem);
-
-    const updatedNavigationItems = [];
-    for (let i = 0; i < navigationItems.length; i++) {
-      const newNavigationItem = navigationItems[i];
-      if (navigationItems[i].name === name) {
-        newNavigationItem.active = true;
-      } else {
-        newNavigationItem.active = false;
-      }
-      updatedNavigationItems.push(newNavigationItem);
-    }
-    setNavigationItems(updatedNavigationItems);
-  };
-
   const showAll = () => {
     const newNavigationItemsForShowAll = [];
     setAllProducts(productArray);
@@ -83,6 +60,7 @@ const Navbar = ({
       }
     }
     setNavigationItems(newNavigationItemsForShowAll);
+    localStorage.removeItem("nowCategory");
   };
 
   const userCardSwitch = () => {
@@ -114,7 +92,16 @@ const Navbar = ({
                     : "Navbar__item"
                 }
                 key={item.id}
-                onClick={() => selectNavItem(item.name)}
+                onClick={() =>
+                  selectNavItem(
+                    setShowMainElements,
+                    productArray,
+                    item.name,
+                    setAllProducts,
+                    navigationItems,
+                    setNavigationItems
+                  )
+                }
                 name={item.name}
               >
                 {item.name}

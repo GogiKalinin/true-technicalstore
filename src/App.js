@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.sass";
 import Header from "./Components/Header/Header";
@@ -26,6 +26,7 @@ import iMacPink from "./assets/ProductImages/imacPink.jpg";
 import macBookGold from "./assets/ProductImages/macbookGold.jpg";
 import macBookGrey from "./assets/ProductImages/macbookGrey.jpg";
 import FavouriteProducts from "./Components/FavouriteProducts/FavouriteProducts";
+import { selectNavItem } from "./tools/filterCategory";
 // import { ProductPage } from "./pages/ProductPage";
 // import { NavLink, Route, Router } from "react-router-dom";
 // import { ProductPage } from "./pages/ProductPage";
@@ -304,6 +305,21 @@ const App = () => {
 
   const location = useLocation();
   console.log("location", location);
+
+  useEffect(() => {
+    const nowCategory = localStorage.getItem("nowCategory");
+    console.log("nowCategory", typeof nowCategory);
+    if (nowCategory !== null) {
+      selectNavItem(
+        setShowMainElements,
+        productArray,
+        nowCategory,
+        setAllProducts,
+        navigationItems,
+        setNavigationItems
+      );
+    }
+  }, []);
 
   return (
     <div className="App">
