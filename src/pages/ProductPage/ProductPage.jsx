@@ -36,8 +36,6 @@ export const ProductPage = (props) => {
     setActiveParagraphSwitch("Specs");
   };
 
-  const ChosenProduct = [props.moreAboutData];
-
   // const addBasketFromProductPage = () => {
   //   for (let i = 0; i < props.allProducts.length; i++) {
   //     if (props.moreAboutData.id === props.allProducts[i].id) {
@@ -53,10 +51,12 @@ export const ProductPage = (props) => {
     ]);
   };
 
-  const productColors = props.moreAboutData.colors;
+  // localStorage.setItem("productColors", JSON.stringify());
 
+  // console.log(localStorage.getItem("productColors"));
 
-  const [getImage, setGetImage] = useState(productColors[0].image);
+  // console.warn(productColors);
+  // console.log(props.moreAboutData.colors);
 
   const changeImage = (id) => {
     for (let i = 0; i < productColors.length; i++) {
@@ -65,6 +65,32 @@ export const ProductPage = (props) => {
       }
     }
   };
+
+  localStorage.setItem(
+    "favourityProducts",
+    JSON.stringify(props.moreAboutData)
+  );
+
+  // const productColors = props.moreAboutData.colors;
+
+  localStorage.setItem(
+    "choseColor",
+    JSON.stringify(props.moreAboutData.colors)
+  );
+  // console.log(JSON.parse(localStorage.getItem("choseColor")));
+
+  const productColors = JSON.parse(localStorage.getItem("choseColor"));
+  const [getImage, setGetImage] = useState(productColors[0].image);
+  // console.log(productColors);
+
+  // console.log(JSON.parse(localStorage.getItem("favourityProducts")));
+  // console.log(props.moreAboutData.colors);
+
+  const ChosenProduct = [JSON.parse(localStorage.getItem("favourityProducts"))];
+  console.log([JSON.parse(localStorage.getItem("favourityProducts"))]);
+  console.log("ChosenProduct", ChosenProduct);
+  // localStorage.setItem("favouriteTest", JSON.stringify(props.moreAboutData));
+  // console.log(localStorage.getItem("favouriteTest"));
 
   return (
     <div className="ProductPage">
@@ -145,9 +171,9 @@ export const ProductPage = (props) => {
                           return (
                             <>
                               <ChoseColor
+                                key={color.id}
                                 onClick={() => changeImage(color.id)}
                                 background={color.color}
-                                key={color.id}
                               />
                             </>
                           );

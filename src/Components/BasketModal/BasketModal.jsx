@@ -6,6 +6,7 @@ import BasketInput from "../BasketInput/BasketInput";
 import "./BasketModal.sass";
 
 const BasketModal = (props) => {
+  console.log(JSON.parse(localStorage.getItem("basketData")));
   const handleClickAway = () => {
     props.setShowBasketModal(false);
   };
@@ -41,6 +42,7 @@ const BasketModal = (props) => {
 
   const toggleBasketModalViewCleanCart = () => {
     props.setBasketData([]);
+    localStorage.removeItem("basketData");
     props.setShowBasketModal(false);
   };
 
@@ -48,12 +50,12 @@ const BasketModal = (props) => {
     props.setShowBasketModal(false);
   };
 
-  const countPrice = (currentPrice, id) => {
-    const count = searchaItemCount(id);
-    const prevPrice = currentPrice.replace("$", "").split(".")[0];
-    const resultPrice = "$" + prevPrice * count + ".00";
-    return resultPrice;
-  };
+  // const countPrice = (Prodprice, id) => {
+  //   const count = searchaItemCount(id);
+  //   const prevPrice = Prodprice.replace("$", "").split(".")[0];
+  //   const resultPrice = "$" + prevPrice * count + ".00";
+  //   return resultPrice;
+  // };
 
   const changeCounter = (id, newCount) => {
     const newBasketData = [];
@@ -83,21 +85,29 @@ const BasketModal = (props) => {
     changeCounter(id, newValue);
   };
 
+  // console.log(JSON.parse(localStorage.getItem("basketData")));
+
+  // console.log(typeof JSON.parse(localStorage.getItem("basketData"))); // объект
+  // console.log("basketData"); // [1, 2, 3]
+
+  // props.setBasketData(JSON.parse(localStorage.getItem("basketData")));
+  // console.log(props.basketData);
+
   return (
     <div className="BasketModalGeneral">
       <ClickAwayListener onClickAway={handleClickAway}>
         <div className="BasketModalContainer">
-          {props.basketData.length === 0 && modalThanks && (
+          {localStorage.getItem("basketData").length === 0 && modalThanks && (
             <div className="BasketModalEmpty">Thanks for purchase</div>
           )}
-          {props.basketData.length === 0 && !modalThanks ? (
+          {localStorage.getItem("basketData").length === 0 && !modalThanks ? (
             <div className="BasketModalEmpty">No products in cart</div>
-          ) : (
+          ) : localStorage.getItem("basketData") === null ? null : (
             <>
-              {props.basketData.map((prod) => {
+              {JSON.parse(localStorage.getItem("basketData")).map((prod) => {
                 return (
                   <div className="BasketProdContainer" key={prod.id}>
-                    <img src={prod.image} alt="img"></img>
+                    <img src={prod.images[0]} alt="img"></img>
                     <span>{prod.title.slice(0, 15)}</span>
                     {/* <h1>{prod.newPrice}</h1> */}
                     <BasketInput
@@ -109,7 +119,7 @@ const BasketModal = (props) => {
                       }
                     />
                     <div className="BasketProdContainerTotalPrice">
-                      {countPrice(prod.newPrice, prod.id)}
+                      {/* {countPrice(prod.price, prod.id)} */}
                     </div>
                     <div
                       className="BaskedProdCancel"

@@ -20,20 +20,22 @@ const NewProducts = ({
   }
 
   const showAll = () => {
-    const newNavigationItemsForShowAll = [];
     setAllProducts(productArray);
-    setShowMainElements(true);
-    for (let i = 0; i < navigationItems.length; i++) {
-      if (navigationItems[i].active === true) {
-        const newElement = { ...navigationItems[i], active: false };
-        newNavigationItemsForShowAll.push(newElement);
-      } else {
-        newNavigationItemsForShowAll.push(navigationItems[i]);
-      }
-    }
-    setNavigationItems(newNavigationItemsForShowAll);
+    // const newNavigationItemsForShowAll = [];
+    // setShowMainElements(true);
+    // for (let i = 0; i < navigationItems.length; i++) {
+    //   if (navigationItems[i].active === true) {
+    //     const newElement = { ...navigationItems[i], active: false };
+    //     newNavigationItemsForShowAll.push(newElement);
+    //   } else {
+    //     newNavigationItemsForShowAll.push(navigationItems[i]);
+    //   }
+    // }
+    // setNavigationItems(newNavigationItemsForShowAll);
+    setNavigationItems(
+      navigationItems.map((item) => ({ ...item, active: false }))
+    );
   };
-
 
   return (
     <div className="NewProducts">

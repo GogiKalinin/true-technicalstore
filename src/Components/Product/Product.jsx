@@ -8,55 +8,77 @@ import LikeActive from "../../Images/Product/likeActive.png";
 import { Link } from "react-router-dom";
 
 const Product = (props) => {
+  // console.log(JSON.parse(localStorage.getItem("localFavouritesData")));
+  // localStorage.removeItem("localFavouritesData");
   return (
     <div className="ProductContainer">
       {props.allProducts.map((prod) => {
         return (
-          <div
-            className={prod.active ? "Product Product-active" : "Product"}
-            key={prod.id}
-            // onClick={props.basketData.push(prod)}
-            // onClick={() => setClickedProduct(prod)}
-          >
+          <>
             <div
-              className="ProductImageContainer"
-              onClick={() => props.setBasketData({ ...prod, count: 1 })}
+              className={prod.active ? "Product Product-active" : "Product"}
+              key={prod.id}
+              // onClick={props.basketData.push(prod)}
+              // onClick={() => setClickedProduct(prod)}
             >
-              <img className="ProductImage" src={prod.image} alt="img"></img>
-            </div>
-            <div className="ProductRating">
-              <StarsNew />
               <div
-                className="ProductToFavourites"
-                onClick={() => props.setFavouritesData({ ...prod, count: 1 })}
+                className="ProductImageContainer"
+                onClick={() => {
+                  props.setBasketData({ ...prod, count: 1 });
+                  localStorage.setItem("basketData", JSON.stringify({ prod }));
+                }}
               >
                 <img
-                  src={
-                    prod.id === props.favouritesData.id
-                      ? LikeActive
-                      : LikeUnactive
-                  }
-                  alt=""
+                  className="ProductImage"
+                  src={prod.images[0]}
+                  alt="img"
                 ></img>
               </div>
+              <div className="ProductRating">
+                <StarsNew />
+                <div
+                  className="ProductToFavourites"
+                  onClick={() => {
+                    props.setFavouritesData({ ...prod });
+                    localStorage.setItem(
+                      "localFavouritesData",
+                      JSON.stringify("serduck")
+                    );
+                  }}
+                >
+                  <img
+                    src={
+                      prod.id === props.favouritesData.id
+                        ? LikeActive
+                        : LikeUnactive
+                    }
+                    alt=""
+                  ></img>
+                </div>
+              </div>
+              <div className="ProductDescription">
+                <p>
+                  {prod.description.length > 10
+                    ? prod.description.slice(0, 40) + "..."
+                    : prod.description}
+                </p>
+              </div>
+              <div className="ProductPrice">
+                <h3 className="OldPrice">{prod.oldPrice}</h3>
+                <h3 className="NewPrice">{prod.newPrice}</h3>
+              </div>
+              <div className="ProductButtons">
+                <Link to={"/product"}>
+                  <UniversalButton
+                    text="more about"
+                    onClick={() => {
+                      props.setMoreAboutData({ ...prod, count: 1 });
+                    }}
+                  />
+                </Link>
+              </div>
             </div>
-            <div className="ProductDescription">
-              <p>{prod.title}</p>
-            </div>
-            <div className="ProductPrice">
-              <h3 className="OldPrice">{prod.oldPrice}</h3>
-              <h3 className="NewPrice">{prod.newPrice}</h3>
-            </div>
-            <div className="ProductButtons">
-              <UniversalButton
-                text="about"
-                onClick={() => props.setMoreAboutData({ ...prod, count: 1 })}
-              />
-              <Link to={"/product"}>
-                <UniversalButton text={"about product"} />
-              </Link>
-            </div>
-          </div>
+          </>
         );
       })}
     </div>
