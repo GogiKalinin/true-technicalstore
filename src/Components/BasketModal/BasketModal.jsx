@@ -92,7 +92,9 @@ const BasketModal = (props) => {
 
   // props.setBasketData(JSON.parse(localStorage.getItem("basketData")));
   // console.log(props.basketData);
-
+  const test_basket_data = JSON.parse(localStorage.getItem('basketData'))
+  console.log(JSON.parse(localStorage.getItem('basketData')))
+  console.log(test_basket_data.prod)
   return (
     <div className="BasketModalGeneral">
       <ClickAwayListener onClickAway={handleClickAway}>
@@ -104,7 +106,7 @@ const BasketModal = (props) => {
             <div className="BasketModalEmpty">No products in cart</div>
           ) : localStorage.getItem("basketData") === null ? null : (
             <>
-              {JSON.parse(localStorage.getItem("basketData")).map((prod) => {
+              {[test_basket_data].map((prod) => {
                 return (
                   <div className="BasketProdContainer" key={prod.id}>
                     <img src={prod.images[0]} alt="img"></img>

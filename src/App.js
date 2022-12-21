@@ -27,9 +27,6 @@ import macBookGold from "./assets/ProductImages/macbookGold.jpg";
 import macBookGrey from "./assets/ProductImages/macbookGrey.jpg";
 import FavouriteProducts from "./Components/FavouriteProducts/FavouriteProducts";
 import { selectNavItem } from "./tools/filterCategory";
-// import { ProductPage } from "./pages/ProductPage";
-// import { NavLink, Route, Router } from "react-router-dom";
-// import { ProductPage } from "./pages/ProductPage";
 
 const App = () => {
   const [navigationItems, setNavigationItems] = useState([
@@ -69,7 +66,6 @@ const App = () => {
 
   useEffect(() => {
     const nowCategory = localStorage.getItem("nowCategory");
-    // console.log("nowCategory", typeof nowCategory);
     if (nowCategory !== null) {
       selectNavItem(
         setShowMainElements,
@@ -84,172 +80,6 @@ const App = () => {
       .then((res) => res.json())
       .then((res) => setData(res.products));
   }, []);
-
-  // const productArray = [
-  //   {
-  //     id: 0,
-  //     name: "ZX Spectrum",
-  //     image: Planshet,
-  //     title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-  //     oldPrice: "$499.00",
-  //     newPrice: "$499.00",
-  //     category: "Desktop PCs",
-  //     PageImage: PageImage,
-  //     colors: [
-  //       { id: 0, color: "#afeeee", image: iMacBlue },
-  //       { id: 1, color: "#ffc0cb", image: iMacPink },
-  //     ],
-  //   },
-  //   {
-  //     id: 1,
-  //     name: "ZX Spectrum",
-  //     image: Proc,
-  //     title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-  //     oldPrice: "$799.00",
-  //     newPrice: "$799.00",
-  //     category: "Desktop PCs",
-  //     PageImage: PageImage,
-  //     colors: [
-  //       { id: 0, color: "#afeeee", image: iMacBlue },
-  //       { id: 1, color: "#ffc0cb", image: iMacPink },
-  //     ],
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "ZX Spectrum",
-  //     image: Proc1,
-  //     title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-  //     oldPrice: "$999.00",
-  //     newPrice: "$999.00",
-  //     category: "Networking Devices",
-  //     PageImage: PageImage,
-  //     colors: [
-  //       { id: 0, color: "#afeeee", image: iMacBlue },
-  //       { id: 1, color: "#ffc0cb", image: iMacPink },
-  //     ],
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "ZX Spectrum",
-  //     image: Laptop1,
-  //     title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-  //     oldPrice: "$999.00",
-  //     newPrice: "$999.00",
-  //     category: "Laptops",
-  //     PageImage: PageImage,
-  //     colors: [
-  //       { id: 0, color: "#afeeee", image: iMacBlue },
-  //       { id: 1, color: "#ffc0cb", image: iMacPink },
-  //     ],
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "ZX Spectrum",
-  //     image: Laptop2,
-  //     title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-  //     oldPrice: "$999.00",
-  //     newPrice: "$999.00",
-  //     category: "Laptops",
-  //     PageImage: PageImage,
-  //     colors: [
-  //       { id: 0, color: "#afeeee", image: iMacBlue },
-  //       { id: 1, color: "#ffc0cb", image: iMacPink },
-  //     ],
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "ZX Spectrum",
-  //     image: Laptop3,
-  //     title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-  //     oldPrice: "$999.00",
-  //     newPrice: "$999.00",
-  //     category: "Laptops",
-  //     PageImage: PageImage,
-  //     colors: [
-  //       { id: 0, color: "#afeeee", image: iMacBlue },
-  //       { id: 1, color: "#ffc0cb", image: iMacPink },
-  //     ],
-  //   },
-  //   {
-  //     id: 6,
-  //     name: "ZX Spectrum",
-  //     image: Proc,
-  //     title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-  //     oldPrice: "$999.00",
-  //     newPrice: "$999.00",
-  //     category: "Repairs",
-  //     PageImage: PageImage,
-  //     colors: [
-  //       { id: 0, color: "#afeeee", image: iMacBlue },
-  //       { id: 1, color: "#ffc0cb", image: iMacPink },
-  //     ],
-  //   },
-  //   {
-  //     id: 7,
-  //     name: "ZX Spectrum",
-  //     image: Planshet,
-  //     title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-  //     oldPrice: "$999.00",
-  //     newPrice: "$999.00",
-  //     category: "Repairs",
-  //     PageImage: PageImage,
-  //     colors: [
-  //       { id: 0, color: "#afeeee", image: iMacBlue },
-  //       { id: 1, color: "#ffc0cb", image: iMacPink },
-  //     ],
-  //   },
-  //   {
-  //     id: 8,
-  //     name: "ZX Spectrum",
-  //     image: Proc,
-  //     title: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-  //     oldPrice: "$999.00",
-  //     newPrice: "$999.00",
-  //     category: "Desktop PCs",
-  //     PageImage: PageImage,
-  //     colors: [
-  //       { id: 0, color: "#afeeee", image: iMacBlue },
-  //       { id: 1, color: "#ffc0cb", image: iMacPink },
-  //     ],
-  //   },
-  //   {
-  //     id: 9,
-  //     name: "Apple MacBook Air 13",
-  //     image: macBookGold,
-  //     title: "Apple MacBook Air 13 M1 256GB 2020 (MGN63) Space Gray",
-  //     oldPrice: "$1149.00",
-  //     newPrice: "$999.00",
-  //     category: "Laptops",
-  //     PageImage: PageImage,
-  //     colors: [
-  //       { id: 0, color: "#ffee90", image: macBookGold },
-  //       { id: 1, color: "#c0c0c0", image: macBookGrey },
-  //     ],
-  //   },
-  //   {
-  //     id: 10,
-  //     name: "Apple iMac M1",
-  //     image: iMacBlue,
-  //     title: "Apple iMac 24 Custom Purple (2021) M1 Chip Z130000N7",
-  //     oldPrice: "$1800.00",
-  //     newPrice: "$1600.00",
-  //     category: "Desktop PCs",
-  //     // colors: {
-  //     //   black: {
-  //     //     color: "#000",
-  //     //     image: iMacBlue,
-  //     //   },
-  //     //   pink: {
-  //     //     color: "#010",
-  //     //     image: iMacPink,
-  //     //   },
-  //     // },
-  //     colors: [
-  //       { id: 0, color: "#afeeee", image: iMacBlue },
-  //       { id: 1, color: "#ffc0cb", image: iMacPink },
-  //     ],
-  //   },
-  // ];
 
   const productArray = data;
 
@@ -327,9 +157,7 @@ const App = () => {
 
   const location = useLocation();
   // console.log("location", location);
-
-  console.log(data);
-
+  console.log(basketData.length)
   // console.warn("data", data);
 
   useEffect(() => {
@@ -349,8 +177,6 @@ const App = () => {
       .then((res) => res.json())
       .then((res) => setData(res.products));
   }, []);
-  // console.warn("data", data);
-  // console.warn(localStorage.getItem("favourityProducts"));
 
   return (
     <div className="App">
@@ -377,7 +203,7 @@ const App = () => {
           setBasketData={setBasketData}
           setShowBasketModal={setShowBasketModal}
         />
-      ) : null}{" "}
+      ) : null}
       {showFavouriteProducts ? (
         <FavouriteProducts
           countItems={countItems}
@@ -387,7 +213,7 @@ const App = () => {
           favouritesData={favouritesData}
           setFavouritesData={setFavouritesData}
         />
-      ) : null}{" "}
+      ) : null}
       <Routes>
         <Route
           path="/product"

@@ -8,8 +8,6 @@ import LikeActive from "../../Images/Product/likeActive.png";
 import { Link } from "react-router-dom";
 
 const Product = (props) => {
-  // console.log(JSON.parse(localStorage.getItem("localFavouritesData")));
-  // localStorage.removeItem("localFavouritesData");
   return (
     <div className="ProductContainer">
       {props.allProducts.map((prod) => {
@@ -25,7 +23,7 @@ const Product = (props) => {
                 className="ProductImageContainer"
                 onClick={() => {
                   props.setBasketData({ ...prod, count: 1 });
-                  localStorage.setItem("basketData", JSON.stringify({ prod }));
+                  localStorage.setItem("basketData", JSON.stringify( prod ));
                 }}
               >
                 <img
@@ -42,7 +40,6 @@ const Product = (props) => {
                     props.setFavouritesData({ ...prod });
                     localStorage.setItem(
                       "localFavouritesData",
-                      JSON.stringify("serduck")
                     );
                   }}
                 >
@@ -73,6 +70,7 @@ const Product = (props) => {
                     text="more about"
                     onClick={() => {
                       props.setMoreAboutData({ ...prod, count: 1 });
+                      localStorage.setItem("moreAboutData", JSON.stringify( prod ));
                     }}
                   />
                 </Link>
