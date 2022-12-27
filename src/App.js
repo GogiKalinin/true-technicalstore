@@ -27,6 +27,7 @@ import macBookGold from "./assets/ProductImages/macbookGold.jpg";
 import macBookGrey from "./assets/ProductImages/macbookGrey.jpg";
 import FavouriteProducts from "./Components/FavouriteProducts/FavouriteProducts";
 import { selectNavItem } from "./tools/filterCategory";
+import { Checkout } from "./pages/Checkout/Checkout";
 
 const App = () => {
   const [navigationItems, setNavigationItems] = useState([
@@ -157,7 +158,6 @@ const App = () => {
 
   const location = useLocation();
   // console.log("location", location);
-  console.log(basketData.length)
   // console.warn("data", data);
 
   useEffect(() => {
@@ -224,6 +224,8 @@ const App = () => {
               productArray={productArray}
               moreAboutData={moreAboutData}
               allProducts={allProducts}
+              setShowBasketModal={setShowBasketModal}
+              showBasketModal={showBasketModal}
             />
           }
         />
@@ -250,6 +252,7 @@ const App = () => {
         />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </div>
@@ -292,6 +295,8 @@ export default App;
 //.split
 //onClick={() => removeFromBasket(prod.id)}
 // newBasketData.push({ ...props.basketData[i], count: newCount });
+// onClick={()=>addBasketFromProductPage()}
+
 
 // УНИВЕРСАЛЬНОЕ ПОСОБИЕ ПО ПУШУ НА ГИТ [ХАБ]
 
@@ -333,4 +338,6 @@ export default App;
 //
 //
 //
-//
+//const setLocalBasket = (prod) => {
+//  
+// }
