@@ -8,6 +8,43 @@ import LikeActive from "../../Images/Product/likeActive.png";
 import { Link } from "react-router-dom";
 
 const Product = (props) => {
+
+  const setLocalBasket = (prod) => {
+    const storageBasketData = localStorage.getItem("basketData");
+    console.log('storageBasketData', storageBasketData)
+    if (storageBasketData !== null) {
+      console.log('first')
+      const test = JSON.parse(storageBasketData);
+      const resultArr = [];
+      const uniqueProducts = test.filter((item) => item.id !== prod.id);
+      if (uniqueProducts.length !== test.length) {
+        resultArr.push([...uniqueProducts, {prod, count: 1}]);
+      } else {
+        resultArr.push([
+          test.map((item) =>
+            item.id === prod.id
+              ? { ...item, count: item.count + 1 }
+              : { ...item }
+          ),
+        ]);
+      }
+      console.warn('resultArr if localStorage not empty', resultArr)
+      localStorage.setItem("basketData",
+      JSON.stringify(resultArr)
+      );
+      props.setBasketData(resultArr);
+      console.warn(test);
+    } else {
+      console.log('second')
+      localStorage.setItem(
+        "basketData",
+        JSON.stringify([{...prod, count: 1}])
+        );
+        props.setBasketData([{...prod, count: 1}]);
+      }
+      console.warn('[{...prod, count: 1}] if localStorage empty', [{...prod, count: 1}])
+  };
+
   return (
     <div className="ProductContainer">
       {props.allProducts.map((prod) => {
@@ -16,14 +53,11 @@ const Product = (props) => {
             <div
               className={prod.active ? "Product Product-active" : "Product"}
               key={prod.id}
-              // onClick={props.basketData.push(prod)}
-              // onClick={() => setClickedProduct(prod)}
             >
               <div
                 className="ProductImageContainer"
                 onClick={() => {
-                  props.setBasketData({ ...prod, count: 1 });
-                  localStorage.setItem("basketData", JSON.stringify( prod ));
+                  setLocalBasket(prod);
                 }}
               >
                 <img
@@ -38,9 +72,7 @@ const Product = (props) => {
                   className="ProductToFavourites"
                   onClick={() => {
                     props.setFavouritesData({ ...prod });
-                    localStorage.setItem(
-                      "localFavouritesData",
-                    );
+                    localStorage.setItem("localFavouritesData");
                   }}
                 >
                   <img
@@ -70,7 +102,10 @@ const Product = (props) => {
                     text="more about"
                     onClick={() => {
                       props.setMoreAboutData({ ...prod, count: 1 });
-                      localStorage.setItem("moreAboutData", JSON.stringify( prod ));
+                      localStorage.setItem(
+                        "moreAboutData",
+                        JSON.stringify(prod)
+                      );
                     }}
                   />
                 </Link>
