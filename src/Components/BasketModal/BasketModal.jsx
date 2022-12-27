@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
+import { Link } from "react-router-dom";
 import { Cancel } from "../../Images/Product/ProductImages";
 import BasketButton from "../BasketButton/BasketButton";
 import BasketInput from "../BasketInput/BasketInput";
@@ -31,11 +32,9 @@ const BasketModal = (props) => {
   const [modalThanks, setModalThanks] = useState(false);
 
   const toggleBasketModalViewIfPurchase = () => {
-    setModalThanks(true);
-    props.setBasketData([]);
     setTimeout(() => {
       props.setShowBasketModal(false);
-    }, 3000);
+    }, 500);
   };
 
   // const [clearShoppingCart, setClearShoppingCart] = useState(false);
@@ -92,9 +91,10 @@ const BasketModal = (props) => {
 
   // props.setBasketData(JSON.parse(localStorage.getItem("basketData")));
   // console.log(props.basketData);
-  const test_basket_data = JSON.parse(localStorage.getItem('basketData'))
-  console.log(JSON.parse(localStorage.getItem('basketData')))
-  console.log(test_basket_data.prod)
+  const test_basket_data = JSON.parse(localStorage.getItem("basketData"));
+  console.log(JSON.parse(localStorage.getItem("basketData")));
+  const newTestBasketData = test_basket_data;
+  console.warn("newTestBasketData", newTestBasketData);
   return (
     <div className="BasketModalGeneral">
       <ClickAwayListener onClickAway={handleClickAway}>
@@ -106,12 +106,12 @@ const BasketModal = (props) => {
             <div className="BasketModalEmpty">No products in cart</div>
           ) : localStorage.getItem("basketData") === null ? null : (
             <>
-              {[test_basket_data].map((prod) => {
+              {newTestBasketData.map((prod) => {
                 return (
                   <div className="BasketProdContainer" key={prod.id}>
                     <img src={prod.images[0]} alt="img"></img>
                     <span>{prod.title.slice(0, 15)}</span>
-                    {/* <h1>{prod.newPrice}</h1> */}
+                    <h1>{prod.newPrice}</h1>
                     <BasketInput
                       onChange={(event) => changeInput(prod.id, event)}
                       number={prod.count}
@@ -148,14 +148,16 @@ const BasketModal = (props) => {
                       onClick={toggleBasketModalViewCleanCart}
                     />
                   </div>
-                  <BasketButton
-                    text={"Purchase"}
-                    onClick={toggleBasketModalViewIfPurchase}
-                  />
+                  <Link to="/checkout" className="ContactUsInform">
+                    <BasketButton
+                      text={"Continue Purchase"}
+                      onClick={toggleBasketModalViewIfPurchase}
+                    />
+                  </Link>
                 </div>
               )}
             </>
-          )}{" "}
+          )}
         </div>
       </ClickAwayListener>
     </div>
