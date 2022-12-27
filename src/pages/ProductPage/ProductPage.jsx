@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BasketInput from "../../Components/BasketInput/BasketInput";
 import ChoseColor from "../../Components/ChoseColor/ChoseColor";
+import MyBannerSlider from "../../Components/MyBannerSlider/MyBannerSlider";
 import UniversalButton from "../../Components/UniversalButton/UniversalButton";
 import {
   Bezh,
@@ -21,8 +22,6 @@ export const ProductPage = (props) => {
 
   const [choseColor, setChoseColor] = useState();
 
-  const viewChosenColor = () => {};
-
   const ChangeParagraphAboutProduct = () => {
     setChangeParagraph("About Product");
     setActiveParagraphSwitch("About Product");
@@ -36,73 +35,35 @@ export const ProductPage = (props) => {
     setActiveParagraphSwitch("Specs");
   };
 
-  // const addBasketFromProductPage = () => {
-  //   for (let i = 0; i < props.allProducts.length; i++) {
-  //     if (props.moreAboutData.id === props.allProducts[i].id) {
-  //       props.setBasketData(props.allProducts[i]);
-  //     }
-  //   }
-  // };
-
-  const addBasketFromProductPage = () => {
-    props.setBasketData([
-      ...props.basketData,
-      { ...props.moreAboutData, count: 1 },
-    ]);
-  };
-
-  // localStorage.setItem("productColors", JSON.stringify());
-
-  // console.log(localStorage.getItem("productColors"));
-
-  // console.warn(productColors);
-  // console.log(props.moreAboutData.colors);
-
-  // const changeImage = (id) => {
-  //   for (let i = 0; i < productColors.length; i++) {
-  //     if (id === productColors[i].id) {
-  //       setGetImage(productColors[i].image);
-  //     }
-  //   }
-  // };
-
   localStorage.setItem(
     "favourityProducts",
     JSON.stringify(props.moreAboutData)
   );
 
-  // const productColors = props.moreAboutData.colors;
-
   localStorage.setItem(
     "choseColor",
     JSON.stringify(props.moreAboutData.colors)
   );
-  // console.log(JSON.parse(localStorage.getItem("choseColor")));
 
-  // const productColors = JSON.parse(localStorage.getItem("choseColor"));
-  // const [getImage, setGetImage] = useState(productColors[0].image);
-  // console.log(productColors);
-
-  // console.log(JSON.parse(localStorage.getItem("favourityProducts")));
-  // console.log(props.moreAboutData.colors);
-  const ChosenProduct = [JSON.parse(localStorage.getItem("favourityProducts"))];
-  console.log([JSON.parse(localStorage.getItem("favourityProducts"))]);
-  console.log("ChosenProduct", ChosenProduct);
-  // localStorage.setItem("favouriteTest", JSON.stringify(props.moreAboutData));
-  // console.log(localStorage.getItem("favouriteTest"));
-  console.log(JSON.parse(localStorage.getItem("moreAboutData")))
   const test_more_about_data = JSON.parse(localStorage.getItem('moreAboutData'))
-  console.log(JSON.parse(localStorage.getItem('basketData')))
-  const getMoreAboutDataImages = () => {
-    return (
-      <div className="ProductPageImagesContainer">
-        {[test_more_about_data].map((img) => {
-          <div className="ProductPageImagesItem">{img.images}</div>
-        })}
-      </div>
-    )
+
+  const addBasketFromProductPage = () => {
+    props.setShowBasketModal(true);
   }
-  console.log(test_more_about_data.images)
+  // const setLocalBasket = (prod) => {
+  //   props.setBasketData({ ...prod, count: 1 });
+  //   localStorage.setItem("basketData", JSON.stringify([ prod ]));
+  //   console.log(JSON.parse(localStorage.getItem("basketData")))
+  //   console.log(props.basketData)
+  //   const test = JSON.parse(localStorage.getItem("basketData"))
+  //   for (let i = 0; i < test.length; i++) {
+  //     if (test[i].id !== prod.id) {
+  //       test.push(prod)
+  //     }    
+  //   }
+  //   localStorage.setItem("basketData", JSON.stringify(props.basketData))
+  //   console.log('basketData', JSON.parse(localStorage.getItem("basketData")))
+  // }
 
   return (
     <div className="ProductPage">
@@ -151,7 +112,8 @@ export const ProductPage = (props) => {
                 <BasketInput />
                 <UniversalButton
                   text="Add to Cart"
-                  onClick={addBasketFromProductPage}
+                  onClick={()=>addBasketFromProductPage()}
+                  // onClick={setLocalBasket(prod)}
                 />
               </div>
             </div>
@@ -270,12 +232,13 @@ export const ProductPage = (props) => {
                       {Mail}
                     </div>
                   </div>
-                  {getMoreAboutDataImages()}
-                  <img
+                  {/* {getMoreAboutDataImages()} */}
+                  {/* <img
                     className="ProductPageProductVisualImage"
                     src={prod.images[3]}
                     alt={props.moreAboutData.name}
-                  ></img>
+                  ></img> */}
+                   <MyBannerSlider bannerImages = {prod.images}/>
                 </div>
                 <div className="ProductPageViualBottom">
                   {Zip}

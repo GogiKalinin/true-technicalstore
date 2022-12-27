@@ -8,9 +8,9 @@ import Image5 from "../../Images/MyBannerSlider/image5.png";
 
 import { NewArrow } from "../../Images/MyBannerSlider/MyBannerSlider";
 
-const MyBannerSlider = () => {
-  const bannerImages = [Image1, Image2, Image3, Image4, Image5];
-
+const MyBannerSlider = (bannerImages) => {
+  // const bannerImages = [Image1, Image2, Image3, Image4, Image5];
+  // console.log(bannerImages)
   const [currentImage, setCurrentImage] = useState(bannerImages[0]);
 
   const func = () => {
