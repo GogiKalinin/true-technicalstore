@@ -49,11 +49,29 @@ const Product = (props) => {
     <div className="ProductContainer">
       {props.allProducts.map((prod) => {
         return (
-          <>
+          <Link to={"/product"}>
             <div
               className={prod.active ? "Product Product-active" : "Product"}
               key={prod.id}
             >
+                <div
+                  className="ProductToFavourites"
+                  onClick={() => {
+                    props.setFavouritesData({ ...prod });
+                    localStorage.setItem("localFavouritesData");
+                  }}
+                >
+                  <div></div>
+                  <div className="ProductToFavouritesImageContainer">
+                    <img
+                      src={
+                        prod.id === props.favouritesData.id
+                          ? LikeActive
+                          : LikeUnactive
+                      }
+                    ></img>
+                  </div>
+                </div>
               <div
                 className="ProductImageContainer"
                 onClick={() => {
@@ -63,27 +81,11 @@ const Product = (props) => {
                 <img
                   className="ProductImage"
                   src={prod.images[0]}
-                  alt="img"
+                  alt={prod.title}
                 ></img>
               </div>
               <div className="ProductRating">
                 <StarsNew />
-                <div
-                  className="ProductToFavourites"
-                  onClick={() => {
-                    props.setFavouritesData({ ...prod });
-                    localStorage.setItem("localFavouritesData");
-                  }}
-                >
-                  <img
-                    src={
-                      prod.id === props.favouritesData.id
-                        ? LikeActive
-                        : LikeUnactive
-                    }
-                    alt=""
-                  ></img>
-                </div>
               </div>
               <div className="ProductDescription">
                 <p>
@@ -92,26 +94,10 @@ const Product = (props) => {
                     : prod.description}
                 </p>
               </div>
-              <div className="ProductPrice">
-                <h3 className="OldPrice">{prod.oldPrice}</h3>
-                <h3 className="NewPrice">{prod.newPrice}</h3>
-              </div>
               <div className="ProductButtons">
-                <Link to={"/product"}>
-                  <UniversalButton
-                    text="more about"
-                    onClick={() => {
-                      props.setMoreAboutData({ ...prod, count: 1 });
-                      localStorage.setItem(
-                        "moreAboutData",
-                        JSON.stringify(prod)
-                      );
-                    }}
-                  />
-                </Link>
               </div>
             </div>
-          </>
+          </Link>
         );
       })}
     </div>

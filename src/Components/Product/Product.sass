@@ -25,13 +25,15 @@
 .Product
   display: flex
   flex-direction: column
-  width: 234px
+  width: 200px
+  margin-bottom: 30px
 
 .ProductImageContainer
   display: flex
   align-items: center
   justify-content: center
-  height: 250px
+  max-height: 200px
+  min-height: 200px
   width: 184px
 
 .ProductImage
@@ -45,40 +47,35 @@
   line-height: 20px
   color: #000000
 
-.ProductDescription,
-.ProductPrice
+.ProductDescription
   display: flex
-  margin-left: 24.5px
-  margin-right: 24.5px
   width: 184px
   height: 75px
-  justify-content: center
   flex-direction: column
+  p
+    font-family: 'Poppins'
+    font-style: normal
+    font-weight: 400
+    font-size: 13px
+    line-height: 20px
+    display: flex
+    align-items: flex-end
+    color: #000000
+    flex: none
+    order: 4
+    align-self: center
+    flex-grow: 0
+    text-decoration: none
 
-.OldPrice
-  text-decoration: line-through
-  font-family: 'Poppins'
-  font-style: normal
-  font-weight: 400
-  font-size: 14px
-  line-height: 140%
-  color: #666666
-  padding: 0 0 0 0
-  margin: 0 0 0 0
+    
+.ProductDescription:hover
+  // text-decoration: underline
 
-.NewPrice
-  font-size: 18px
-  font-weight: 600
-  padding: 0 0 0 0
-  margin: 0 0 0 0
-  padding-bottom: 20px
-  padding-top: 10px
 
 .ProductRating
   cursor: pointer
   display: flex
   align-items: center
-  justify-content: center
 
 .ProductPrice p
   font-weight: 600
@@ -87,8 +84,8 @@
   color: #000000
 
 .ProductImage
-  height: 40%
-  width: 80%
+  width: 70%
+  height: 70%
 
 .ProductButtons
   display: flex
@@ -96,9 +93,13 @@
   flex-direction: column
 
 .ProductToFavourites
+  display: flex
   height: 20px
-  width: 30px
+  width: 100%
+  justify-content: space-between
 
-.ProductToFavourites img
-  height: 20px
+.ProductToFavouritesImageContainer
   width: 20px
+  img
+    height: 20px
+    width: 20px
