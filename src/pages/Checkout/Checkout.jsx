@@ -1,6 +1,7 @@
 import React from "react";
 import DigitalButton from "../../Components/atoms/DigitalButton/DigitalButton";
 import { DigitalInput } from "../../Components/atoms/DigitalInput/DigitalInput";
+import { DigitalRadio } from "../../Components/atoms/DigitalRadio/DigitalRadio";
 import { MiniBasket } from "../../Components/molecules/MiniBasket/MiniBasket";
 import "./Checkout.sass";
 
@@ -25,6 +26,7 @@ export const Checkout = () => {
             <DigitalInput text="Country" />
             <DigitalInput text="Phone Number" />
           </div>
+          <DigitalRadio />
         </div>
         <div className="CheckoutRight">
           <MiniBasket />
