@@ -30,6 +30,7 @@
 
 .ProductImageContainer
   display: flex
+  align-self: center
   align-items: center
   justify-content: center
   max-height: 200px
@@ -52,30 +53,31 @@
   width: 184px
   height: 75px
   flex-direction: column
-  p
-    font-family: 'Poppins'
-    font-style: normal
-    font-weight: 400
-    font-size: 13px
-    line-height: 20px
-    display: flex
-    align-items: flex-end
-    color: #000000
-    flex: none
-    order: 4
-    align-self: center
-    flex-grow: 0
-    text-decoration: none
+  padding-left: 20px
+  padding-right: 20px
 
+.ProductDescriptionText
+  font-family: 'Poppins'
+  font-style: normal
+  font-weight: 400
+  font-size: 13px
+  line-height: 20px
+  display: flex
+  align-items: flex-end
+  color: #000000
+  text-decoration: none
     
 .ProductDescription:hover
-  // text-decoration: underline
+  text-decoration: underline
 
 
 .ProductRating
   cursor: pointer
   display: flex
   align-items: center
+  justify-content: space-between
+  padding-left: 20px
+  padding-right: 20px
 
 .ProductPrice p
   font-weight: 600
@@ -95,7 +97,6 @@
 .ProductToFavourites
   display: flex
   height: 20px
-  width: 100%
   justify-content: space-between
 
 .ProductToFavouritesImageContainer

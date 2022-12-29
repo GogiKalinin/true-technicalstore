@@ -46,14 +46,30 @@ const Product = (props) => {
   };
 
   return (
-    <div className="ProductContainer">
+    <div className="ProductContainer" >
       {props.allProducts.map((prod) => {
         return (
           <Link to={"/product"}>
             <div
               className={prod.active ? "Product Product-active" : "Product"}
               key={prod.id}
+              onClick={() => localStorage.setItem('moreAboutData', JSON.stringify(prod))}
             >
+                
+              <div
+                className="ProductImageContainer"
+                onClick={() => {
+                  setLocalBasket(prod);
+                }}
+              >
+                <img
+                  className="ProductImage"
+                  src={prod.images[0]}
+                  alt={prod.title}
+                ></img>
+              </div>
+              <div className="ProductRating">
+                <StarsNew />
                 <div
                   className="ProductToFavourites"
                   onClick={() => {
@@ -72,27 +88,13 @@ const Product = (props) => {
                     ></img>
                   </div>
                 </div>
-              <div
-                className="ProductImageContainer"
-                onClick={() => {
-                  setLocalBasket(prod);
-                }}
-              >
-                <img
-                  className="ProductImage"
-                  src={prod.images[0]}
-                  alt={prod.title}
-                ></img>
-              </div>
-              <div className="ProductRating">
-                <StarsNew />
               </div>
               <div className="ProductDescription">
-                <p>
+                <h2 className="ProductDescriptionText">
                   {prod.description.length > 10
                     ? prod.description.slice(0, 40) + "..."
                     : prod.description}
-                </p>
+                </h2>
               </div>
               <div className="ProductButtons">
               </div>
