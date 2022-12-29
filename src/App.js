@@ -179,83 +179,83 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      <Header
-        productArray={productArray}
-        allProducts={allProducts}
-        setAllProducts={setAllProducts}
-        setShowBasketModal={setShowBasketModal}
-        showBasketModal={showBasketModal}
-        setShowNavbarModul={setShowNavbarModul}
-        showNavbarModul={showNavbarModul}
-        basketDataLength={basketData.length ? true : false}
-        navigationItems={navigationItems}
-        setNavigationItems={setNavigationItems}
-        setShowMainElements={setShowMainElements}
-        showMainElements={showMainElements}
-        showFavouriteProducts={showFavouriteProducts}
-        setShowFavouriteProducts={setShowFavouriteProducts}
-      />
-      {showBasketModal ? (
-        <BasketModal
-          countItems={countItems}
-          basketData={basketData}
-          setBasketData={setBasketData}
+      <div className="App">
+        <Header
+          productArray={productArray}
+          allProducts={allProducts}
+          setAllProducts={setAllProducts}
           setShowBasketModal={setShowBasketModal}
-        />
-      ) : null}
-      {showFavouriteProducts ? (
-        <FavouriteProducts
-          countItems={countItems}
-          basketData={basketData}
-          setBasketData={setBasketData}
+          showBasketModal={showBasketModal}
+          setShowNavbarModul={setShowNavbarModul}
+          showNavbarModul={showNavbarModul}
+          basketDataLength={basketData.length ? true : false}
+          navigationItems={navigationItems}
+          setNavigationItems={setNavigationItems}
+          setShowMainElements={setShowMainElements}
+          showMainElements={showMainElements}
+          showFavouriteProducts={showFavouriteProducts}
           setShowFavouriteProducts={setShowFavouriteProducts}
-          favouritesData={favouritesData}
-          setFavouritesData={setFavouritesData}
         />
-      ) : null}
-      <Routes>
-        <Route
-          path="/product"
-          element={
-            <ProductPage
-              basketData={basketData}
-              setBasketData={setBasketData}
-              productArray={productArray}
-              moreAboutData={moreAboutData}
-              allProducts={allProducts}
-              setShowBasketModal={setShowBasketModal}
-              showBasketModal={showBasketModal}
-            />
-          }
-        />
-        <Route
-          path="/"
-          element={
-            <Home
-              showMainElements={showMainElements}
-              navigationItems={navigationItems}
-              setAllProducts={setAllProducts}
-              productArray={productArray}
-              setShowMainElements={setShowMainElements}
-              setNavigationItems={setNavigationItems}
-              basketData={basketData}
-              addNewToBusket={addNewToBusket}
-              allProducts={allProducts}
-              moreAboutData={moreAboutData}
-              setMoreAboutData={setMoreAboutData}
-              favouritesData={favouritesData}
-              setFavouritesData={setFavouritesData}
-              addNewToFavourites={addNewToFavourites}
-            />
-          }
-        />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/checkout" element={<Checkout />} />
-      </Routes>
-      <Footer />
-    </div>
+        {showBasketModal ? (
+          <BasketModal
+            countItems={countItems}
+            basketData={basketData}
+            setBasketData={setBasketData}
+            setShowBasketModal={setShowBasketModal}
+          />
+        ) : null}
+        {showFavouriteProducts ? (
+          <FavouriteProducts
+            countItems={countItems}
+            basketData={basketData}
+            setBasketData={setBasketData}
+            setShowFavouriteProducts={setShowFavouriteProducts}
+            favouritesData={favouritesData}
+            setFavouritesData={setFavouritesData}
+          />
+        ) : null}
+        <Routes>
+          <Route
+            path="/product"
+            element={
+              <ProductPage
+                basketData={basketData}
+                setBasketData={setBasketData}
+                productArray={productArray}
+                moreAboutData={moreAboutData}
+                allProducts={allProducts}
+                setShowBasketModal={setShowBasketModal}
+                showBasketModal={showBasketModal}
+              />
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <Home
+                showMainElements={showMainElements}
+                navigationItems={navigationItems}
+                setAllProducts={setAllProducts}
+                productArray={productArray}
+                setShowMainElements={setShowMainElements}
+                setNavigationItems={setNavigationItems}
+                basketData={basketData}
+                addNewToBusket={addNewToBusket}
+                allProducts={allProducts}
+                moreAboutData={moreAboutData}
+                setMoreAboutData={setMoreAboutData}
+                favouritesData={favouritesData}
+                setFavouritesData={setFavouritesData}
+                addNewToFavourites={addNewToFavourites}
+              />
+            }
+          />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+        <Footer />
+      </div>
   );
 };
 
