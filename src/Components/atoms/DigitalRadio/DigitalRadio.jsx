@@ -5,22 +5,22 @@ import {
 } from "../../../Images/atomsImages/DigitalRadio";
 import "./DigitalRadio.sass";
 
-export const DigitalRadio = () => {
+export const DigitalRadio = ({title, image, conditions, price}) => {
   return (
     <div className="DigitalRadio">
-      <div className="DigitalRadioTitle">asdfasdf</div>
+      <div className="DigitalRadioTitle">{title}</div>
       <div className="DigitalRadioMain">
         <div className="DigitalRadioConditions">
             <div className="DigitalRadioConditionsRadio">
-                {unactiveRadio}
+                {image}
             </div>
             <div className="DigitalRadioConditionsText">
-                conditions 
+                {conditions} 
             </div>
             
         </div>
         <div className="DigitalRadioPrice">
-            $100
+            {price}
         </div>
       </div>
 
