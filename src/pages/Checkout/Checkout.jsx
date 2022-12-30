@@ -7,6 +7,10 @@ import { activeRadio, unactiveRadio } from "../../Images/atomsImages/DigitalRadi
 import "./Checkout.sass";
 
 export const Checkout = () => {
+  const listArray = [
+    {id:1, name: 'sercuk'},
+    {id:2, name: 'zhenia'},
+  ]
   return (
     <div className="CheckoutContainer">
       <div className="CheckoutTop">
@@ -27,9 +31,9 @@ export const Checkout = () => {
             <DigitalInput text="Company" />
             <DigitalInput text="Street Address" />
             <DigitalInput text="City" />
-            <DigitalInput text="State/Province" />
+            <DigitalInput  dropdown listArray={listArray}/>
             <DigitalInput text="Zip/Postal Code" />
-            <DigitalInput text="Country" />
+            <DigitalInput  dropdown listArray={listArray}/>
             <DigitalInput text="Phone Number" />
           </div>
           <DigitalRadio title='Standard Rate' image={activeRadio} conditions='Price may vary depending on the item/destination. Shop Staff will contact you. $21.00' price='$21.00'/>
