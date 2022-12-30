@@ -10,6 +10,7 @@ const DigitalButton = (props) => {
       border: props.border ? props.border : '1px solid #0156FF',
       width: props.width ? props.width : '208px',
       height: props.height ? props.height : '50px',
+      textTransform: props.uppercase ? 'uppercase' : 'none'
     }}>
       {props.text}
     </button>
