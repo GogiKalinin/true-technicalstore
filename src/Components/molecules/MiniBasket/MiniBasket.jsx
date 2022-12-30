@@ -14,7 +14,6 @@ export const MiniBasket = () => {
     );
   };
   const mini_basket_data = JSON.parse(localStorage.getItem("basketData"));
-  console.log(mini_basket_data);
   const [showBasketProducts, setShowBasketProducts] = useState(true);
   return (
     <div className="MiniBasket">

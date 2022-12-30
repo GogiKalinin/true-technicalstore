@@ -9,8 +9,8 @@ export const BasketArrow = (
     <path
       d="M1 4L3 2L5 4"
       stroke="black"
-      stroke-width="1.6"
-      stroke-linecap="round"
+      strokeWidth="1.6"
+      strokeLinecap="round"
     />
   </svg>
 );

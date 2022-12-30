@@ -12,7 +12,7 @@ export const activeRadio = (
       r="9.5"
       fill="white"
       stroke="#0156FF"
-      stroke-width="2"
+      strokeWidth="2"
     />
     <circle cx="10.5" cy="10.5" r="6.5" fill="#0156FF" />
   </svg>
@@ -31,7 +31,7 @@ export const unactiveRadio = (
       r="9.5"
       fill="white"
       stroke="#0156FF"
-      stroke-width="2"
+      strokeWidth="2"
     />
   </svg>
 );
