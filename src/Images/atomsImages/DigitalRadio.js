@@ -17,6 +17,7 @@ export const activeRadio = (
     <circle cx="10.5" cy="10.5" r="6.5" fill="#0156FF" />
   </svg>
 );
+
 export const unactiveRadio = (
   <svg
     width="21"
