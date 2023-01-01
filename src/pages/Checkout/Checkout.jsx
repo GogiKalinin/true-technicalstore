@@ -31,9 +31,9 @@ export const Checkout = () => {
             <DigitalInput text="Company" />
             <DigitalInput text="Street Address" />
             <DigitalInput text="City" />
-            <DigitalInput  dropdown listArray={listArray}/>
+            <DigitalInput text='State/Province' dropdown listArray={listArray}/>
             <DigitalInput text="Zip/Postal Code" />
-            <DigitalInput  dropdown listArray={listArray}/>
+            <DigitalInput text='Country' dropdown listArray={listArray}/>
             <DigitalInput text="Phone Number" />
           </div>
           <DigitalRadio title='Standard Rate' image={activeRadio} conditions='Price may vary depending on the item/destination. Shop Staff will contact you. $21.00' price='$21.00'/>
