@@ -8,8 +8,76 @@ import "./Checkout.sass";
 
 export const Checkout = () => {
   const listArray = [
-    {id:1, name: 'sercuk'},
-    {id:2, name: 'zhenia'},
+    {
+      id: 0,
+      title: "Email Address*",
+      name: "email",
+      type: "text",
+      dropdown: false,
+    },
+    {
+      id: 1,
+      title: "First Name",
+      name: "code",
+      type: "text",
+      dropdown: false,
+    },
+    {
+      id: 2,
+      title: "Last Name",
+      name: "password",
+      type: "password",
+      dropdown: false,
+    },
+    {
+      id: 3,
+      title: "Company",
+      name: "password_confirm",
+      type: "password",
+      dropdown: false,
+    },
+    {
+      id: 4,
+      title: "Street Address",
+      name: "password_confirm",
+      type: "password",
+      dropdown: false,
+    },
+    {
+      id: 5,
+      title: "City",
+      name: "password_confirm",
+      type: "password",
+      dropdown: false,
+    },
+    {
+      id: 6,
+      title: "State/Province",
+      name: "password_confirm",
+      type: "password",
+      dropdown: true,
+    },
+    {
+      id: 7,
+      title: "Zip/Postal Code",
+      name: "password_confirm",
+      type: "password",
+      dropdown: false,
+    },
+    {
+      id: 8,
+      title: "Country",
+      name: "password_confirm",
+      type: "password",
+      dropdown: true,
+    },
+    {
+      id: 9,
+      title: "Phone Number",
+      name: "password_confirm",
+      type: "password",
+      dropdown: false,
+    },
   ]
   return (
     <div className="CheckoutContainer">
@@ -25,16 +93,20 @@ export const Checkout = () => {
       <div className="CheckoutMain">
         <div className="CheckoutLeft">
           <div className="CheckoutLeftInputsContainer">
-            <DigitalInput text="Email Address" />
-            <DigitalInput text="First Name" />
-            <DigitalInput text="Last Name" />
-            <DigitalInput text="Company" />
-            <DigitalInput text="Street Address" />
-            <DigitalInput text="City" />
-            <DigitalInput text='State/Province' dropdown listArray={listArray}/>
-            <DigitalInput text="Zip/Postal Code" />
-            <DigitalInput text='Country' dropdown listArray={listArray}/>
-            <DigitalInput text="Phone Number" />
+            {listArray.map((arr) => {
+              return (
+            <DigitalInput title={arr.title} dropdown={arr.dropdown} type={arr.type}/>
+            )
+          })}
+          {/* <DigitalInput text="First Name" />
+          <DigitalInput text="Last Name" />
+          <DigitalInput text="Company" />
+          <DigitalInput text="Street Address" />
+          <DigitalInput text="City" />
+          <DigitalInput text='State/Province' dropdown listArray={listArray}/>
+          <DigitalInput text="Zip/Postal Code" />
+          <DigitalInput text='Country' dropdown listArray={listArray}/>
+          <DigitalInput text="Phone Number" /> */}
           </div>
           <DigitalRadio title='Standard Rate' image={activeRadio} conditions='Price may vary depending on the item/destination. Shop Staff will contact you. $21.00' price='$21.00'/>
           <DigitalRadio title='Pickup from store' image={unactiveRadio} conditions='1234 Street Adress City Address, 1234' price='$0.00'/>
