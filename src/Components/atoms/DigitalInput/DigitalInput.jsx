@@ -3,16 +3,8 @@ import { useState } from "react";
 import { InputArrow } from "../../../Images/Product/ProductImages";
 import "./DigitalInput.sass";
 
-export const DigitalInput = ({ 
-  title, 
-  dropdown, 
-  type,
-  height, 
-  width, 
- }) => {
+export const DigitalInput = ({ title, dropdown, type, height, width }) => {
   const [openDropdownList, setOpenDropdownList] = useState(false);
-
-  
 
   //функция по поиску клацнутого варианта списка
   //и помещению оного в див DigitalInputDropdownModeMain
@@ -40,7 +32,7 @@ export const DigitalInput = ({
             {title}
             <span>*</span>
           </h1>
-            {/* )
+          {/* )
           })} */}
           <div
             className="DigitalInputDropdownModeMain"
@@ -65,32 +57,32 @@ export const DigitalInput = ({
           {openDropdownList && (
             <div className="DigitalInputDropdownModeMainList">
               {/* {listArray.map((test) => { */}
-                 {/* return (  */}
-                  <div
-                    className="DigitalInputDropdownModeMainListItem"
-                    // key={test.id}
-                    // onClick={() => choseListVariant(test.id)}
-                  >
-                    {/* <p>{test.name}</p>  */}
-                  </div>
-                 {/* );  */}
-               {/* })}  */}
+              {/* return (  */}
+              <div
+                className="DigitalInputDropdownModeMainListItem"
+                // key={test.id}
+                // onClick={() => choseListVariant(test.id)}
+              >
+                {/* <p>{test.name}</p>  */}
+              </div>
+              {/* );  */}
+              {/* })}  */}
             </div>
           )}
         </div>
       ) : (
         <div className="DigitalInput">
           {/* {listArray.map((test) => { */}
-            {/* return ( */}
-              <>
-                <h1 className="DigitalInputTitle">
-                  {title}
-                  <span>*</span>
-                </h1>
-                <input className="DigitalInputInput" style={{}}></input>
-              </>
-             {/* );  */}
-           {/* })}  */}
+          {/* return ( */}
+          <>
+            <h1 className="DigitalInputTitle">
+              {title}
+              <span>*</span>
+            </h1>
+            <input className="DigitalInputInput" style={{}}></input>
+          </>
+          {/* );  */}
+          {/* })}  */}
         </div>
       )}
     </>
