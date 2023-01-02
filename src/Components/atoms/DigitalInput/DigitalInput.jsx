@@ -11,6 +11,9 @@ export const DigitalInput = ({
   width, 
  }) => {
   const [openDropdownList, setOpenDropdownList] = useState(false);
+
+  
+
   //функция по поиску клацнутого варианта списка
   //и помещению оного в див DigitalInputDropdownModeMain
   //с дальнейшим сохранием в localStorage
