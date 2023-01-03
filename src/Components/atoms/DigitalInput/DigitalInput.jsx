@@ -1,9 +1,10 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { InputArrow } from "../../../Images/Product/ProductImages";
 import "./DigitalInput.sass";
 
-export const DigitalInput = ({ title, dropdown, type, height, width }) => {
+export const DigitalInput = ({ title, dropdown, type, id, height, width, onChange, value }) => {
   const [openDropdownList, setOpenDropdownList] = useState(false);
 
   //функция по поиску клацнутого варианта списка
@@ -79,7 +80,14 @@ export const DigitalInput = ({ title, dropdown, type, height, width }) => {
               {title}
               <span>*</span>
             </h1>
-            <input className="DigitalInputInput" style={{}}></input>
+            <input
+              className="DigitalInputInput"
+              type="text"
+              id={id}
+              value={value}
+              onChange={onChange}
+            ></input>
+            {/* <button onClick={() => getInputValue()}>check</button> */}
           </>
           {/* );  */}
           {/* })}  */}
