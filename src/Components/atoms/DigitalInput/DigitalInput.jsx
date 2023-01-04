@@ -4,7 +4,19 @@ import { useState } from "react";
 import { InputArrow } from "../../../Images/Product/ProductImages";
 import "./DigitalInput.sass";
 
-export const DigitalInput = ({ title, dropdown, type, id, height, width, onChange, value }) => {
+export const DigitalInput = ({
+  title,
+  dropdown,
+  type,
+  id,
+  height,
+  width,
+  onChange,
+  value,
+  dropdownCountries,
+  dropdownStates,
+  dropdownType,
+}) => {
   const [openDropdownList, setOpenDropdownList] = useState(false);
 
   //функция по поиску клацнутого варианта списка
@@ -40,11 +52,7 @@ export const DigitalInput = ({ title, dropdown, type, id, height, width, onChang
             id="DropdownMode"
             onClick={() => setOpenDropdownList(!openDropdownList)}
           >
-            <div className="DigitalInputDropdownModeMainChosenText">
-              {/* {listArray[0].name} */}
-              {/* <h1>{(listArray)}</h1> */}
-              {JSON.parse(localStorage.getItem("chosenListItem"))}
-            </div>
+            <div className="DigitalInputDropdownModeMainChosenText"></div>
             <div
               className={
                 openDropdownList
@@ -57,17 +65,13 @@ export const DigitalInput = ({ title, dropdown, type, id, height, width, onChang
           </div>
           {openDropdownList && (
             <div className="DigitalInputDropdownModeMainList">
-              {/* {listArray.map((test) => { */}
-              {/* return (  */}
-              <div
-                className="DigitalInputDropdownModeMainListItem"
-                // key={test.id}
-                // onClick={() => choseListVariant(test.id)}
-              >
-                {/* <p>{test.name}</p>  */}
-              </div>
-              {/* );  */}
-              {/* })}  */}
+              {dropdownCountries.map((item) => {
+                return (
+                  <div className="DigitalInputDropdownModeMainListItem" key={item.id}>
+                    {item.country}
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
