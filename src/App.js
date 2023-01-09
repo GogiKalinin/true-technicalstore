@@ -28,37 +28,41 @@ import macBookGrey from "./assets/ProductImages/macbookGrey.jpg";
 import FavouriteProducts from "./Components/FavouriteProducts/FavouriteProducts";
 import { selectNavItem } from "./tools/filterCategory";
 import { Checkout } from "./pages/Checkout/Checkout";
+import { useDispatch, useSelector } from "react-redux";
 
 const App = () => {
   const [navigationItems, setNavigationItems] = useState([
     {
       id: 0,
-      name: "Laptops",
+      name: "smartphones",
       active: false,
     },
     {
       id: 1,
-      name: "Desktop PCs",
+      name: "laptops",
       active: false,
     },
     {
       id: 2,
-      name: "Networking Devices",
+      name: "fragrances",
       active: false,
     },
     {
       id: 3,
-      name: "Printers & Scanners",
+      name: "skincare",
+      // name: "Printers & Scanners",
       active: false,
     },
     {
       id: 4,
-      name: "PC Parts",
+      name: "groceries",
+      // name: "PC Parts",
       active: false,
     },
     {
       id: 6,
-      name: "Repairs",
+      name: "home-decoration",
+      // name: "Repairs",
       active: false,
     },
   ]);
@@ -83,7 +87,7 @@ const App = () => {
   }, []);
 
   const productArray = data;
-
+  console.log(productArray)
   const [allProducts, setAllProducts] = useState(productArray);
 
   const [showBasketModal, setShowBasketModal] = useState(false);
@@ -178,6 +182,13 @@ const App = () => {
       .then((res) => setData(res.products));
   }, []);
 
+  const dispatch= useDispatch() 
+  const basket = useSelector(state => state.basket.basket)
+  const cash = useSelector(state => state.cash.cash)
+  console.log(basket)
+  console.log(cash)
+
+
   return (
       <div className="App">
         <Header
@@ -256,6 +267,9 @@ const App = () => {
         </Routes>
         <Footer />
       </div>
+      // <div className="App">
+      //   <button>sercuk</button>
+      // </div>
   );
 };
 
