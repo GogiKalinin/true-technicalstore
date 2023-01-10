@@ -43,18 +43,16 @@
 
 .ProductDescription
   display: flex
+  // width: 200px
+  height: 75px
+  flex-direction: row
+  padding-left: 20px
+  padding-right: 20px
   font-weight: 400
   font-size: 13px
   line-height: 20px
   color: #000000
-
-.ProductDescription
-  display: flex
-  width: 184px
-  height: 75px
-  flex-direction: column
-  padding-left: 20px
-  padding-right: 20px
+  justify-content: space-between
 
 .ProductDescriptionText
   font-family: 'Poppins'
@@ -63,13 +61,18 @@
   font-size: 13px
   line-height: 20px
   display: flex
-  align-items: flex-end
+  // align-items: flex-end
   color: #000000
   text-decoration: none
+
+.ProductDescriptionAddToBasket
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
     
 .ProductDescription:hover
   text-decoration: underline
-
 
 .ProductRating
   cursor: pointer

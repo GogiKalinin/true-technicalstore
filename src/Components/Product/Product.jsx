@@ -6,6 +6,10 @@ import Like from "../../Images/Product/like.png";
 import LikeUnactive from "../../Images/Product/likeUnActive.png";
 import LikeActive from "../../Images/Product/likeActive.png";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Basket } from "../Navbar/Basket";
+import { Search } from "../Navbar/Search";
+import { getProductBasketStatus } from "../../tools/productActions";
 
 const Product = (props) => {
 
@@ -45,29 +49,37 @@ const Product = (props) => {
       console.warn('[{...prod, count: 1}] if localStorage empty', [{...prod, count: 1}])
   };
 
+  const dispatch= useDispatch() 
+  const basket = useSelector(state => state.basket.basket)
+  // console.log(basket)
+  const addProductToBasket = (prod) => {
+    dispatch({type: 'ADD_TO_BASKET', payload: prod})
+  }
+
   return (
     <div className="ProductContainer" >
       {props.allProducts.map((prod) => {
         return (
-          <Link to={"/product"}>
             <div
               className={prod.active ? "Product Product-active" : "Product"}
               key={prod.id}
               onClick={() => localStorage.setItem('moreAboutData', JSON.stringify(prod))}
+              // onClick={() => addProductToBasket(prod)}
             >
-                
-              <div
-                className="ProductImageContainer"
-                onClick={() => {
-                  setLocalBasket(prod);
-                }}
-              >
-                <img
-                  className="ProductImage"
-                  src={prod.images[0]}
-                  alt={prod.title}
-                ></img>
-              </div>
+              <Link to={"/product"}>
+                <div
+                  className="ProductImageContainer"
+                  onClick={() => {
+                    setLocalBasket(prod);
+                  }}
+                >
+                  <img
+                    className="ProductImage"
+                    src={prod.images[0]}
+                    alt={prod.title}
+                  ></img>
+                </div>
+              </Link>
               <div className="ProductRating">
                 <StarsNew />
                 <div
@@ -89,17 +101,21 @@ const Product = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="ProductDescription">
-                <h2 className="ProductDescriptionText">
-                  {prod.description.length > 10
-                    ? prod.description.slice(0, 40) + "..."
-                    : prod.description}
-                </h2>
-              </div>
+                <div className="ProductDescription">
+                  <Link to={"/product"}>
+                    <p className="ProductDescriptionText">
+                      {prod.description.length > 10
+                        ? prod.description.slice(0, 40) + "..."
+                        : prod.description}
+                    </p>
+                  </Link>
+                  <div className="ProductDescriptionAddToBasket" onClick={()=>addProductToBasket(prod)}><Basket /></div>
+                    {getProductBasketStatus(basket, prod.id) && <div>serduck</div>}
+                </div>
               <div className="ProductButtons">
               </div>
             </div>
-          </Link>
+          
         );
       })}
     </div>
