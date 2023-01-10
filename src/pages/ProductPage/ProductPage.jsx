@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import BasketInput from "../../Components/BasketInput/BasketInput";
 import ChoseColor from "../../Components/ChoseColor/ChoseColor";
 import MyBannerSlider from "../../Components/MyBannerSlider/MyBannerSlider";
@@ -65,6 +66,33 @@ export const ProductPage = (props) => {
   //   console.log('basketData', JSON.parse(localStorage.getItem("basketData")))
   // }
 
+  const dispatch= useDispatch() 
+  const basket = useSelector(state => state.basket.basket)
+  console.log(basket.length)
+  const addProductToBasket = (prod) => {
+    const product = {
+      prod,
+      id: Date.now()
+    }
+    console.log(product)
+    // console.log(basket[1].id)
+    // console.log(prod.id)
+    // for (let i = 0; i < basket.length; i++) {
+      if (basket.length === 0) {
+        dispatch({type: 'ADD_TO_BASKET', payload: prod})
+      }
+      if (basket.length > 0) {
+        for (let i = 0; i < basket.length; i++) {
+          if (prod.id !== basket[i].id) {
+            console.log(prod.title)
+            console.log('sercuck')
+            dispatch({type: 'ADD_TO_BASKET', payload: prod})
+          }
+      }
+    }
+    // }
+  }
+
   return (
     <div className="ProductPage">
       {[test_more_about_data].map((prod) => {
@@ -112,7 +140,8 @@ export const ProductPage = (props) => {
                 <BasketInput />
                 <UniversalButton
                   text="Add to Cart"
-                  onClick={()=>addBasketFromProductPage()}
+                  onClick={()=>addProductToBasket(prod)}
+                  // onClick={()=>addBasketFromProductPage()}
                   // onClick={setLocalBasket(prod)}
                 />
               </div>
