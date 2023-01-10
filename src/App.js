@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.sass";
@@ -82,12 +83,13 @@ const App = () => {
       );
     }
     fetch("https://dummyjson.com/products")
+      // .then((res) => console.log(res.products))
       .then((res) => res.json())
       .then((res) => setData(res.products));
   }, []);
 
   const productArray = data;
-  console.log(productArray)
+  // console.log(productArray)
   const [allProducts, setAllProducts] = useState(productArray);
 
   const [showBasketModal, setShowBasketModal] = useState(false);
@@ -184,11 +186,8 @@ const App = () => {
 
   const dispatch= useDispatch() 
   const basket = useSelector(state => state.basket.basket)
-  const cash = useSelector(state => state.cash.cash)
-  console.log(basket)
-  console.log(cash)
-
-
+  const favoriteProducts = useSelector(state => state.favoriteProducts.favoriteProducts)
+  console.log(favoriteProducts)
   return (
       <div className="App">
         <Header
