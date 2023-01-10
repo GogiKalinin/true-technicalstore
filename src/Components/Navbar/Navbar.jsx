@@ -16,7 +16,6 @@ import { Link } from "react-router-dom";
 import { selectNavItem } from "../../tools/filterCategory";
 import { useDispatch, useSelector } from "react-redux";
 import { basketEllipse, favoriteProducts } from "../../Images/Header";
-// import { getPermissionToShowByArrayLength } from "../../tools/getPermissionToShowByArrayLength";
 
 const Navbar = ({
   showBasketModal,
