@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Cancel } from "../../Images/Product/ProductImages";
 import BasketButton from "../BasketButton/BasketButton";
@@ -7,9 +8,9 @@ import BasketInput from "../BasketInput/BasketInput";
 import "./BasketModal.sass";
 
 const BasketModal = (props) => {
-  console.log(JSON.parse(localStorage.getItem("basketData")));
+  // console.log(JSON.parse(localStorage.getItem("basketData")));
   const handleClickAway = () => {
-    props.setShowBasketModal(false);
+      props.setShowBasketModal(false);
   };
 
   const removeFromBasket = (id) => {
@@ -92,9 +93,18 @@ const BasketModal = (props) => {
   // props.setBasketData(JSON.parse(localStorage.getItem("basketData")));
   // console.log(props.basketData);
   const test_basket_data = JSON.parse(localStorage.getItem("basketData"));
-  console.log(JSON.parse(localStorage.getItem("basketData")));
+  // console.log(JSON.parse(localStorage.getItem("basketData")));
   const newTestBasketData = test_basket_data;
-  console.warn("newTestBasketData", newTestBasketData);
+  // console.warn("newTestBasketData", newTestBasketData);
+
+  const dispatch= useDispatch() 
+  const basket = useSelector(state => state.basket.basket)
+  console.log(basket)
+
+  const GET_FROM_BASKET = (id) => {
+    dispatch({type: 'GET_FROM_BASKET', payload: id})
+  }
+
   return (
     <div className="BasketModalGeneral">
       <ClickAwayListener onClickAway={handleClickAway}>
@@ -106,7 +116,7 @@ const BasketModal = (props) => {
             <div className="BasketModalEmpty">No products in cart</div>
           ) : localStorage.getItem("basketData") === null ? null : (
             <>
-              {newTestBasketData.map((prod) => {
+              {basket.map((prod) => {
                 return (
                   <div className="BasketProdContainer" key={prod.id}>
                     <img src={prod.images[0]} alt="img"></img>
@@ -125,7 +135,8 @@ const BasketModal = (props) => {
                     </div>
                     <div
                       className="BaskedProdCancel"
-                      onClick={() => removeFromBasket(prod.id)}
+                      // onClick={() => removeFromBasket(prod.id)}
+                      onClick={() => GET_FROM_BASKET(prod.id)}
                     >
                       {Cancel}
                     </div>
