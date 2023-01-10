@@ -109,7 +109,7 @@ const BasketModal = (props) => {
     <div className="BasketModalGeneral">
       <ClickAwayListener onClickAway={handleClickAway}>
         <div className="BasketModalContainer">
-          {localStorage.getItem("basketData").length === 0 && modalThanks && (
+          {basket.length === 0 && modalThanks && (
             <div className="BasketModalEmpty">Thanks for purchase</div>
           )}
           {localStorage.getItem("basketData").length === 0 && !modalThanks ? (
