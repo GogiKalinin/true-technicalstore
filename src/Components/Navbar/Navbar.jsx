@@ -14,6 +14,9 @@ import UniversalButton from "../UniversalButton/UniversalButton";
 import UserCard from "../UserCard/UserCard";
 import { Link } from "react-router-dom";
 import { selectNavItem } from "../../tools/filterCategory";
+import { useDispatch, useSelector } from "react-redux";
+import { basketEllipse, favoriteProducts } from "../../Images/Header";
+// import { getPermissionToShowByArrayLength } from "../../tools/getPermissionToShowByArrayLength";
 
 const Navbar = ({
   showBasketModal,
@@ -36,15 +39,21 @@ const Navbar = ({
     setShowNavbarModul(!showNavbarModul);
   };
 
+  const dispatch= useDispatch() 
+  const basket = useSelector(state => state.basket.basket)
+  
+
   const toggleBasketModalView = () => {
+    // if (basket.length !== 0) {
     if (!showBasketModal && !basketDataLength) {
       setShowBasketModal(true);
       setTimeout(() => {
         setShowBasketModal(false);
       }, 2000);
     } else {
-      setShowBasketModal(!showBasketModal);
-    }
+        setShowBasketModal(!showBasketModal);
+      }
+    // }
   };
 
   const showAll = () => {
@@ -61,10 +70,6 @@ const Navbar = ({
     }
     setNavigationItems(newNavigationItemsForShowAll);
     localStorage.removeItem("nowCategory");
-  };
-
-  const userCardSwitch = () => {
-    setShowUserCard(!showUserCard);
   };
 
   return (
@@ -90,7 +95,7 @@ const Navbar = ({
                   item.active
                     ? "Navbar__item Navbar-active__item"
                     : "Navbar__item"
-                }
+                }return
                 key={item.id}
                 onClick={() =>
                   selectNavItem(
@@ -135,14 +140,28 @@ const Navbar = ({
 
           <li className="MenuListItem">
             <div className="UserMenuBasket" onClick={toggleBasketModalView}>
-              <Basket />
+              <div className="UserMenuBasketBasket">
+                <Basket />
+              </div>
+              <div className="UserMenuBasketEllipse">
+                {basketEllipse}
+                <h3>{basket.length}</h3>
+              </div>
             </div>
           </li>
+            <div className="UserMenuFavoriteProducts" 
+            // onClick={()=>setShowUserCard(!showUserCard)}
+            onClick={toggleBasketModalView}
+            > 
+            {/* {getPermissionToShowByArrayLength2(basket) && */}
+              {favoriteProducts}
+            {/* }  */}
+            </div>
           <li className="MenuListItem">
             <img
               src={require("./Userpic.png")}
               alt="userpic"
-              onClick={userCardSwitch}
+              // onClick={userCardSwitch}
             ></img>
           </li>
         </ul>
