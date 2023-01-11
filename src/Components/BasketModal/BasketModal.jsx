@@ -2,25 +2,15 @@ import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { SearchBarCancel } from "../../Images/Header";
 import { Cancel } from "../../Images/Product/ProductImages";
 import BasketButton from "../BasketButton/BasketButton";
 import BasketInput from "../BasketInput/BasketInput";
 import "./BasketModal.sass";
 
 const BasketModal = (props) => {
-  // console.log(JSON.parse(localStorage.getItem("basketData")));
   const handleClickAway = () => {
-      props.setShowBasketModal(false);
-  };
-
-  const removeFromBasket = (id) => {
-    const basketDataNew = [];
-    for (let i = 0; i < props.basketData.length; i++) {
-      if (id !== props.basketData[i].id) {
-        basketDataNew.push(props.basketData[i]);
-      }
-    }
-    props.setBasketData(basketDataNew);
+    props.setShowBasketModal(false)
   };
 
   const searchaItemCount = (id) => {
@@ -33,9 +23,7 @@ const BasketModal = (props) => {
   const [modalThanks, setModalThanks] = useState(false);
 
   const toggleBasketModalViewIfPurchase = () => {
-    setTimeout(() => {
-      props.setShowBasketModal(false);
-    }, 500);
+    props.setShowBasketModal(false);
   };
 
   // const [clearShoppingCart, setClearShoppingCart] = useState(false);
@@ -85,65 +73,67 @@ const BasketModal = (props) => {
     changeCounter(id, newValue);
   };
 
-  // console.log(JSON.parse(localStorage.getItem("basketData")));
-
-  // console.log(typeof JSON.parse(localStorage.getItem("basketData"))); // объект
-  // console.log("basketData"); // [1, 2, 3]
-
-  // props.setBasketData(JSON.parse(localStorage.getItem("basketData")));
-  // console.log(props.basketData);
-  const test_basket_data = JSON.parse(localStorage.getItem("basketData"));
-  // console.log(JSON.parse(localStorage.getItem("basketData")));
-  const newTestBasketData = test_basket_data;
-  // console.warn("newTestBasketData", newTestBasketData);
-
-  const dispatch= useDispatch() 
-  const basket = useSelector(state => state.basket.basket)
-  console.log(basket)
+  const dispatch = useDispatch();
+  const basket = useSelector((state) => state.basket.basket);
+  console.log(basket);
 
   const GET_FROM_BASKET = (id) => {
-    dispatch({type: 'GET_FROM_BASKET', payload: id})
-  }
+    dispatch({ type: "GET_FROM_BASKET", payload: id });
+  };
+
+  props.setShowBasketModal(true)
 
   return (
     <div className="BasketModalGeneral">
       <ClickAwayListener onClickAway={handleClickAway}>
         <div className="BasketModalContainer">
-          {basket.length === 0 && modalThanks && (
-            <div className="BasketModalEmpty">Thanks for purchase</div>
+          <div className="BasketModalTitle">
+            <h1>Basket</h1>
+            <div className="BasketModalTitleClose" onClick={handleClickAway}>
+              {SearchBarCancel }
+            </div>
+          </div>
+          {basket.length === 0 && (
+            <div className="BasketModalEmpty">Basket is empty</div>
           )}
-          {localStorage.getItem("basketData").length === 0 && !modalThanks ? (
-            <div className="BasketModalEmpty">No products in cart</div>
-          ) : localStorage.getItem("basketData") === null ? null : (
-            <>
-              {basket.map((prod) => {
-                return (
-                  <div className="BasketProdContainer" key={prod.id}>
-                    <img src={prod.images[0]} alt="img"></img>
-                    <span>{prod.title.slice(0, 15)}</span>
-                    <h1>{prod.newPrice}</h1>
-                    <BasketInput
-                      onChange={(event) => changeInput(prod.id, event)}
-                      number={prod.count}
-                      {...searchaItemCount}
-                      onClick={(event) =>
-                        changeCost(prod.id, event, prod.count)
-                      }
-                    />
-                    <div className="BasketProdContainerTotalPrice">
-                      {/* {countPrice(prod.price, prod.id)} */}
+          {/* {localStorage.getItem("basketData").length === 0 && !modalThanks ? (
+            <div className="BasketModalEmpty">
+              <h1>No products in cart</h1>
+            </div>
+          ) : localStorage.getItem("basketData") === null ? null : ( */}
+            {basket.length > 0 && (
+            <div className="BasketModalContent">
+              <div className="BasketModalContentProducts">
+                {basket.map((prod) => {
+                  return (
+                    <div className="BasketProdContainer" key={prod.id}>
+                      <img src={prod.images[0]} alt="img"></img>
+                      <span>{prod.title.slice(0, 15)}</span>
+                      <h1>{prod.newPrice}</h1>
+                      <BasketInput
+                        onChange={(event) => changeInput(prod.id, event)}
+                        number={prod.count}
+                        {...searchaItemCount}
+                        onClick={(event) =>
+                          changeCost(prod.id, event, prod.count)
+                        }
+                      />
+                      <div className="BasketProdContainerTotalPrice">
+                        {/* {countPrice(prod.price, prod.id)} */}
+                      </div>
+                      <div
+                        className="BaskedProdCancel"
+                        // onClick={() => removeFromBasket(prod.id)}
+                        onClick={() => GET_FROM_BASKET(prod.id)}
+                      >
+                        {Cancel}
+                      </div>
                     </div>
-                    <div
-                      className="BaskedProdCancel"
-                      // onClick={() => removeFromBasket(prod.id)}
-                      onClick={() => GET_FROM_BASKET(prod.id)}
-                    >
-                      {Cancel}
-                    </div>
-                  </div>
-                );
-              })}
-              {!modalThanks && (
+                  );
+                })}
+              </div>
+              {/* } */}
+              {/* {basket.length > 0 && ( */}
                 <div className="BasketModalButtonsBlock">
                   <div>
                     <BasketButton
@@ -166,8 +156,7 @@ const BasketModal = (props) => {
                     />
                   </Link>
                 </div>
-              )}
-            </>
+            </div>
           )}
         </div>
       </ClickAwayListener>

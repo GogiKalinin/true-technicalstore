@@ -9,25 +9,37 @@
   top: 0
   left: 0
   z-index: 2
+  overflow: hidden
 
 .BasketModalEmpty
   display: flex
   align-items: center
   justify-content: center
+  height: 100%
   font-size: 70px
   font-weight: 600
   margin: 0 40px
   text-transform: uppercase
   font-family: 'Poppins'
 
+.BasketModalTitle
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 0px 20px
+
+.BasketModalTitleClose
+  cursor: pointer
+
 .BasketModalContainer
   display: flex
   flex-direction: column
-  align-items: center
-  justify-content: center
-  height: auto
-  width: auto
-  padding: 30px 20px
+  // align-items: center
+  // justify-content: space-between
+  height: 95vh
+  max-height: 95vh
+  width: 60vw
+  // padding: 0px 20px
   // top: 50%
   // left: 50%
   // transform: translate(-50%, -50%)
@@ -37,6 +49,14 @@
   align-self: center
   transition: 1000ms linear
   // overflow: hidden
+
+.BasketModalTitle
+  border-bottom: 1px solid #CACDD8
+  padding-top: 12px
+  padding-bottom: 12px
+  h1
+    margin: 0
+    padding: 0
 
 @media screen and (max-width: 992px)
   .BasketModalContainer
@@ -53,20 +73,29 @@
 .UserMenuSearch
   cursor: pointer
 
+.BasketModalContent
+  width: 100%
+  height: 100vh
+
+.BasketModalContentProducts
+  height: 80%
+  overflow: scroll
+  padding: 0px 20px
+
 .BasketProdContainer
   display: flex
   background-color: #fff
   align-items: center
   margin-bottom: 15px
-  height: 100px
+  height: 250px
   width: 100%
   justify-content: space-between
-  border-top: 1px solid #CACDD8
+  border-bottom: 1px solid #CACDD8
+  overflow: scroll
 
 .BasketProdContainer img
   margin-right: 29px
   height: 100px
-
 
 .BasketProdContainer span
   margin-right: 26px
@@ -79,7 +108,7 @@
   cursor: pointer
   display: flex
   align-items: center
-  justify-content: center
+  justify-content: centerBasketModalBlock
 
 .BasketModalButtonsBlock
   width: 100%
@@ -87,7 +116,8 @@
   justify-content: space-between
   align-items: center
   padding-top: 25px
-  border-top: 1px solid #CACDD8
+  align-self: flex-end
+
 
 .BasketProdContainerTotalPrice,
 .BasketProdContainer h1
