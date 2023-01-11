@@ -55,6 +55,8 @@ const Product = (props) => {
   const addProductToBasket = (prod) => {
     dispatch({type: 'ADD_TO_BASKET', payload: prod})
   }
+  localStorage.setItem('basket', JSON.stringify(basket))
+
 
   return (
     <div className="ProductContainer" >

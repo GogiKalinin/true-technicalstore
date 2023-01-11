@@ -8,8 +8,6 @@ import "./MiniBasket.sass";
 
 export const MiniBasket = () => {
   
-    const dispatch= useDispatch() 
-    const basket = useSelector(state => state.basket.basket)
   const prepareTitle = () => {
     return mini_basket_data.length < 2 ? (
       <h1>{basket.length}item in card</h1>
@@ -17,6 +15,15 @@ export const MiniBasket = () => {
       <h1>{basket.length}items in card</h1>
     );
   };
+
+  const dispatch= useDispatch() 
+  const basket = useSelector(state => state.basket.basket)
+  console.log(basket)
+
+  const GET_FROM_BASKET = (id) => {
+    dispatch({type: 'GET_FROM_BASKET', payload: id})
+  }
+
   const mini_basket_data = JSON.parse(localStorage.getItem("basketData"));
   const [showBasketProducts, setShowBasketProducts] = useState(true);
   return (
@@ -60,7 +67,7 @@ export const MiniBasket = () => {
                   </div>
                   <div
                     className="BaskedProdCancel"
-                    // onClick={() => removeFromBasket(prod.id)}
+                    onClick={() => GET_FROM_BASKET(prod.id)}
                   >
                     {Cancel}
                   </div>
