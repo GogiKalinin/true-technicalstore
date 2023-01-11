@@ -92,7 +92,7 @@ const App = () => {
   // console.log(productArray)
   const [allProducts, setAllProducts] = useState(productArray);
 
-  const [showBasketModal, setShowBasketModal] = useState(false);
+  const [showBasketModal, setShowBasketModal] = useState(true);
 
   const [showNavbarModul, setShowNavbarModul] = useState(false);
 
