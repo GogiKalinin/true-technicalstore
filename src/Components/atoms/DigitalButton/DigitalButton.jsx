@@ -1,7 +1,7 @@
 import React from "react";
 import "./DigitalButton.sass";
 
-const DigitalButton = (props) => {
+export const DigitalButton = (props) => {
   return (
     <button className="DigitalButton" onClick={props.onClick}
     style={{
@@ -16,5 +16,3 @@ const DigitalButton = (props) => {
     </button>
   );
 };
-
-export default DigitalButton;
