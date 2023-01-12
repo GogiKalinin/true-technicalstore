@@ -6,9 +6,9 @@ export const getProductBasketStatus = (basket, id) => {
   }
 };
 
-export const getProductChosenListStatus = (chosenProducts, id) => {
-  for (let i = 0; i < chosenProducts.length; i++) {
-    if (id === chosenProducts[i].id) {
+export const getProductChosenListStatus = (favoriteProducts, id) => {
+  for (let i = 0; i < favoriteProducts.length; i++) {
+    if (id === favoriteProducts[i].id) {
       return true;
     }
   }
