@@ -31,6 +31,7 @@ import { selectNavItem } from "./tools/filterCategory";
 import { Checkout } from "./pages/Checkout/Checkout";
 import { useDispatch, useSelector } from "react-redux";
 import { FavoriteProducts } from "./pages/FavoriteProducts/FavoriteProducts";
+import { calculatePrice } from "./tools/calculatePrice";
 
 const App = () => {
   const [navigationItems, setNavigationItems] = useState([
@@ -189,6 +190,7 @@ const App = () => {
   const basket = useSelector(state => state.basket.basket)
   const favoriteProducts = useSelector(state => state.favoriteProducts.favoriteProducts)
   console.log(favoriteProducts)
+
   return (
       <div className="App">
         <Header
