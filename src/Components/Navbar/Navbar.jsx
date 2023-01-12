@@ -89,27 +89,30 @@ const Navbar = ({
             className={showNavbarModul ? "NavbarMenuUnActive" : "Navbar__menu"}
           >
             {navigationItems.map((item) => (
-              <div
-                className={
-                  item.active
-                    ? "Navbar__item Navbar-active__item"
-                    : "Navbar__item"
-                }return
-                key={item.id}
-                onClick={() =>
-                  selectNavItem(
-                    setShowMainElements,
-                    productArray,
-                    item.name,
-                    setAllProducts,
-                    navigationItems,
-                    setNavigationItems
-                  )
-                }
-                name={item.name}
-              >
-                {item.name}
-              </div>
+              <Link
+              to={"/"}>
+                <div
+                  className={
+                    item.active
+                      ? "Navbar__item Navbar-active__item"
+                      : "Navbar__item"
+                  }return
+                  key={item.id}
+                  onClick={() =>
+                    selectNavItem(
+                      setShowMainElements,
+                      productArray,
+                      item.name,
+                      setAllProducts,
+                      navigationItems,
+                      setNavigationItems
+                    )
+                  }
+                  name={item.name}
+                >
+                  {item.name}
+                </div>
+              </Link>
             ))}
             <a href="google.com">
               <button className="Navbar__button">Our deals</button>
