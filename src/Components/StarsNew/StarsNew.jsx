@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./StarsNew.sass";
 
 const StarsNew = () => {
@@ -67,6 +68,16 @@ const StarsNew = () => {
     }
     setStarsArray(starsArray);
   };
+
+  const dispatch= useDispatch() 
+  const basket = useSelector(state => state.basket.basket)
+
+  const [starMark, setStarMark] = useState(3)
+
+  const getStarMark = () => {
+    console.log(starMark)
+
+  }
 
   return (
     <div className="StarsContainer">
