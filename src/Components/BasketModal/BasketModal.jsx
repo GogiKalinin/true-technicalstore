@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { SearchBarCancel } from "../../Images/Header";
 import { Cancel } from "../../Images/Product/ProductImages";
+import { calculatePrice } from "../../tools/calculatePrice";
 import BasketButton from "../BasketButton/BasketButton";
 import BasketInput from "../BasketInput/BasketInput";
 import "./BasketModal.sass";
@@ -105,55 +106,70 @@ const BasketModal = (props) => {
                 {basket.map((prod) => {
                   return (
                     <div className="BasketProdContainer" key={prod.id}>
-                      <img src={prod.images[0]} alt="img"></img>
-                      <span>{prod.title.slice(0, 15)}</span>
-                      <h1>{prod.newPrice}</h1>
-                      <BasketInput
-                        onChange={(event) => changeInput(prod.id, event)}
-                        number={prod.count}
-                        {...searchaItemCount}
-                        onClick={(event) =>
-                          changeCost(prod.id, event, prod.count)
-                        }
-                      />
-                      <div className="BasketProdContainerTotalPrice">
-                        {/* {countPrice(prod.price, prod.id)} */}
+                      <div className="BasketProdContainerTop">
+                        <img src={prod.images[0]} alt="img"></img>
+                        <div className="BasketProdContainerTopDescription">
+                          <span>{prod.description.slice(0, 100)}</span>
+                        </div>
+                        <div
+                          className="BaskedProdCancel"
+                          onClick={() => GET_FROM_BASKET(prod.id)}
+                        >
+                          {Cancel}
+                        </div>
                       </div>
-                      <div
-                        className="BaskedProdCancel"
-                        // onClick={() => removeFromBasket(prod.id)}
-                        onClick={() => GET_FROM_BASKET(prod.id)}
-                      >
-                        {Cancel}
+                      <div className="BasketProdContainerBottom">
+                        <div></div>
+                        <div className="BasketProdContainerBottomPrice">
+                          <h1>{prod.newPrice}</h1>
+                          <BasketInput
+                            onChange={(event) => changeInput(prod.id, event)}
+                            number={prod.count}
+                            {...searchaItemCount}
+                            onClick={(event) =>
+                              changeCost(prod.id, event, prod.count)
+                            }
+                          />
+                          <div className="BasketProdContainerTotalPrice">
+                            {/* {countPrice(prod.price, prod.id)} */}
+                            {prod.price}$
+                          </div>
+                        </div>
                       </div>
+                      
                     </div>
                   );
                 })}
               </div>
-              {/* } */}
-              {/* {basket.length > 0 && ( */}
-                <div className="BasketModalButtonsBlock">
-                  <div>
-                    <BasketButton
-                      onClick={toggleBasketModalViewContinue}
-                      text="Continue Shopping"
-                      background={"white"}
-                      color={"gray"}
-                      border={"2px solid gray"}
-                      margin={"0 7px 0 0"}
-                    />
-                    <BasketButton
-                      text={"Clear Shopping Cart"}
-                      onClick={toggleBasketModalViewCleanCart}
-                    />
+              {basket.length > 0 && (
+                <>
+                  <div className="BasketModalTotalPrice">
+                    Total: {calculatePrice(basket)}$
                   </div>
-                  <Link to="/checkout" className="ContactUsInform">
-                    <BasketButton
-                      text={"Continue Purchase"}
-                      onClick={toggleBasketModalViewIfPurchase}
-                    />
-                  </Link>
-                </div>
+                  <div className="BasketModalButtonsBlock">
+                    <div>
+                      <BasketButton
+                        onClick={toggleBasketModalViewContinue}
+                        text="Continue Shopping"
+                        background={"white"}
+                        color={"gray"}
+                        border={"2px solid gray"}
+                        margin={"0 7px 0 0"}
+                      />
+                      <BasketButton
+                        text={"Clear Shopping Cart"}
+                        onClick={toggleBasketModalViewCleanCart}
+                      />
+                    </div>
+                    <Link to="/checkout" className="ContactUsInform">
+                      <BasketButton
+                        text={"Continue Purchase"}
+                        onClick={toggleBasketModalViewIfPurchase}
+                      />
+                    </Link>
+                  </div>
+                </>
+              )}
             </div>
           )}
         </div>

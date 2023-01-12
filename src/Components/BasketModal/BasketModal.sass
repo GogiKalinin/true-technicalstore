@@ -75,7 +75,7 @@
 
 .BasketModalContent
   width: 100%
-  height: 100vh
+  height: 90vh
 
 .BasketModalContentProducts
   height: 80%
@@ -84,31 +84,50 @@
 
 .BasketProdContainer
   display: flex
+  flex-direction: column
   background-color: #fff
-  align-items: center
-  margin-bottom: 15px
-  height: 250px
+  margin-top: 15px
+  height: 200px
   width: 100%
   justify-content: space-between
   border-bottom: 1px solid #CACDD8
   overflow: scroll
 
-.BasketProdContainer img
-  margin-right: 29px
-  height: 100px
+.BasketProdContainerTop
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  img
+    height: 100px
+    width: 20%
+  span
+    width: 70%
 
-.BasketProdContainer span
-  margin-right: 26px
-
-.BasketProdContainerCounter
-  padding-right: 40px
-  font-size: 30px
+.BasketProdContainerTopDescription
+  align-content: start
+  padding-left: 15px
 
 .BaskedProdCancel
   cursor: pointer
   display: flex
   align-items: center
-  justify-content: centerBasketModalBlock
+  justify-content: center
+  width: 10%
+
+.BasketProdContainerBottom
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  padding-bottom: 20px
+
+.BasketProdContainerBottomPrice
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.BasketProdContainerCounter
+  padding-right: 40px
+  font-size: 30px
 
 .BasketModalButtonsBlock
   width: 100%
@@ -128,9 +147,13 @@
   text-align: center
   color: #000000
 
-.BasketInput
-  // margin-right: 60px
-  // margin-left: 60px
-
 .BasketProdContainerTotalPrice
-  margin-right: 67px
+  margin-left: 40px
+  font-size: 16px
+
+.BasketModalTotalPrice
+  font-size: 30px
+  display: flex
+  align-items: center
+  justify-content: end
+
