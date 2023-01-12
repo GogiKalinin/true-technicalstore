@@ -27,6 +27,7 @@
   flex-direction: column
   width: 200px
   margin-bottom: 30px
+  margin-right: 10px
 
 .ProductImageContainer
   display: flex
@@ -35,7 +36,7 @@
   justify-content: center
   max-height: 200px
   min-height: 200px
-  width: 184px
+  width: 200px
 
 .ProductImage
   height: auto
@@ -107,3 +108,43 @@
   img
     height: 20px
     width: 20px
+
+.ProductPriceAndPurchase
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding-left: 20px
+  padding-right: 20px
+
+/* Это стилизация для конкретного примера, вы можете стилизировать под свой макет */ 
+.change-photos 
+  width: 300px
+
+.change-photos .change-photo img 
+  width: 100%
+  height: 100%
+  object-fit: cover
+
+
+/* Сразу скрываем вторую картинку */
+.change-photos .change-photo:nth-of-type(2) 
+  display: none
+
+
+/* При наведении курсора на родительский класс change-photos первую картинку скрываем, а вторую показываем */
+
+.change-photos:hover .change-photo:nth-of-type(1) 
+  display: none
+
+
+.change-photos:hover .change-photo:nth-of-type(2) 
+  display: block
+
+.change-photos:hover 
+  cursor: pointer
+  transition: 4s
+
+.change-photos .change-photo:nth-of-type(2) 
+  z-index: 20
+
+

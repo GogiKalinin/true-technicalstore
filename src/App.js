@@ -30,6 +30,7 @@ import FavouriteProducts from "./Components/FavouriteProducts/FavouriteProducts"
 import { selectNavItem } from "./tools/filterCategory";
 import { Checkout } from "./pages/Checkout/Checkout";
 import { useDispatch, useSelector } from "react-redux";
+import { FavoriteProducts } from "./pages/FavoriteProducts/FavoriteProducts";
 
 const App = () => {
   const [navigationItems, setNavigationItems] = useState([
@@ -92,7 +93,7 @@ const App = () => {
   // console.log(productArray)
   const [allProducts, setAllProducts] = useState(productArray);
 
-  const [showBasketModal, setShowBasketModal] = useState(true);
+  const [showBasketModal, setShowBasketModal] = useState(false);
 
   const [showNavbarModul, setShowNavbarModul] = useState(false);
 
@@ -263,6 +264,7 @@ const App = () => {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/favorite" element={<FavoriteProducts />} />
         </Routes>
         <Footer />
       </div>

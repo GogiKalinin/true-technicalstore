@@ -1,4 +1,4 @@
-import { BasketPopUp } from "../../Components/BasketPopUp/BasketPopUp";
+import { BasketPopUp } from "../../Components/molecules/BasketPopUp/BasketPopUp";
 import MyBannerSlider from "../../Components/MyBannerSlider/MyBannerSlider";
 import NewProducts from "../../Components/NewProducts/NewProducts";
 import PreFooter from "../../Components/PreFooter/PreFooter";
@@ -36,9 +36,7 @@ export const Home = ({
         setShowMainElements={setShowMainElements}
         setNavigationItems={setNavigationItems}
       />
-      {basketData.length > 0 && (
         <BasketPopUp />
-      )}
       <Product
         basketData={basketData}
         setBasketData={addNewToBusket}

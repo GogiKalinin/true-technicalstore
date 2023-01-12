@@ -3,18 +3,11 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BasketArrow } from "../../../Images/Basket";
 import { Cancel } from "../../../Images/Product/ProductImages";
+import { prepareTitle } from "../../../tools/prepareTitle";
 import BasketInput from "../../BasketInput/BasketInput";
 import "./MiniBasket.sass";
 
 export const MiniBasket = () => {
-  
-  const prepareTitle = () => {
-    return mini_basket_data.length < 2 ? (
-      <h1>{basket.length}item in card</h1>
-    ) : (
-      <h1>{basket.length}items in card</h1>
-    );
-  };
 
   const dispatch= useDispatch() 
   const basket = useSelector(state => state.basket.basket)
@@ -35,7 +28,7 @@ export const MiniBasket = () => {
         className="MiniBasketItemsTitle"
         onClick={() => setShowBasketProducts(!showBasketProducts)}
       >
-        {prepareTitle()}
+        {prepareTitle(basket)}
         {showBasketProducts ? (
           <div className="TitleArrowUnactive">{BasketArrow}</div>
         ) : (

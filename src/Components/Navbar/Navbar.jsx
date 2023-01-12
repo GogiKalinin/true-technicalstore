@@ -150,10 +150,12 @@ const Navbar = ({
           </li>
             <div className="UserMenuFavoriteProducts" 
             // onClick={()=>setShowUserCard(!showUserCard)}
-            onClick={toggleBasketModalView}
+            // onClick={toggleBasketModalView}
             > 
             {/* {getPermissionToShowByArrayLength2(basket) && */}
+            <Link to="/favorite">
               {favoriteProducts}
+            </Link>
             {/* }  */}
             </div>
           <li className="MenuListItem">

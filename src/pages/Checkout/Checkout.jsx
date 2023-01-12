@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import DigitalButton from "../../Components/atoms/DigitalButton/DigitalButton";
+import { DigitalButton } from "../../Components/atoms/DigitalButton/DigitalButton";
+// import DigitalButton from "../../Components/atoms/DigitalButton/DigitalButton";
 import { DigitalInput } from "../../Components/atoms/DigitalInput/DigitalInput";
 import { DigitalRadio } from "../../Components/atoms/DigitalRadio/DigitalRadio";
 import { MiniBasket } from "../../Components/molecules/MiniBasket/MiniBasket";

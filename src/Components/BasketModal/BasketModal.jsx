@@ -81,11 +81,9 @@ const BasketModal = (props) => {
     dispatch({ type: "GET_FROM_BASKET", payload: id });
   };
 
-  props.setShowBasketModal(true)
-
   return (
     <div className="BasketModalGeneral">
-      <ClickAwayListener onClickAway={handleClickAway}>
+      <ClickAwayListener onClickAway={()=>handleClickAway}>
         <div className="BasketModalContainer">
           <div className="BasketModalTitle">
             <h1>Basket</h1>

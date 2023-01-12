@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Basket } from "../Navbar/Basket";
 import { Search } from "../Navbar/Search";
-import { getProductBasketStatus } from "../../tools/productActions";
+import { getProductBasketStatus, getProductChosenListStatus } from "../../tools/productActions";
 
 const Product = (props) => {
 
@@ -51,11 +51,31 @@ const Product = (props) => {
 
   const dispatch= useDispatch() 
   const basket = useSelector(state => state.basket.basket)
-  // console.log(basket)
+  const favoriteProducts = useSelector(state => state.favoriteProducts.favoriteProducts)
+  console.log(favoriteProducts)
+
   const addProductToBasket = (prod) => {
-    dispatch({type: 'ADD_TO_BASKET', payload: prod})
+    if (basket.length > 0) {
+      for (let i = 0; i < basket.length; i++) {
+        if (prod.id !== basket[i].id ) {
+          dispatch({type: 'ADD_TO_BASKET', payload: prod})
+        }      
+      }
+    } else {
+      dispatch({type: 'ADD_TO_BASKET', payload: prod})
+    }
+    console.log(prod.id)
   }
   localStorage.setItem('basket', JSON.stringify(basket))
+
+  const addProductToFavorites = (prod) => {
+    dispatch({type: 'ADD_TO_FAVORITE_PRODUCTS', payload: prod})
+  }
+  const removeProductFromFavorites = (id) => {
+    dispatch({type: 'GET_FROM_FAVORITE_PRODUCTS', payload: id})
+  }
+  localStorage.setItem('basket', JSON.stringify(basket))
+  localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts))
 
 
   return (
@@ -75,11 +95,21 @@ const Product = (props) => {
                     setLocalBasket(prod);
                   }}
                 >
-                  <img
+                  {/* <img
                     className="ProductImage"
                     src={prod.images[0]}
                     alt={prod.title}
-                  ></img>
+                  ></img> */}
+                <div class="change-photos">
+                  <div class="change-photo">
+                    {/* <img src="https://images.unsplash.com/photo-1543858710-af0479276bed?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt=""></img> */}
+                    <img src={prod.images[0]} alt={prod.description.slice(0, 40) + "..."}></img>
+                  </div>
+                  <div class="change-photo">
+                    {/* <img src="https://images.unsplash.com/photo-1511731357620-952d10f3234c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt=""></img> */}
+                    <img src={prod.images[2]} alt={prod.description.slice(0, 40) + "..."}></img>
+                  </div>
+                </div>
                 </div>
               </Link>
               <div className="ProductRating">
@@ -92,10 +122,10 @@ const Product = (props) => {
                   }}
                 >
                   <div></div>
-                  <div className="ProductToFavouritesImageContainer">
+                  <div className="ProductToFavouritesImageContainer" onClick={()=>getProductChosenListStatus(favoriteProducts, prod.id) ? removeProductFromFavorites(prod.id) : addProductToFavorites(prod)}>
                     <img
                       src={
-                        prod.id === props.favouritesData.id
+                        getProductChosenListStatus(favoriteProducts, prod.id)
                           ? LikeActive
                           : LikeUnactive
                       }
@@ -111,9 +141,12 @@ const Product = (props) => {
                         : prod.description}
                     </p>
                   </Link>
+                </div> 
+                <div className="ProductPriceAndPurchase">
+                  <div className="ProductPice">${prod.price}</div>
                   <div className="ProductDescriptionAddToBasket" onClick={()=>addProductToBasket(prod)}><Basket /></div>
                     {getProductBasketStatus(basket, prod.id) && <div>serduck</div>}
-                </div>
+                  </div>
               <div className="ProductButtons">
               </div>
             </div>
