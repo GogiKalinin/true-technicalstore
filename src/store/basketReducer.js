@@ -2,8 +2,7 @@ const defaultState = {
   basket:
     JSON.parse(localStorage.getItem("basket")) !== null
       ? JSON.parse(localStorage.getItem("basket"))
-      : 
-    [],
+      : [],
 };
 
 const ADD_TO_BASKET = "ADD_TO_BASKET";
@@ -17,6 +16,8 @@ export const basketReducer = (state = defaultState, action) => {
         ...state,
         basket: state.basket.filter((basket) => basket.id !== action.payload),
       };
+    case "ADD_SEVERAL_PRODUCTS_TO_BASKET":
+      return { ...state, basket: [...state.basket, ...action.payload] };
     default:
       return state;
   }
