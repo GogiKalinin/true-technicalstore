@@ -38,9 +38,8 @@ const Navbar = ({
     setShowNavbarModul(!showNavbarModul);
   };
 
-  const dispatch= useDispatch() 
-  const basket = useSelector(state => state.basket.basket)
-  
+  const dispatch = useDispatch();
+  const basket = useSelector((state) => state.basket.basket);
 
   const toggleBasketModalView = () => {
     // if (basket.length !== 0) {
@@ -50,8 +49,8 @@ const Navbar = ({
         setShowBasketModal(false);
       }, 2000);
     } else {
-        setShowBasketModal(!showBasketModal);
-      }
+      setShowBasketModal(!showBasketModal);
+    }
     // }
   };
 
@@ -77,26 +76,27 @@ const Navbar = ({
         <div className="NavbarUniversal">
           <Link
             to={"/"}
-            className="NavbarLogo"
-            // onClick={showAll}
-            onClick={() => {
-              showAll();
-            }}
           >
-            <Logo />
+            <div
+              className="NavbarLogo"
+              onClick={() => {
+                showAll();
+              }}
+            >
+              <Logo />
+            </div>
           </Link>
           <div
             className={showNavbarModul ? "NavbarMenuUnActive" : "Navbar__menu"}
           >
             {navigationItems.map((item) => (
-              <Link
-              to={"/"}>
+              <Link to={"/"}>
                 <div
                   className={
                     item.active
                       ? "Navbar__item Navbar-active__item"
                       : "Navbar__item"
-                  }return
+                  }
                   key={item.id}
                   onClick={() =>
                     selectNavItem(
@@ -151,16 +151,15 @@ const Navbar = ({
               </div>
             </div>
           </li>
-            <div className="UserMenuFavoriteProducts" 
+          <div
+            className="UserMenuFavoriteProducts"
             // onClick={()=>setShowUserCard(!showUserCard)}
             // onClick={toggleBasketModalView}
-            > 
+          >
             {/* {getPermissionToShowByArrayLength2(basket) && */}
-            <Link to="/favorite">
-              {favoriteProducts}
-            </Link>
+            <Link to="/favorite">{favoriteProducts}</Link>
             {/* }  */}
-            </div>
+          </div>
           <li className="MenuListItem">
             <img
               src={require("./Userpic.png")}
