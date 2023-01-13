@@ -10,11 +10,11 @@ export const DigitalProduct = () => {
   const dispatch= useDispatch() 
   const basket = useSelector(state => state.basket.basket)
   const favoriteProducts = useSelector(state => state.favoriteProducts.favoriteProducts)
+  
   const addFavoriteProductToBasket = (prod) => {
-    dispatch({
-      type: "ADD_TO_BASKET",
-      payload: prod,
-    });
+    if (!basket.includes(prod)) {
+      dispatch({type: 'ADD_TO_BASKET', payload: prod})
+    }
   }
   localStorage.setItem('basket', JSON.stringify(basket))
 
