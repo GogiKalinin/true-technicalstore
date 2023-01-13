@@ -12,17 +12,12 @@ export const BasketPopUp = () => {
     <div className="BasketPopUpContainer">
       <div className="BasketPopUp">
         {basket.length > 0 && (
-          // <div className='BasketPopUpMain'>
-          //     <h1>pop up</h1>
-          // </div>
-          <div class="slide-container">
-            <div class="slide">
-              <div class="slide-content">
-                <h1>
+          <div className="slide-container">
+            <div className="slide">
+              <div className="slide-content">
                   {prepareTitle(basket)}
-                </h1> 
               </div>
-              <div class="slide-header">{basket.length}</div>
+              <div className="slide-header">{basket.length}</div>
             </div>
           </div>
         )}
