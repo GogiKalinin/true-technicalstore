@@ -40,9 +40,7 @@ export const Home = ({
       <Product
         basketData={basketData}
         setBasketData={addNewToBusket}
-        //
         setFavouritesData={addNewToFavourites}
-        //
         allProducts={allProducts}
         moreAboutData={moreAboutData}
         setMoreAboutData={setMoreAboutData}

@@ -8,19 +8,19 @@ import { prepareTitle } from "../../tools/prepareTitle";
 import "./FavoriteProducts.sass";
 
 export const FavoriteProducts = () => {
+
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.basket.basket);
   const favoriteProducts = useSelector(
     (state) => state.favoriteProducts.favoriteProducts
   );
-  // console.log(basket)
-  // console.log(favoriteProducts)
-  const addFavoriteProductsToBasket = (favoriteProducts) => {
-    dispatch({
-      type: "ADD_SEVERAL_PRODUCTS_TO_BASKET",
-      payload: favoriteProducts,
-    });
-  };
+
+  const addFavoriteProductsToBasket = () => {
+      dispatch({
+        type: "ADD_SEVERAL_PRODUCTS_TO_BASKET",
+        payload: favoriteProducts,
+      });
+  }
 
   return (
     <div className="FavoriteProducts">

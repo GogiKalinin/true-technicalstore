@@ -63,7 +63,7 @@ const App = () => {
       active: false,
     },
     {
-      id: 6,
+      id: 5,
       name: "home-decoration",
       // name: "Repairs",
       active: false,
@@ -189,7 +189,6 @@ const App = () => {
   const dispatch= useDispatch() 
   const basket = useSelector(state => state.basket.basket)
   const favoriteProducts = useSelector(state => state.favoriteProducts.favoriteProducts)
-  console.log(favoriteProducts)
 
   return (
       <div className="App">
