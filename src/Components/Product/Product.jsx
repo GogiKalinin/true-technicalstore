@@ -59,17 +59,20 @@ const Product = (props) => {
     }
     console.log(prod.id)
   }
+
   localStorage.setItem('basket', JSON.stringify(basket))
 
   const addProductToFavorites = (prod) => {
     dispatch({type: 'ADD_TO_FAVORITE_PRODUCTS', payload: prod})
   }
+
   const removeProductFromFavorites = (id) => {
     dispatch({type: 'GET_FROM_FAVORITE_PRODUCTS', payload: id})
   }
-  localStorage.setItem('basket', JSON.stringify(basket))
-  localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts))
 
+  localStorage.setItem('basket', JSON.stringify(basket))
+
+  localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts))
 
   return (
     <div className="ProductContainer" >
@@ -95,11 +98,9 @@ const Product = (props) => {
                   ></img> */}
                 <div className="change-photos">
                   <div className="change-photo">
-                    {/* <img src="https://images.unsplash.com/photo-1543858710-af0479276bed?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt=""></img> */}
                     <img src={prod.images[0]} alt={prod.description.slice(0, 40) + "..."}></img>
                   </div>
                   <div className="change-photo">
-                    {/* <img src="https://images.unsplash.com/photo-1511731357620-952d10f3234c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt=""></img> */}
                     <img src={prod.images[2]} alt={prod.description.slice(0, 40) + "..."}></img>
                   </div>
                 </div>

@@ -22,10 +22,16 @@ export const FavoriteProducts = () => {
       });
   }
 
+  console.log('favourity products . length,', favoriteProducts.length)
+
   return (
     <div className="FavoriteProducts">
       <div className="FavoriteProductTitle">
+        {favoriteProducts.length > 0  ? 
         <h1>Wish list</h1>
+        : 
+        <h1>nothing</h1>
+}
       </div>
       <div className="FavoriteProductWishList">
         <DigitalProduct />
