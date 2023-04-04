@@ -51,21 +51,6 @@ export const ProductPage = (props) => {
   const addBasketFromProductPage = () => {
     props.setShowBasketModal(true);
   }
-  // const setLocalBasket = (prod) => {
-  //   props.setBasketData({ ...prod, count: 1 });
-  //   localStorage.setItem("basketData", JSON.stringify([ prod ]));
-  //   console.log(JSON.parse(localStorage.getItem("basketData")))
-  //   console.log(props.basketData)
-  //   const test = JSON.parse(localStorage.getItem("basketData"))
-  //   for (let i = 0; i < test.length; i++) {
-  //     if (test[i].id !== prod.id) {
-  //       test.push(prod)
-  //     }    
-  //   }
-  //   localStorage.setItem("basketData", JSON.stringify(props.basketData))
-  //   console.log('basketData', JSON.parse(localStorage.getItem("basketData")))
-  // }
-
   const dispatch= useDispatch() 
   const basket = useSelector(state => state.basket.basket)
   console.log(basket.length)
@@ -75,9 +60,7 @@ export const ProductPage = (props) => {
       id: Date.now()
     }
     console.log(product)
-    // console.log(basket[1].id)
-    // console.log(prod.id)
-    // for (let i = 0; i < basket.length; i++) {
+    
       if (basket.length === 0) {
         dispatch({type: 'ADD_TO_BASKET', payload: prod})
       }
@@ -141,8 +124,6 @@ export const ProductPage = (props) => {
                 <UniversalButton
                   text="Add to Cart"
                   onClick={()=>addProductToBasket(prod)}
-                  // onClick={()=>addBasketFromProductPage()}
-                  // onClick={setLocalBasket(prod)}
                 />
               </div>
             </div>
@@ -170,30 +151,7 @@ export const ProductPage = (props) => {
                     </p>
                     <div className="ProductPageAboutProductMainProductMoreAbout">
                       <div className="ProductPageAboutProductMainProductMoreAboutColors">
-                        {/* {productColors.map((color) => {
-                          return (
-                            <>
-                              <ChoseColor
-                                key={color.id}
-                                onClick={() => changeImage(color.id)}
-                                background={color.color}
-                              />
-                            </>
-                          );
-                        })} */}
                       </div>
-                      {/* <div className="ColorsChooseColor" alt="choose color">
-                          {Braun}  // const addBasketFromProductPage = () => {
-  //   props.setBasketData([...props.basketData, props.moreAboutData]);
-  // };
-
-                        </div>
-                        <div className="ColorsChooseColor" alt="choose color">
-                          {Bezh}
-                        </div>
-                        <div className="ColorsChooseColor" alt="choose color">
-                          {Gray}
-                        </div> */}
                     </div>
                   </div>
                   <div
@@ -261,12 +219,6 @@ export const ProductPage = (props) => {
                       {Mail}
                     </div>
                   </div>
-                  {/* {getMoreAboutDataImages()} */}
-                  {/* <img
-                    className="ProductPageProductVisualImage"
-                    src={prod.images[3]}
-                    alt={props.moreAboutData.name}
-                  ></img> */}
                    <MyBannerSlider bannerImages = {prod.images}/>
                 </div>
                 <div className="ProductPageViualBottom">

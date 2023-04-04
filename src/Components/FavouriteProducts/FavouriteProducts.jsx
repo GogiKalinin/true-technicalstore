@@ -29,8 +29,6 @@ const FavouriteProducts = (props) => {
     }, 3000);
   };
 
-  // const [clearShoppingCart, setClearShoppingCart] = useState(false);
-
   const toggleFavouriteProductsViewCleanCart = () => {
     props.setFavouritesData([]);
     props.setShowFavouriteProducts(false);

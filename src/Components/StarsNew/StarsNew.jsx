@@ -47,10 +47,6 @@ const StarsNew = () => {
 
   const [mark, setMark] = useState();
 
-  // const changeStarMark = (id) => {
-  //   setMark(id + 1);
-  // };
-
   const changeStarState = (id) => {
     setMark(id + 1);
     const updatedStars = [];
@@ -59,8 +55,6 @@ const StarsNew = () => {
       if (starsArray[i].id <= id) {
         starItem.active = true;
         updatedStars.push(starItem);
-        // updatedStars.push({id:id,active:true})
-        // const newStarObjecrt = { id: starsArray[i].id, active: true };
       } else {
         starItem.active = false;
         updatedStars.push(starItem);
@@ -99,11 +93,3 @@ const StarsNew = () => {
 
 export default StarsNew;
 
-// Add mark.
-//
-//  Step 1.
-//    Add div element for view mark
-//  Step 2.
-//    Create useState (mark, setMark)
-//  Step 3.
-//    Change this state on star click

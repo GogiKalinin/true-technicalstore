@@ -10,7 +10,6 @@ import { NewArrow } from "../../Images/MyBannerSlider/MyBannerSlider";
 
 const MyBannerSlider = () => {
   const bannerImages = [Image1, Image2, Image3, Image4, Image5];
-  // console.log(bannerImages)
   const [currentImage, setCurrentImage] = useState(bannerImages[0]);
 
   const func = () => {
@@ -41,12 +40,9 @@ const MyBannerSlider = () => {
         className="MyBannerSlider"
         style={{
           backgroundImage: "url(" + currentImage + ")",
-          // background: `url(${currentImage})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          // transitionDuration: "200ms",
-          // transitionProperty: true
         }}
       >
         <button className="SliderButtonPrev" onClick={prev}>

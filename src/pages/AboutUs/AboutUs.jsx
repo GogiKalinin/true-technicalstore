@@ -54,7 +54,6 @@ const AboutUs = () => {
         {AboutUsArray.map((about) => {
           return (
             <>
-              {/* <div className="AboutUsItem" key={about.id}> */}
               <div className="AboutUsItem" key={about.id}>
                 <div className="AboutUsItemImage">
                   <img src={about.image} alt=""></img>

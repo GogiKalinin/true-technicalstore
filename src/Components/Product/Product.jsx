@@ -82,7 +82,6 @@ const Product = (props) => {
               className={prod.active ? "Product Product-active" : "Product"}
               key={prod.id}
               onClick={() => localStorage.setItem('moreAboutData', JSON.stringify(prod))}
-              // onClick={() => addProductToBasket(prod)}
             >
               <Link to={"/product"}>
                 <div
@@ -91,11 +90,6 @@ const Product = (props) => {
                     setLocalBasket(prod);
                   }}
                 >
-                  {/* <img
-                    className="ProductImage"
-                    src={prod.images[0]}
-                    alt={prod.title}
-                  ></img> */}
                 <div className="change-photos">
                   <div className="change-photo">
                     <img src={prod.images[0]} alt={prod.description.slice(0, 40) + "..."}></img>
@@ -153,13 +147,3 @@ const Product = (props) => {
 
 export default Product;
 
-//  Крок 1.
-//    При кліці на товар має викликатись функція selectProduct.
-//  Крок 2.
-//    У цю функцію параметром має передаватися об'єкт клікнутого товару.
-//  Крок 3.
-//    Використовцючи консоль лог в цій функції превірити правильність вибору товару.
-//  Крок 4.
-//    Використовуючи setSelectedProductItem (setState) записати це значення в selectedProductItem.
-
-// Доробити зірочки.

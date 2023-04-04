@@ -27,8 +27,6 @@ const BasketModal = (props) => {
     props.setShowBasketModal(false);
   };
 
-  // const [clearShoppingCart, setClearShoppingCart] = useState(false);
-
   const toggleBasketModalViewCleanCart = () => {
     props.setBasketData([]);
     localStorage.removeItem("basketData");
@@ -38,13 +36,6 @@ const BasketModal = (props) => {
   const toggleBasketModalViewContinue = () => {
     props.setShowBasketModal(false);
   };
-
-  // const countPrice = (Prodprice, id) => {
-  //   const count = searchaItemCount(id);
-  //   const prevPrice = Prodprice.replace("$", "").split(".")[0];
-  //   const resultPrice = "$" + prevPrice * count + ".00";
-  //   return resultPrice;
-  // };
 
   const changeCounter = (id, newCount) => {
     const newBasketData = [];
@@ -95,11 +86,6 @@ const BasketModal = (props) => {
           {basket.length === 0 && (
             <div className="BasketModalEmpty">Basket is empty</div>
           )}
-          {/* {localStorage.getItem("basketData").length === 0 && !modalThanks ? (
-            <div className="BasketModalEmpty">
-              <h1>No products in cart</h1>
-            </div>
-          ) : localStorage.getItem("basketData") === null ? null : ( */}
             {basket.length > 0 && (
             <div className="BasketModalContent">
               <div className="BasketModalContentProducts">
@@ -131,7 +117,6 @@ const BasketModal = (props) => {
                             }
                           />
                           <div className="BasketProdContainerTotalPrice">
-                            {/* {countPrice(prod.price, prod.id)} */}
                             {prod.price}$
                           </div>
                         </div>
@@ -179,32 +164,3 @@ const BasketModal = (props) => {
 };
 
 export default BasketModal;
-
-// Крок 1.
-//     Додати клікнутий товар у basketData.
-//      ?question: Какую роль играет (как работает)в onClick  данная конструкция: "() =>"?
-//
-// Крок 1.1.
-//     В функції selectProduct створити пустий масив.
-//
-// Крок 1.2.
-//      У цей масив помістити актуальне значення backetData
-//
-//  Крок 1.3
-//      Додати до цього (щойно створеного) методом push
-//    вибраний продукт (приходить як prod).
-//
-//  Крок 2.
-//      Передати за допомогою props basketData до BasketModal
-//
-//  Крок 3.
-//      Використовуючи  метод масиву map відмалювати у корзині наші товари
-//    (поля name і image)
-//
-//        IMPORTANT!
-//      Якщо basketData не мітить жодного елементу,
-//    то при відображенні модального вікна повідомити
-//    про необхідність вибору товару (корзина пуста).
-//
-//        important too
-//     Коли пишеш логіку в функції коментуй in ukaraine each крок.

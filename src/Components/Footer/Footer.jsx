@@ -4,7 +4,6 @@ import FooterSignUp from "./FooterSignUp/FooterSignUp";
 import FooterNavig from "./FooterNavig/FooterNavig";
 import FooterEnd from "./FooterEnd/FooterEnd";
 import PreFooter from "../PreFooter/PreFooter";
-// import PreFooter from "./PreFooter/PreFooter";
 
 const Footer = () => {
   return (

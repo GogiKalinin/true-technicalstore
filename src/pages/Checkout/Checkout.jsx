@@ -143,14 +143,9 @@ export const Checkout = () => {
     },
   ];
   const [forward, setForward] = useState(false);
-  // console.log(forward)
-  // console.warn(currentUserData)
   console.log(userCheckoutInitials.name);
   console.log(listArray[8].countries);
 
-  // console.log(document.getElementById('email').id)
-  // console.log(document.getElementById('email').id)
-  // console.log(userCheckoutInitials[0])
   const getInputValue = () => {
     userCheckoutInitials.email = document.getElementById("email").value;
     userCheckoutInitials.firstName = document.getElementById("firstName").value;

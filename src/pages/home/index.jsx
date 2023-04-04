@@ -45,7 +45,6 @@ export const Home = ({
         moreAboutData={moreAboutData}
         setMoreAboutData={setMoreAboutData}
         favouritesData={favouritesData}
-        // setFavouritesData={setFavouritesData}
       />
       {showMainElements ? (
         <>
