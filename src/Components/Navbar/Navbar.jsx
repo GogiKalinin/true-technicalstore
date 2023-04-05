@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { selectNavItem } from "../../tools/filterCategory";
 import { useDispatch, useSelector } from "react-redux";
 import { basketEllipse, favoriteProducts } from "../../Images/Header";
+import { ModulInput } from "../atoms/ModulInput/ModulInput";
 
 const Navbar = ({
   showBasketModal,
@@ -123,13 +124,7 @@ const Navbar = ({
               showNavbarModul ? "InputModulIsActive" : "InputModuleIsUnactive"
             }
           >
-            <form>
-              <input
-                className="ModulInput"
-                type={"text"}
-                placeholder={"Search entiere store here..."}
-              ></input>
-            </form>
+            <ModulInput />
           </div>
         </div>
 

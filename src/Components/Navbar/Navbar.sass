@@ -17,45 +17,19 @@
   display: flex
   border-radius: 20px
 
-.ModulInput
-  display: flex
-  width: auto
-  transition: 200ms linear
-  height: 60px
-  background-color: #F5F7FF
-  border-radius: 31px
-  border: none
-  outline: none
-
-.ModulInput[text]
-  color: #000
-
-.ModulInput:hover
-  border: 1px solid #0156FF
-
-.ModulInput[placeholder]
-  font-family: 'Poppins'
-  font-style: normal
-  font-weight: 400
-  font-size: 14px
-  line-height: 21px
-  padding-left: 30px
-  color: #A2A6B0
-
 .InputModuleIsUnactive,
 .NavbarMenuUnActive
   display: none
 
 .TabletNavbarIcons
   display: flex
+
 @media screen and (min-width: 1500px)
   .Navbar
     padding-left: 260px
     padding-right: 260px
   .TabletNavbar
     display: none
-  .ModulInput
-    min-width: 700px
 
 @media screen and (min-width: 1150px) and (max-width: 1500px)
   .Navbar
@@ -63,8 +37,6 @@
     padding-right: 30px
   .TabletNavbar
     display: none
-  .ModulInput
-    min-width: 800px
 
 @media screen and (min-width: 992px) and (max-width: 1150px)
   .Navbar
@@ -72,9 +44,6 @@
     padding-right: 30px
   .TabletNavbar
     display: none
-
-  .ModulInput
-    width: 700px
 
 @media screen and (max-width: 992px)
   .Navbar
