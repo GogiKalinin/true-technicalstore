@@ -124,7 +124,13 @@ const Navbar = ({
               showNavbarModul ? "InputModulIsActive" : "InputModuleIsUnactive"
             }
           >
-            <ModulInput />
+            <ModulInput 
+              setShowMainElements = {setShowMainElements}
+              productArray = {productArray}
+              setAllProducts = {setAllProducts}
+              navigationItems = {navigationItems}
+              setNavigationItems = {setNavigationItems}
+            />
           </div>
         </div>
 

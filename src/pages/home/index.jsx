@@ -36,7 +36,7 @@ export const Home = ({
         setShowMainElements={setShowMainElements}
         setNavigationItems={setNavigationItems}
       />
-        <BasketPopUp />
+      <BasketPopUp />
       <Product
         basketData={basketData}
         setBasketData={addNewToBusket}

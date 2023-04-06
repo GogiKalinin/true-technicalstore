@@ -53,19 +53,16 @@ const App = () => {
     {
       id: 3,
       name: "skincare",
-      // name: "Printers & Scanners",
       active: false,
     },
     {
       id: 4,
       name: "groceries",
-      // name: "PC Parts",
       active: false,
     },
     {
       id: 5,
       name: "home-decoration",
-      // name: "Repairs",
       active: false,
     },
   ]);
@@ -189,7 +186,7 @@ const App = () => {
   const dispatch= useDispatch() 
   const basket = useSelector(state => state.basket.basket)
   const favoriteProducts = useSelector(state => state.favoriteProducts.favoriteProducts)
-
+  console.log(productArray)
   return (
       <div className="App">
         <Header
