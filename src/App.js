@@ -110,31 +110,21 @@ const App = () => {
   const getCounerNumber = (new_prod) => {
     const id = new_prod.id;
     let oldCountItems = [...countItems];
-    // Перевіряємо чи масив пустий
     if (oldCountItems.length === 0) {
-      //Якщо так, то додаємо туди об'єкт з полями id(клікнутого елемента) та стандартним значенням count 1
       oldCountItems.push({ id, count: 1 });
-      //Тут ми оновлюємо глобальний countItems додаючи до нього наш новозмінений масив
       setCountItems(oldCountItems);
-      //інакше (якщо масив не порожній)
     } else {
-      //Тут ми перевіряємо чи наш елемент є в таблиці
       for (let i = 0; i < oldCountItems.length; i++) {
-        //Якщо є, то доаємо count на один
         if (oldCountItems[i].id === id) {
           oldCountItems[i].count = oldCountItems[i].count + 1;
         }
       }
-      //Тут ми також перевіряємо чи є наш елемент у таблиці
       const elementsWithClickedId = oldCountItems.filter(
         (element) => element.id === id
       );
-      //Якщо немає
       if (elementsWithClickedId.length === 0) {
-        //Додаємо цей елемент
         oldCountItems.push({ id, count: 1 });
       }
-      //Тут ми оновлюємо глобальний countItems додаючи до нього наш новозмінений масив
       setCountItems(oldCountItems);
     }
   };
@@ -162,12 +152,9 @@ const App = () => {
   };
 
   const location = useLocation();
-  // console.log("location", location);
-  // console.warn("data", data);
 
   useEffect(() => {
     const nowCategory = localStorage.getItem("nowCategory");
-    // console.log("nowCategory", typeof nowCategory);
     if (nowCategory !== null) {
       selectNavItem(
         setShowMainElements,
@@ -274,83 +261,4 @@ const App = () => {
 
 export default App;
 
-// 1. Добавить кнопку удаления для КАЖДОГО товара модального окна DONE
 
-// 2. Добавить логику удаления товара из корзины при нажатии на соответствующую кнопку DONE
-
-// 3.4. Добавить редактор количества товара (инпут + кнопки)
-//  Щоб прочитати значення з інпута ти маєш вказати атрибут onChange={(event)=>changeInput(event, id)}
-// Значення інпуту зберігаються в event.target.value
-
-//const changeInput = (event, id) => {
-//  const currentValue = event.target.value
-//}
-
-// 4.3. Добавить компонент кнопки "Continue shopping", при клике закрыть модальное окно
-
-// 5.2. Добавить кнопку "Clear Shopping Cart" при клике очистить массив корзины и закрывает модальное окно
-
-// 6.1. Добавить кнопку "Purchase" при клике очищает массив и вместо выбранных товаров большим шрифтом
-
-// "Thanks for sale" на 3 секунды и закрывает модальное окно
-
-// 7. Если корзина товаров пуста крупным шрифтом "No products in cart" на 2 сек и закрывает модальное окно DONE
-
-// 8. If any category chosed you shouldn't show banner slider, all products, quote, and prefooter.
-
-// 9. IF you click on logo you should show all products
-
-// src={require("./Userpic.png")}
-// onClick={() => changeStarState(item.id)}
-//.slice(0,10)
-//.filter
-//.replace
-//.split
-//onClick={() => removeFromBasket(prod.id)}
-// newBasketData.push({ ...props.basketData[i], count: newCount });
-// onClick={()=>addBasketFromProductPage()}
-
-
-// УНИВЕРСАЛЬНОЕ ПОСОБИЕ ПО ПУШУ НА ГИТ [ХАБ]
-
-// git add .
-// Замість "." ти можеш додати файли які змінив і хочеш додати у ГІТ (git add App.jsx App.sass) (git add ./src/Components/SomeFolder)
-
-// git commit -m "опис змін тих файлів які додаєш у ГІТ"
-
-// git push
-// "Пуш" на ГІТ
-
-// баг? При нажатии на рейтинговые звезды товара этот товар зачисляется в массив корзины
-
-// Ликвидировать пункт other products (navbar и т д)
-// Приколотить футер на место
-// Страница продукта
-// Поправить верстку баннер! все остальное!
-
-// Логика отображения в странице продукта выбранного продукта
-
-// телефон все
-
-//////////////////////////////////////
-
-// 28.XX.22
-
-// 1. Save changes in basketModal with localStorage.
-// 2. Save changes in favouriteProducts with localStorage.
-// 3. Verstka for favouriteProducts modal.
-// 4. Work with new product API.
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//const setLocalBasket = (prod) => {
-//  
-// }
